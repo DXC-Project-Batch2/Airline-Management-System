@@ -16,7 +16,7 @@ public class AirLine {
 	@Id
 	long planeId; 
 	String source;String destination;
-	Date dob;
+	Date date;
 	String duration;
 	String starting_time;
 	String ending_time;
@@ -29,14 +29,14 @@ public class AirLine {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AirLine(long planeId, String source, String destination, String strdob, String duration, String starting_time,
+	public AirLine(long planeId, String source, String destination, String strdate, String duration, String starting_time,
 			String ending_time, long prize, int avaliable_seats, int sold_out) throws ParseException {
 		super();
 		this.planeId = planeId;
 		this.source = source;
 		this.destination = destination;
 		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
-		dob=sdf.parse(strdob);
+		date=sdf.parse(strdate);
 		this.duration = duration;
 		this.starting_time = starting_time;
 		this.ending_time = ending_time;
@@ -69,12 +69,12 @@ public class AirLine {
 		this.destination = destination;
 	}
 	
-	public Date getDob() {
-		return dob;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setDob(Date dob) {
-		this.dob = dob;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public String getDuration() {
@@ -127,8 +127,8 @@ public class AirLine {
 
 	@Override
 	public String toString() {
-		String strdob=new SimpleDateFormat("dd-MM-yyyy").format(dob);
-		return "AirLine [planeId=" + planeId + ", source=" + source + ", destination=" + destination + ", date=" + strdob
+		String strdate=new SimpleDateFormat("dd-MM-yyyy").format(date);
+		return "AirLine [planeId=" + planeId + ", source=" + source + ", destination=" + destination + ", date=" + strdate
 				+ ", duration=" + duration + ", starting_time=" + starting_time + ", ending_time=" + ending_time
 				+ ", prize=" + prize + ", avaliable_seats=" + avaliable_seats + ", sold_out=" + sold_out + "]";
 	}
