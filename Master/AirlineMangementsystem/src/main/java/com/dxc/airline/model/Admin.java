@@ -16,26 +16,22 @@ public class Admin {
 	long id;
 	String username;
 	String password;
-	
-	
 	public Admin() {
 		super();
-		
+		// TODO Auto-generated constructor stub//
 	}
-	
-	
-	
+
 	public Admin(long id, String username, String password) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 	}
-	
+
 	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getUsername() {
@@ -50,16 +46,10 @@ public class Admin {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-
-
 	@Override
 	public String toString() {
 		return "Admin [id=" + id + ", username=" + username + ", password=" + password + "]";
 	}
-	
-	
-	
 	
 
 }
