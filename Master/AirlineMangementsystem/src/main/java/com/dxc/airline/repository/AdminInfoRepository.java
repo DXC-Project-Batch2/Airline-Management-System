@@ -1,11 +1,11 @@
 package com.dxc.airline.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.dxc.airline.model.AdminInfo;
 
 
-public interface AdminInfoRepository extends CrudRepository<AdminInfo, Integer> {
+public interface AdminInfoRepository extends JpaRepository<AdminInfo, Long> {
 
 
 }
