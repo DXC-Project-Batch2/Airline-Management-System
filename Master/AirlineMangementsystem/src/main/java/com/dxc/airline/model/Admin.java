@@ -1,6 +1,8 @@
 package com.dxc.airline.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.springframework.stereotype.Component;
@@ -10,7 +12,8 @@ import org.springframework.stereotype.Component;
 public class Admin {
 	
 	@Id
-	int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	long id;
 	String username;
 	String password;
 	
@@ -22,14 +25,14 @@ public class Admin {
 	
 	
 	
-	public Admin(int id, String username, String password) {
+	public Admin(long id, String username, String password) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 	}
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	public void setId(int id) {
