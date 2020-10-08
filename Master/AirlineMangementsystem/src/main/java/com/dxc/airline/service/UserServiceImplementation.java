@@ -45,7 +45,6 @@ public class UserServiceImplementation implements UserService{
 			theUser = result.get();
 		}
 		else {
-			// we didn't find the employee
 			throw new RuntimeException("Did not find user id - " + id);
 		}
 		
