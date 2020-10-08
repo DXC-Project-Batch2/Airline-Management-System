@@ -21,7 +21,7 @@ public class User {
 		
 	}
 	
-	public User(int id, String username, String password) {
+	public User(long id, String username, String password) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -32,7 +32,7 @@ public class User {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

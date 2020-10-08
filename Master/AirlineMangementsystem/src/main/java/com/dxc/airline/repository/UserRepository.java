@@ -7,3 +7,4 @@ import com.dxc.airline.model.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
 }
+
