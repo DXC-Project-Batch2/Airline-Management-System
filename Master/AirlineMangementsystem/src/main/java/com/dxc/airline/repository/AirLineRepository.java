@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.dxc.airline.model.AirLine;
 
-public interface AirLineRepository extends JpaRepository<AirLine, Integer> {
+public interface AirLineRepository extends JpaRepository<AirLine, Long> {
 
 }
