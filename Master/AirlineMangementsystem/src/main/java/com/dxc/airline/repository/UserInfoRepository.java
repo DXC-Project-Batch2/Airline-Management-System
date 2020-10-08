@@ -7,3 +7,4 @@ import com.dxc.airline.model.UserInfo;
 public interface UserInfoRepository extends JpaRepository<UserInfo, Long> {
 
 }
+
