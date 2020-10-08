@@ -14,15 +14,17 @@ public class UserSecurity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	private String username;
 	private String securityQuestion;
 	private String answer;
 	public UserSecurity() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public UserSecurity(long id, String securityQuestion, String answer) {
+	public UserSecurity(long id, String username,String securityQuestion, String answer) {
 		super();
 		this.id = id;
+		this.username=username;
 		this.securityQuestion = securityQuestion;
 		this.answer = answer;
 	}
@@ -31,6 +33,13 @@ public class UserSecurity {
 	}
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getSecurityQuestion() {
 		return securityQuestion;
@@ -46,8 +55,11 @@ public class UserSecurity {
 	}
 	@Override
 	public String toString() {
-		return "UserSecurity [id=" + id + ", securityQuestion=" + securityQuestion + ", answer=" + answer + "]";
+		return "UserSecurity [id=" + id + ", username=" + username + ", securityQuestion=" + securityQuestion
+				+ ", answer=" + answer + "]";
 	}
+	
+	
 	
 
 }
