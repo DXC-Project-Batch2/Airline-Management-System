@@ -1,6 +1,9 @@
 package com.dxc.airline.model;
 
-import java.sql.Date;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,42 +15,33 @@ import org.springframework.stereotype.Component;
 public class AdminInfo {
 	
 	@Id
-	int aadhaarNo;
+	long id;
 	String name;
-	int age;
+	String username;
+	String gender;
 	Date dob;
+	String mobile; 
 	String address;
-	int passport;
 	public AdminInfo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public AdminInfo(int aadhaarNo, String name, int age, Date dob, String address, int passport) {
+	public AdminInfo(long id, String name, String username, String gender, String strdob, String mobile, String address) throws ParseException{
 		super();
-		this.aadhaarNo = aadhaarNo;
+		this.id = id;
 		this.name = name;
-		this.age = age;
-		this.dob = dob;
+		this.username = username;
+		this.gender = gender;
+		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+		dob=sdf.parse(strdob);
+		this.mobile = mobile;
 		this.address = address;
-		this.passport = passport;
-	}
-	public int getAadhaarNo() {
-		return aadhaarNo;
-	}
-	public void setAadhaarNo(int aadhaarNo) {
-		this.aadhaarNo = aadhaarNo;
 	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
 	}
 	public Date getDob() {
 		return dob;
@@ -61,18 +55,36 @@ public class AdminInfo {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public int getPassport() {
-		return passport;
+	
+	public long getId() {
+		return id;
 	}
-	public void setPassport(int passport) {
-		this.passport = passport;
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
 	@Override
 	public String toString() {
-		return "AdminInfo [aadhaarNo=" + aadhaarNo + ", name=" + name + ", age=" + age + ", dob=" + dob + ", address="
-				+ address + ", passport=" + passport + "]";
-	}
-	
+		return "UserInfo [id=" + id + ", name=" + name + ", username=" + username + ", gender=" + gender + ", dob=" + dob + ", mobile=" + mobile
+				+ ", address=" + address +"]";
+	}	
 	
 	
 
