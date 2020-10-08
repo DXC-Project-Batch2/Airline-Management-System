@@ -1,18 +1,23 @@
 package com.dxc.airline.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.dxc.airline.model.AdminInfo;
 import com.dxc.airline.model.City;
+import com.dxc.airline.repository.CityRepository;
 
 public class CityServiceImplementation implements CityService<City>{
 
 	@Autowired
+	CityRepository cityRepository;
+	
 	@Override
 	public boolean save(City e) {
 		boolean res=false;
-		if(adminInfoRepository.save(e) != null)
+		if(cityRepository.save(e) != null)
 		{
 			res=true;
 		}
@@ -20,15 +25,14 @@ public class CityServiceImplementation implements CityService<City>{
 	}
 
 	@Override
-	public City find(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public City find(String city) {
+		Optional<City> c = cityRepository.findById(city);
+		return c.get();
 	}
 
 	@Override
 	public List<City> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return cityRepository.findAll();
 	}
 
 	@Override
@@ -38,9 +42,9 @@ public class CityServiceImplementation implements CityService<City>{
 	}
 
 	@Override
-	public boolean delete(long id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean delete(String city) {
+		cityRepository.deleteById(city);
+		return true;
 	}
 
 }
