@@ -1,6 +1,6 @@
 package com.dxc.airline.service;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +22,8 @@ public class UserSecurityServiceImp implements IUserSecurityService {
 
 	@Override
 	public UserSecurity findById(long id) {
-		
-		return repo.findById(id);
+		Optional<UserSecurity> users = repo.findById(id);
+		return users.get();
 	}
 
 }

@@ -23,10 +23,8 @@ public class TicketBookingServiceImp implements ITicketBookingService {
 
 	@Override
 	public boolean delete(long id) {
-		
-		         repo.deleteById(id);
-  return true;
-
+		repo.deleteById(id);
+		return true;
 	}
 
 	@Override
