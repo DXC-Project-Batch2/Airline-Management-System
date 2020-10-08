@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.springframework.stereotype.Component;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Component;
 public class AdminInfo {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long id;
 	String name;
 	String username;
