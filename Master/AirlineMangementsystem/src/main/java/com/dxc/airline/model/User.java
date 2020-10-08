@@ -11,7 +11,7 @@ public class User {
 	
 	@Id
 	
-	int id;
+	long id;
 	String username;
 	String password;
 	
@@ -28,7 +28,7 @@ public class User {
 		this.password = password;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
