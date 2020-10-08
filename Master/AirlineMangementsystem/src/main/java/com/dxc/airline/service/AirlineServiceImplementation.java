@@ -25,7 +25,8 @@ public class AirlineServiceImplementation implements AirlineService{
 	@Override
 	@Transactional
 	public List<AirLine> findAll() {
-		return airlineRepository.findAll()	}
+		return airlineRepository.findAll();
+		}
 
 	@Override
 	@Transactional
@@ -37,7 +38,7 @@ public class AirlineServiceImplementation implements AirlineService{
 	@Override
 	@Transactional
 	public AirLine findById(long id) {
-		Optional<AirLine> result = airLineRepository.findById(id);
+		Optional<AirLine> result = airlineRepository.findById(id);
 		
 		AirLine theAirLine = null;
 		

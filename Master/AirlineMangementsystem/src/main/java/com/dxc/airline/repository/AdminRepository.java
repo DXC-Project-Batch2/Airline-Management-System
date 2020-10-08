@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.dxc.airline.model.Admin;
 
-public interface AdminRepository extends JpaRepository<Admin, Integer> {
+public interface AdminRepository extends JpaRepository<Admin, Long> {
 
 }
