@@ -10,8 +10,8 @@ public interface UserService {
 
 	public void save(User theUser);
 
-	public User findById(long id);
+	public User findById(String username);
 
-	public void deleteById(long id);
+	public void deleteById(String username);
 	
 }

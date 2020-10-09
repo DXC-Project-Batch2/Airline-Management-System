@@ -36,8 +36,8 @@ public class UserServiceImplementation implements UserService{
 
 	@Override
 	@Transactional
-	public User findById(long id) {
-		Optional<User> result = userRepository.findById(id);
+	public User findById(String username) {
+		Optional<User> result = userRepository.findById(username);
 		
 		User theUser = null;
 		
@@ -45,7 +45,7 @@ public class UserServiceImplementation implements UserService{
 			theUser = result.get();
 		}
 		else {
-			throw new RuntimeException("Did not find user id - " + id);
+			throw new RuntimeException("Did not find username - " + username);
 		}
 		
 		return theUser;
@@ -53,9 +53,9 @@ public class UserServiceImplementation implements UserService{
 
 	@Override
 	@Transactional
-	public void deleteById(long id) {
+	public void deleteById(String username) {
 		// TODO Auto-generated method stub
-		userRepository.deleteById(id);
+		userRepository.deleteById(username);
 	}
 
 	

@@ -16,10 +16,8 @@ import org.springframework.stereotype.Component;
 @Entity
 public class AdminInfo {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	long id;
 	String name;
+	@Id
 	String username;
 	String gender;
 	Date dob;
@@ -29,9 +27,8 @@ public class AdminInfo {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public AdminInfo(long id, String name, String username, String gender, String strdob, String mobile, String address) throws ParseException{
+	public AdminInfo(String name, String username, String gender, String strdob, String mobile, String address) throws ParseException{
 		super();
-		this.id = id;
 		this.name = name;
 		this.username = username;
 		this.gender = gender;
@@ -59,12 +56,6 @@ public class AdminInfo {
 		this.address = address;
 	}
 	
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
 	public String getUsername() {
 		return username;
 	}
@@ -85,7 +76,7 @@ public class AdminInfo {
 	}
 	@Override
 	public String toString() {
-		return "UserInfo [id=" + id + ", name=" + name + ", username=" + username + ", gender=" + gender + ", dob=" + dob + ", mobile=" + mobile
+		return "UserInfo [name=" + name + ", username=" + username + ", gender=" + gender + ", dob=" + dob + ", mobile=" + mobile
 				+ ", address=" + address +"]";
 	}	
 	

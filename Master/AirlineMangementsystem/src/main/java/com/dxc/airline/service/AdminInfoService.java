@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface AdminInfoService<E>{
 	boolean save(E e);
-	E find(long id);
+	E find(String username);
 	List<E> findAll();
 	boolean update(E e);
-	boolean delete(long id);
+	boolean delete(String username);
 }

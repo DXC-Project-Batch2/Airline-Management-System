@@ -1,10 +1,12 @@
 package com.dxc.airline.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dxc.airline.model.Admin;
 import com.dxc.airline.model.UserSecurity;
 import com.dxc.airline.repository.UserSecurityRepository;
 
@@ -21,9 +23,28 @@ public class UserSecurityServiceImp implements IUserSecurityService {
 	}
 
 	@Override
-	public UserSecurity findById(long id) {
-		Optional<UserSecurity> users = repo.findById(id);
+	public UserSecurity findById(String username) {
+		Optional<UserSecurity> users = repo.findById(username);
 		return users.get();
+	}
+
+	@Override
+	public List<UserSecurity> findAll() {
+		// TODO Auto-generated method stub
+		return repo.findAll();
+	}
+
+	@Override
+	public boolean update(UserSecurity e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void deleteById(String username) {
+		// TODO Auto-generated method stub
+		repo.deleteById(username);
+		
 	}
 
 }

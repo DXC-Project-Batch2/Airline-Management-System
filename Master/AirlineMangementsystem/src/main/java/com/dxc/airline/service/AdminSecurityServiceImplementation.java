@@ -25,8 +25,8 @@ public class AdminSecurityServiceImplementation  implements AdminSecurityService
 	}
 
 	@Override
-	public AdminSecurity find(long id) {
-		Optional<AdminSecurity> adminInfo = adminSecurityRepository.findById(id);
+	public AdminSecurity find(String username) {
+		Optional<AdminSecurity> adminInfo = adminSecurityRepository.findById(username);
 		return adminInfo.get();
 	}
 
@@ -42,9 +42,9 @@ public class AdminSecurityServiceImplementation  implements AdminSecurityService
 	}
 
 	@Override
-	public boolean delete(long id) {
+	public boolean delete(String username) {
 		// TODO Auto-generated method stub
-		adminSecurityRepository.deleteById(id);
+		adminSecurityRepository.deleteById(username);
 		return true;
 	}
 
