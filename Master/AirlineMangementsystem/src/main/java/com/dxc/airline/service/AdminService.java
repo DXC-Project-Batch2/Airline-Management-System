@@ -13,8 +13,8 @@ public interface AdminService<E> {
 	
 	public boolean update(E e);
 
-	public E findById(long id);
+	public E findById(String username);
 
-	public void deleteById(long id);
+	public void deleteById(String username);
 
 }

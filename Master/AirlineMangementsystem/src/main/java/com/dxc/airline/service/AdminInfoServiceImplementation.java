@@ -25,8 +25,8 @@ public class AdminInfoServiceImplementation implements AdminInfoService<AdminInf
 	}
 
 	@Override
-	public AdminInfo find(long id) {
-		Optional<AdminInfo> adminInfo = adminInfoRepository.findById(id);
+	public AdminInfo find(String username) {
+		Optional<AdminInfo> adminInfo = adminInfoRepository.findById(username);
 		return adminInfo.get();
 	}
 
@@ -42,9 +42,9 @@ public class AdminInfoServiceImplementation implements AdminInfoService<AdminInf
 	}
 
 	@Override
-	public boolean delete(long id) {
+	public boolean delete(String username) {
 		// TODO Auto-generated method stub
-		adminInfoRepository.deleteById(id);
+		adminInfoRepository.deleteById(username);
 		return true;
 	}
 

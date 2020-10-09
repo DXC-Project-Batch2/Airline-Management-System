@@ -12,8 +12,6 @@ import org.springframework.stereotype.Component;
 public class UserSecurity {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
 	private String username;
 	private String securityQuestion;
 	private String answer;
@@ -21,20 +19,12 @@ public class UserSecurity {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public UserSecurity(long id, String username,String securityQuestion, String answer) {
+	public UserSecurity(String username,String securityQuestion, String answer) {
 		super();
-		this.id = id;
 		this.username=username;
 		this.securityQuestion = securityQuestion;
 		this.answer = answer;
-	}
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	
+	}	
 	public String getUsername() {
 		return username;
 	}
@@ -55,7 +45,7 @@ public class UserSecurity {
 	}
 	@Override
 	public String toString() {
-		return "UserSecurity [id=" + id + ", username=" + username + ", securityQuestion=" + securityQuestion
+		return "UserSecurity [username=" + username + ", securityQuestion=" + securityQuestion
 				+ ", answer=" + answer + "]";
 	}
 	

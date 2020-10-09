@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.dxc.airline.model.UserSecurity;
 
 @Repository
-public interface UserSecurityRepository extends JpaRepository<UserSecurity, Long> {
+public interface UserSecurityRepository extends JpaRepository<UserSecurity, String> {
 
 }

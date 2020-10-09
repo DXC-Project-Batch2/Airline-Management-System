@@ -12,8 +12,6 @@ import org.springframework.stereotype.Component;
 public class Admin {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	long id;
 	String username;
 	String password;
 	public Admin() {
@@ -21,19 +19,12 @@ public class Admin {
 		// TODO Auto-generated constructor stub//
 	}
 
-	public Admin(long id, String username, String password) {
+	public Admin(String username, String password) {
 		super();
-		this.id = id;
 		this.username = username;
 		this.password = password;
 	}
 
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
 	public String getUsername() {
 		return username;
 	}
@@ -48,7 +39,7 @@ public class Admin {
 	}
 	@Override
 	public String toString() {
-		return "Admin [id=" + id + ", username=" + username + ", password=" + password + "]";
+		return "Admin [username=" + username + ", password=" + password + "]";
 	}
 	
 

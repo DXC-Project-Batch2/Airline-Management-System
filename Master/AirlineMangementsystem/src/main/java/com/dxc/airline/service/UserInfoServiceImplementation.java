@@ -49,16 +49,16 @@ public class UserInfoServiceImplementation implements UserInfoService<UserInfo> 
 	}
 
 	@Override
-	public UserInfo findById(long id) {
+	public UserInfo findById(String username) {
 		// TODO Auto-generated method stub
-		Optional<UserInfo> res = userInfoRepository.findById(id);
+		Optional<UserInfo> res = userInfoRepository.findById(username);
 		return res.get();
 	}
 
 	@Override
-	public void deleteById(long id) {
+	public void deleteById(String username) {
 		// TODO Auto-generated method stub
-		userInfoRepository.deleteById(id);
+		userInfoRepository.deleteById(username);
 	}
 
 }

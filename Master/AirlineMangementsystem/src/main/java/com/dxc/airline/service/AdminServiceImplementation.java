@@ -50,16 +50,16 @@ public class AdminServiceImplementation implements AdminService<Admin> {
 	}
 
 	@Override
-	public Admin findById(long id) {
+	public Admin findById(String username) {
 		// TODO Auto-generated method stub
-		Optional<Admin> res = adminRepository.findById(id);
+		Optional<Admin> res = adminRepository.findById(username);
 		return res.get();
 	}
 
 	@Override
-	public void deleteById(long id) {
+	public void deleteById(String username) {
 		// TODO Auto-generated method stub
-		adminRepository.deleteById(id);
+		adminRepository.deleteById(username);
 	}
 	
 

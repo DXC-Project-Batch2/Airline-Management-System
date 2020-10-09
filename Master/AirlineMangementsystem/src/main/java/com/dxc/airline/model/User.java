@@ -10,8 +10,6 @@ import org.springframework.stereotype.Component;
 public class User {
 	
 	@Id
-	
-	long id;
 	String username;
 	String password;
 	
@@ -21,19 +19,10 @@ public class User {
 		
 	}
 	
-	public User(long id, String username, String password) {
+	public User(String username, String password) {
 		super();
-		this.id = id;
 		this.username = username;
 		this.password = password;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public String getUsername() {
@@ -54,7 +43,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + "]";
+		return "User [username=" + username + ", password=" + password + "]";
 	}
 	
 	
