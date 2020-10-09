@@ -8,7 +8,7 @@ public interface UserInfoService<E> {
 
 	public boolean save(E e);
 	
-	public boolean update(E e);
+	public E update(E e);
 
 	public E findById(String username);
 

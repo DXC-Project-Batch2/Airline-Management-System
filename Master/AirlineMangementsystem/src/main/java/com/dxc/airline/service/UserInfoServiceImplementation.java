@@ -43,9 +43,13 @@ public class UserInfoServiceImplementation implements UserInfoService<UserInfo> 
 	}*/
 	
 	@Override
-	public boolean update(UserInfo e) {
+	public UserInfo update(UserInfo e) {
 		// TODO Auto-generated method stub
-		return false;
+		Optional<UserInfo> findUserById = userInfoRepository.findById(e.getUsername());
+		if (findUserById.isPresent()) {
+			userInfoRepository.save(e);
+		}
+		return e;
 	}
 
 	@Override
