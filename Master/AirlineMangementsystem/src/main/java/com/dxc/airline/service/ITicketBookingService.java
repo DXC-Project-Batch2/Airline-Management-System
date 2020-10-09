@@ -15,4 +15,7 @@ public interface ITicketBookingService {
 	
 	public List<TicketBooking> getAll();
 
+	public TicketBooking find(long id);
+
+	public boolean update(TicketBooking booking);
 }

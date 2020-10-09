@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.dxc.airline.model.AdminInfo;
 import com.dxc.airline.model.City;
 import com.dxc.airline.repository.CityRepository;
 
@@ -37,8 +36,13 @@ public class CityServiceImplementation implements CityService<City>{
 
 	@Override
 	public boolean update(City e) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean res=false;
+		Optional<City> city = cityRepository.findById(e.getCity());
+		if (city.isPresent()) {
+			cityRepository.save(e);
+			return true;
+		}
+		return res;
 	}
 
 	@Override
