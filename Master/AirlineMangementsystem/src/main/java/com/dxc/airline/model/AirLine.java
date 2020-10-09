@@ -15,7 +15,8 @@ public class AirLine {
 
 	@Id
 	long planeId; 
-	String source;String destination;
+	String source;
+	String destination;
 	Date date;
 	String duration;
 	String starting_time;

@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dxc.airline.model.Admin;
+
 import com.dxc.airline.model.UserSecurity;
 import com.dxc.airline.repository.UserSecurityRepository;
 
