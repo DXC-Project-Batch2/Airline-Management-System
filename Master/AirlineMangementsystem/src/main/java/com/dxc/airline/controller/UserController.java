@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dxc.airline.model.AdminSecurity;
 import com.dxc.airline.model.User;
-import com.dxc.airline.model.UserInfo;
-import com.dxc.airline.service.UserInfoServiceImplementation;
 import com.dxc.airline.service.UserServiceImplementation;
 
 @RestController
