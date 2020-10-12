@@ -10,7 +10,7 @@ public interface UserService {
 
 	public List<User> findAll();
 
-	public void save(User theUser);
+	public Boolean save(User theUser);
 
 	public User findById(String username);
 
