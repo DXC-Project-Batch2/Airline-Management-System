@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.dxc.airline.model.AdminSecurity;
 import com.dxc.airline.repository.AdminSecurityRepository;
-
+@Service
 public class AdminSecurityServiceImplementation  implements AdminSecurityService<AdminSecurity> {
 
 	@Autowired

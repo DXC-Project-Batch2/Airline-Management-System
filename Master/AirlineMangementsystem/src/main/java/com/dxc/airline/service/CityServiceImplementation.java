@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.dxc.airline.model.City;
 import com.dxc.airline.repository.CityRepository;
-
+@Service
 public class CityServiceImplementation implements CityService<City>{
 
 	@Autowired

@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.dxc.airline.model.UserInfo;
 import com.dxc.airline.repository.UserInfoRepository;
-
+@Service
 public class UserInfoServiceImplementation implements UserInfoService<UserInfo> {
 
 	@Autowired

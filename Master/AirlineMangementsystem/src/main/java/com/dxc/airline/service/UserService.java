@@ -2,8 +2,10 @@ package com.dxc.airline.service;
 
 import java.util.List;
 
-import com.dxc.airline.model.User;
+import org.springframework.stereotype.Service;
 
+import com.dxc.airline.model.User;
+@Service
 public interface UserService {
 
 	public List<User> findAll();
