@@ -15,7 +15,6 @@ public class TicketBooking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long ticketId;
-	@Column(name = "From")
 	private String from;
 	private String to;
 	private long date;
