@@ -36,15 +36,15 @@ public class AirlineServiceImplementation implements AirlineService{
 
 	@Override
 	@Transactional
-	public List<AirLine> findByAirlineid(long id) {
+	public List<AirLine> findByAirlineid(int id) {
 	
-		return airlineRepository.findByAirlineid(id);
+		return airlineRepository.findByplaneId(id);
 		
 	}
 
 	@Override
 	@Transactional
-	public void deleteById(long id) {
+	public void deleteById(int id) {
 		// TODO Auto-generated method stub
 		airlineRepository.deleteById(id);
 	}

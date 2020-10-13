@@ -12,8 +12,8 @@ public interface AirlineService {
 
 	public AirLine save(AirLine theAirLine);
 
-	public List<AirLine> findByAirlineid(long id);
+	public List<AirLine> findByAirlineid(int id);
 
-	public void deleteById(long id);
+	public void deleteById(int id);
 	
 }

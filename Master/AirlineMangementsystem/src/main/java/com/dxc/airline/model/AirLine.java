@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class AirLine {
 
 	@Id
-	long planeId; 
+	int planeId; 
 	String source;
 	String destination;
 	Date date;
@@ -30,7 +30,7 @@ public class AirLine {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AirLine(long planeId, String source, String destination, String strdate, String duration, String starting_time,
+	public AirLine(int planeId, String source, String destination, String strdate, String duration, String starting_time,
 			String ending_time, long prize, int avaliable_seats, int sold_out) throws ParseException {
 		super();
 		this.planeId = planeId;
@@ -46,11 +46,11 @@ public class AirLine {
 		this.sold_out = sold_out;
 	}
 
-	public long getPlaneId() {
+	public int getPlaneId() {
 		return planeId;
 	}
 
-	public void setPlaneId(long planeId) {
+	public void setPlaneId(int planeId) {
 		this.planeId = planeId;
 	}
 

@@ -18,19 +18,16 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.dxc.airline.model.AdminInfo;
 import com.dxc.airline.model.AirLine;
-import com.dxc.airline.model.City;
 import com.dxc.airline.model.User;
 import com.dxc.airline.model.UserInfo;
 import com.dxc.airline.model.UserSecurity;
 import com.dxc.airline.repository.AdminInfoRepository;
 import com.dxc.airline.repository.AirLineRepository;
-import com.dxc.airline.repository.CityRepository;
 import com.dxc.airline.repository.UserInfoRepository;
 import com.dxc.airline.repository.UserRepository;
 import com.dxc.airline.repository.UserSecurityRepository;
 import com.dxc.airline.service.AdminInfoServiceImplementation;
 import com.dxc.airline.service.AirlineServiceImplementation;
-import com.dxc.airline.service.CityServiceImplementation;
 import com.dxc.airline.service.UserInfoServiceImplementation;
 import com.dxc.airline.service.UserSecurityServiceImp;
 import com.dxc.airline.service.UserServiceImplementation;
@@ -196,8 +193,8 @@ class AirlineMangementsystemApplicationTests {
 
 	@Test
 	public void AirlinefindByUsernameTest() throws ParseException {
-		Long id = (long) 111;
-		when(airLineRepository.findByAirlineid(id))
+		int id = 111;
+		when(airLineRepository.findByplaneId(id))
 				.thenReturn(Stream.of(new AirLine(110, "chennai", "destination", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 10000, 44, 0)).collect(Collectors.toList()));
 		assertEquals(1, airlineServiceImplementation.findByAirlineid(id).size());	
 		}
@@ -211,7 +208,7 @@ class AirlineMangementsystemApplicationTests {
 
 	@Test
 	public void deleteAirlineTest() {
-		Long id = (long) 111;
+		int id = 111;
 		airlineServiceImplementation.deleteById(id);
 		verify(airLineRepository, times(1)).deleteById(id);
 	}

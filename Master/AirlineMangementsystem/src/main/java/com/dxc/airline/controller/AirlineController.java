@@ -35,13 +35,13 @@ public class AirlineController {
 	}
 	
 	@GetMapping(path="/airlineId/{id}")
-	public List<AirLine> findByAirlineid(@PathVariable("id")long id) {
+	public List<AirLine> findByAirlineid(@PathVariable("id")int id) {
 		
 		return service.findByAirlineid(id);
 	}
 	
 	@DeleteMapping(path="/airlineDelete/{id}")
-	public void deleteById(@PathVariable("id")long id) {
+	public void deleteById(@PathVariable("id")int id) {
 		
 		service.deleteById(id);
 	}

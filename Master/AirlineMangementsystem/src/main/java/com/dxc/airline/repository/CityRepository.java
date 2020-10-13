@@ -8,7 +8,7 @@ import com.dxc.airline.model.City;
 
 public interface CityRepository extends JpaRepository<City, String> {
 
-	List<City> findByCityname(String city);
+	List<City> findBycity(String city);
 	
 }
 

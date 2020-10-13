@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.dxc.airline.model.AirLine;
 
-public interface AirLineRepository extends JpaRepository<AirLine, Long> {
+public interface AirLineRepository extends JpaRepository<AirLine, Integer> {
 
-	List<AirLine> findByAirlineid(Long id);
+	List<AirLine> findByplaneId(int id);
 
 }
