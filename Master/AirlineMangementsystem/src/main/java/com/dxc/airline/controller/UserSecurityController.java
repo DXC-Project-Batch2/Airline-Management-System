@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,9 +22,9 @@ public class UserSecurityController {
 	
 	@GetMapping(path = "usersecurity/{username}")
 	@ResponseBody
-	public UserSecurity getuserSecurity(@PathVariable("username") String username) {
+	public List<UserSecurity> getuserSecurity(@PathVariable("username") String username) {
 		
-		return userSecurityServiceImp.findById(username);
+		return userSecurityServiceImp.findByUsername(username);
 	}
 	
 	@GetMapping(path = "usersecurities")

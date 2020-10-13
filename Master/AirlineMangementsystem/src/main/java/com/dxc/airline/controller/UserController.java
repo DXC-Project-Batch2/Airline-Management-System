@@ -23,9 +23,9 @@ public class UserController {
 	
 	@GetMapping(path = "User/{username}")
 	@ResponseBody
-	public User getUserInfo(@PathVariable("username") String username) {
+	public List<User> getUserInfo(@PathVariable("username") String username) {
 		
-		return userServiceImplementation.findById(username);
+		return userServiceImplementation.findByUsername(username);
 	}
 	
 	@GetMapping(path = "users")

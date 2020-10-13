@@ -10,9 +10,9 @@ public interface UserService {
 
 	public List<User> findAll();
 
-	public Boolean save(User theUser);
+	public User save(User theUser);
 
-	public User findById(String username);
+	public List<User> findByUsername(String username);
 
 	public void deleteById(String username);
 	

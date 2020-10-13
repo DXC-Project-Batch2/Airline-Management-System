@@ -21,15 +21,9 @@ public class UserInfoServiceImplementation implements UserInfoService<UserInfo> 
 	}
 
 	@Override
-	public boolean save(UserInfo e) {
+	public UserInfo save(UserInfo e) {
 		// TODO Auto-generated method stub
-		boolean res = false;
-		if(res = userInfoRepository.save(e) != null)
-		{
-			res = true;
-		}
-		return res;
-
+		return userInfoRepository.save(e);
 	}
 
 	/*@Override
@@ -54,10 +48,9 @@ public class UserInfoServiceImplementation implements UserInfoService<UserInfo> 
 	}
 
 	@Override
-	public UserInfo findById(String username) {
+	public List<UserInfo> findByUsername(String username) {
 		// TODO Auto-generated method stub
-		Optional<UserInfo> res = userInfoRepository.findById(username);
-		return res.get();
+		return userInfoRepository.findByUsername(username);
 	}
 
 	@Override

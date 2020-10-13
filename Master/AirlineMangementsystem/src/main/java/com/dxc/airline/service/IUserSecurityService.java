@@ -13,7 +13,7 @@ public interface IUserSecurityService {
 	
 	public UserSecurity add(UserSecurity security);
 	
-	public UserSecurity findById(String username);
+	public List<UserSecurity> findByUsername(String username);
 	
 	public List<UserSecurity> findAll();
 	

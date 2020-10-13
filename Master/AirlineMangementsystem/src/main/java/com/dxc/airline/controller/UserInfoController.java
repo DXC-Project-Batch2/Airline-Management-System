@@ -23,9 +23,9 @@ public class UserInfoController {
 	
 	@GetMapping(path = "userinfo/{username}")
 	@ResponseBody
-	public UserInfo getUserInfo(@PathVariable("username") String username) {
+	public List<UserInfo> getUserInfo(@PathVariable("username") String username) {
 		
-		return userInfoServiceImplementation.findById(username);
+		return userInfoServiceImplementation.findByUsername(username);
 	}
 	
 	@GetMapping(path = "userinfos")
@@ -37,7 +37,7 @@ public class UserInfoController {
 	
 	@PostMapping(path = "userinfo" )
 	@ResponseBody
-	public boolean save(@RequestBody UserInfo userInfo) {
+	public UserInfo save(@RequestBody UserInfo userInfo) {
 		
 		return userInfoServiceImplementation.save(userInfo);
 	}

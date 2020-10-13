@@ -28,24 +28,16 @@ public class UserServiceImplementation implements UserService{
 
 	@Override
 	@Transactional
-	public Boolean save(User theUser) {
+	public User save(User theUser) {
 		
-		Boolean res=false;
-		
-		if(userRepository.save(theUser) != null)
-		{
-			res=true;
-			return res;
-		}
-		return res;
+	return userRepository.save(theUser);
+	
 	}
 
 	@Override
 	@Transactional
-	public User findById(String username) {
-		
-		User user = userRepository.findById(username).orElse(new User());
-		return user;
+	public List<User> findByUsername(String username) {
+		return userRepository.findByUsername(username);
 	}
 
 	@Override
