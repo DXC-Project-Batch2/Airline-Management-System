@@ -29,15 +29,15 @@ public class AirlineController {
 	}
 	
 	@PostMapping(path="/airline/add")
-	public void save(@RequestBody AirLine theairline ) {
+	public AirLine save(@RequestBody AirLine theairline ) {
 		
-		service.save(theairline);
+		return service.save(theairline);
 	}
 	
 	@GetMapping(path="/airlineId/{id}")
-	public AirLine findById(@PathVariable("id")long id) {
+	public List<AirLine> findByAirlineid(@PathVariable("id")long id) {
 		
-		return service.findById(id);
+		return service.findByAirlineid(id);
 	}
 	
 	@DeleteMapping(path="/airlineDelete/{id}")

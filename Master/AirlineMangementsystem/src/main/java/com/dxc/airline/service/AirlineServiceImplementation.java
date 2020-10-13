@@ -1,7 +1,6 @@
 package com.dxc.airline.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,26 +29,17 @@ public class AirlineServiceImplementation implements AirlineService{
 
 	@Override
 	@Transactional
-	public void save(AirLine theAirline) {
+	public AirLine save(AirLine theAirline) {
 		
-		airlineRepository.save(theAirline);
+		return airlineRepository.save(theAirline);
 	}
 
 	@Override
 	@Transactional
-	public AirLine findById(long id) {
-		Optional<AirLine> result = airlineRepository.findById(id);
+	public List<AirLine> findByAirlineid(long id) {
+	
+		return airlineRepository.findByAirlineid(id);
 		
-		AirLine theAirLine = null;
-		
-		if (result.isPresent()) {
-			theAirLine = result.get();
-		}
-		else {
-			throw new RuntimeException("Did not find AirLine id - " + id);
-		}
-		
-		return theAirLine;
 	}
 
 	@Override
