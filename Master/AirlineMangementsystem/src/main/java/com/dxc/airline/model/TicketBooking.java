@@ -1,5 +1,6 @@
 package com.dxc.airline.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,7 @@ public class TicketBooking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long ticketId;
+	@Column(name = "From")
 	private String from;
 	private String to;
 	private long date;
