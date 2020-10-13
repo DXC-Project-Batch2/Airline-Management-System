@@ -3,6 +3,7 @@ package com.dxc.airline.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,6 +36,7 @@ public class TicketBookingController {
 		return ticketBookingServiceImp.findByTicketId(id);
 	}
 	
+	@CrossOrigin
 	@PostMapping(path ="TicketBooking")
 	@ResponseBody
 	public TicketBooking save(@RequestBody TicketBooking ticketBooking)
