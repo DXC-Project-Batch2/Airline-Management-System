@@ -17,14 +17,20 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.dxc.airline.model.AdminInfo;
+import com.dxc.airline.model.AirLine;
+import com.dxc.airline.model.City;
 import com.dxc.airline.model.User;
 import com.dxc.airline.model.UserInfo;
 import com.dxc.airline.model.UserSecurity;
 import com.dxc.airline.repository.AdminInfoRepository;
+import com.dxc.airline.repository.AirLineRepository;
+import com.dxc.airline.repository.CityRepository;
 import com.dxc.airline.repository.UserInfoRepository;
 import com.dxc.airline.repository.UserRepository;
 import com.dxc.airline.repository.UserSecurityRepository;
 import com.dxc.airline.service.AdminInfoServiceImplementation;
+import com.dxc.airline.service.AirlineServiceImplementation;
+import com.dxc.airline.service.CityServiceImplementation;
 import com.dxc.airline.service.UserInfoServiceImplementation;
 import com.dxc.airline.service.UserSecurityServiceImp;
 import com.dxc.airline.service.UserServiceImplementation;
@@ -45,6 +51,9 @@ class AirlineMangementsystemApplicationTests {
 	@Autowired
 	UserInfoServiceImplementation userInfoServiceImplementation;
 	
+	@Autowired
+	AirlineServiceImplementation airlineServiceImplementation;
+	
 	@MockBean
 	UserRepository userRepository;
 
@@ -56,6 +65,9 @@ class AirlineMangementsystemApplicationTests {
 	
 	@MockBean
 	UserInfoRepository userInfoRepository;
+	
+	@MockBean
+	AirLineRepository airLineRepository;
 	
 	@Test
 	public void UserfindAllTest() {
@@ -174,7 +186,36 @@ class AirlineMangementsystemApplicationTests {
 		verify(userInfoRepository, times(1)).deleteById(username);
 	}
 
-	
+	@Test
+	public void AirlinefindAllTest() throws ParseException {
+		when(airLineRepository.findAll()).thenReturn(
+				Stream.of(new AirLine(110, "chennai", "destination", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 10000, 44, 0), new AirLine(110, "chennai", "destination", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 10000, 44, 0))
+						.collect(Collectors.toList()));
+		assertEquals(2, airlineServiceImplementation.findAll().size());
+	}
+
+	@Test
+	public void AirlinefindByUsernameTest() throws ParseException {
+		Long id = (long) 111;
+		when(airLineRepository.findByAirlineid(id))
+				.thenReturn(Stream.of(new AirLine(110, "chennai", "destination", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 10000, 44, 0)).collect(Collectors.toList()));
+		assertEquals(1, airlineServiceImplementation.findByAirlineid(id).size());	
+		}
+
+	@Test
+	public void saveAirlineTest() throws ParseException {
+		AirLine airLine = new AirLine(110, "chennai", "destination", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 10000, 44, 0);
+		when(airLineRepository.save(airLine)).thenReturn(airLine);
+		assertEquals(airLine, airlineServiceImplementation.save(airLine));
+	}
+
+	@Test
+	public void deleteAirlineTest() {
+		Long id = (long) 111;
+		airlineServiceImplementation.deleteById(id);
+		verify(airLineRepository, times(1)).deleteById(id);
+	}
+
 	
 
 }
