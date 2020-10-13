@@ -15,20 +15,14 @@ public class CityServiceImplementation implements CityService<City>{
 	CityRepository cityRepository;
 	
 	@Override
-	public boolean save(City e) {
-		boolean res=false;
-		if(cityRepository.save(e) != null)
-		{
-			res=true;
+	public City save(City e) {
+		return cityRepository.save(e);
 		}
-		return res;
-	}
 
 	@Override
-	public City find(String city) {
-		Optional<City> c = cityRepository.findById(city);
-		return c.get();
-	}
+	public List<City> findByCityname(String city) {
+		return cityRepository.findByCityname(city);
+ 	}
 
 	@Override
 	public List<City> findAll() {

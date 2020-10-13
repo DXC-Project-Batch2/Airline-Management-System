@@ -1,7 +1,6 @@
 package com.dxc.airline.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,9 +32,8 @@ public class TicketBookingServiceImp implements ITicketBookingService {
 	}
 
 	@Override
-	public TicketBooking find(long id) {
-		Optional<TicketBooking> booking = repo.findById(id);
-		return booking.get();
+	public List<TicketBooking> findByTicketId(long id) {
+		return repo.findByTicketId(id);
 	}
 
 	@Override

@@ -10,5 +10,5 @@ import com.dxc.airline.model.TicketBooking;
 @Repository
 public interface TicketBookingRepository extends JpaRepository<TicketBooking, Long> {
 
-	List<TicketBooking> findByTicketId(Long city);
+	List<TicketBooking> findByTicketId(Long id);
 }

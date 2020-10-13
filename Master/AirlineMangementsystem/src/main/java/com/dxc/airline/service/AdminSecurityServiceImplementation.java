@@ -1,7 +1,6 @@
 package com.dxc.airline.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,20 +14,14 @@ public class AdminSecurityServiceImplementation  implements AdminSecurityService
 	AdminSecurityRepository adminSecurityRepository;
 	
 	@Override
-	public boolean save(AdminSecurity e) {
+	public AdminSecurity save(AdminSecurity e) {
 
-		boolean res=false;
-		if(adminSecurityRepository.save(e) != null)
-		{
-			res=true;
-		}
-		return res;
+		return adminSecurityRepository.save(e);
 	}
 
 	@Override
-	public AdminSecurity find(String username) {
-		Optional<AdminSecurity> adminInfo = adminSecurityRepository.findById(username);
-		return adminInfo.get();
+	public List<AdminSecurity> findByUsername(String username) {
+	return adminSecurityRepository.findByUsername(username);
 	}
 
 	@Override

@@ -30,15 +30,14 @@ public class CityController {
 	}
 	
 	@GetMapping(path="city/{cityname}")
-	public City getCity(@PathVariable("cityname") String cityname) 
+	public List<City> getCity(@PathVariable("cityname") String cityname) 
 	{
-		City city = cityServiceImplementation.find(cityname);
-		return city;
+		return cityServiceImplementation.findByCityname(cityname);
 	}
 	
 	@PostMapping(path ="city")
 	@ResponseBody
-	public Boolean save(@RequestBody City city)
+	public City save(@RequestBody City city)
 	{
 		return cityServiceImplementation.save(city);
 	}

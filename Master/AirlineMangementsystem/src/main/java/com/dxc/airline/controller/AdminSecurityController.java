@@ -33,15 +33,14 @@ public class AdminSecurityController {
 	}
 	
 	@GetMapping(path="AdminSecurity/{username}")
-	public AdminSecurity getAdminSecurity(@PathVariable("username") String username) 
+	public List<AdminSecurity> getAdminSecurity(@PathVariable("username") String username) 
 	{
-		AdminSecurity adminSecurity = adminSecurityServiceImplementation.find(username);
-		return adminSecurity;
+		return adminSecurityServiceImplementation.findByUsername(username);
 	}
 	
 	@PostMapping(path ="AdminSecurity")
 	@ResponseBody
-	public Boolean save(@RequestBody AdminSecurity adminSecurity)
+	public AdminSecurity save(@RequestBody AdminSecurity adminSecurity)
 	{
 		return adminSecurityServiceImplementation.save(adminSecurity);
 	}

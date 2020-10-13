@@ -30,23 +30,16 @@ public class TicketBookingController {
 	}
 	
 	@GetMapping(path="TicketBooking/{id}")
-	public TicketBooking getBooking(@PathVariable("id") Long id) 
+	public List<TicketBooking> getBooking(@PathVariable("id") Long id) 
 	{
-		TicketBooking ticketBooking = ticketBookingServiceImp.find(id);
-		return ticketBooking;
+		return ticketBookingServiceImp.findByTicketId(id);
 	}
 	
 	@PostMapping(path ="TicketBooking")
 	@ResponseBody
-	public Boolean save(@RequestBody TicketBooking ticketBooking)
+	public TicketBooking save(@RequestBody TicketBooking ticketBooking)
 	{
-		boolean res=false;
-		if(ticketBookingServiceImp.add(ticketBooking) != null)
-		{
-			res=true;
-			return res;
-		}
-		return res;
+		return ticketBookingServiceImp.add(ticketBooking);
 	}
 	
 	@PutMapping(path = "TicketBooking")

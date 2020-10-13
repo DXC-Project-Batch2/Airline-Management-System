@@ -1,7 +1,6 @@
 package com.dxc.airline.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,17 +23,10 @@ public class AdminServiceImplementation implements AdminService<Admin> {
 	}
 
 	@Override
-	public boolean save(Admin e) {
+	public Admin save(Admin e) {
 		// TODO Auto-generated method stub
-		boolean res = false;
-		if(res = adminRepository.save(e) != null)
-		{
-			res = true;
+		return adminRepository.save(e);
 		}
-		
-		
-		return res;
-	}
 
 	/*@Override
 	public boolean update(Admin e) {
@@ -54,10 +46,9 @@ public class AdminServiceImplementation implements AdminService<Admin> {
 	}
 
 	@Override
-	public Admin findById(String username) {
+	public List<Admin> findByUsername(String username) {
 		// TODO Auto-generated method stub
-		Optional<Admin> res = adminRepository.findById(username);
-		return res.get();
+		return adminRepository.findByUsername(username);
 	}
 
 	@Override

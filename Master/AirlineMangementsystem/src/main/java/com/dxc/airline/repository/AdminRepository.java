@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.dxc.airline.model.Admin;
 
 public interface AdminRepository extends JpaRepository<Admin, String> {
-	//List<Admin> findByUsername(String username);
+	List<Admin> findByUsername(String username);
 }

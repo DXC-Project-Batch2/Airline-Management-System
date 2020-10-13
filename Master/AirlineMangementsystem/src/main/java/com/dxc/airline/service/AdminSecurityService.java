@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 @Service
 public interface AdminSecurityService<E>{
-	boolean save(E e);
-	E find(String username);
+	E save(E e);
+	List<E> findByUsername(String username);
 	List<E> findAll();
 	boolean update(E e);
 	boolean delete(String username);
