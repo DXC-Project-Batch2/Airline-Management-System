@@ -9,5 +9,5 @@ public interface AdminSecurityService<E>{
 	List<E> findByUsername(String username);
 	List<E> findAll();
 	boolean update(E e);
-	boolean delete(String username);
+	public void delete(String username);
 }

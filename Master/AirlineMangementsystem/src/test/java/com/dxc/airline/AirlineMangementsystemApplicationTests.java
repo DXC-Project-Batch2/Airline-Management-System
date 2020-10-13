@@ -16,18 +16,29 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.dxc.airline.model.Admin;
 import com.dxc.airline.model.AdminInfo;
 import com.dxc.airline.model.AirLine;
+import com.dxc.airline.model.City;
+import com.dxc.airline.model.TicketBooking;
 import com.dxc.airline.model.User;
 import com.dxc.airline.model.UserInfo;
 import com.dxc.airline.model.UserSecurity;
 import com.dxc.airline.repository.AdminInfoRepository;
+import com.dxc.airline.repository.AdminRepository;
+import com.dxc.airline.repository.AdminSecurityRepository;
 import com.dxc.airline.repository.AirLineRepository;
+import com.dxc.airline.repository.CityRepository;
+import com.dxc.airline.repository.TicketBookingRepository;
 import com.dxc.airline.repository.UserInfoRepository;
 import com.dxc.airline.repository.UserRepository;
 import com.dxc.airline.repository.UserSecurityRepository;
 import com.dxc.airline.service.AdminInfoServiceImplementation;
+import com.dxc.airline.service.AdminSecurityServiceImplementation;
+import com.dxc.airline.service.AdminServiceImplementation;
 import com.dxc.airline.service.AirlineServiceImplementation;
+import com.dxc.airline.service.CityServiceImplementation;
+import com.dxc.airline.service.TicketBookingServiceImp;
 import com.dxc.airline.service.UserInfoServiceImplementation;
 import com.dxc.airline.service.UserSecurityServiceImp;
 import com.dxc.airline.service.UserServiceImplementation;
@@ -51,6 +62,21 @@ class AirlineMangementsystemApplicationTests {
 	@Autowired
 	AirlineServiceImplementation airlineServiceImplementation;
 	
+	@Autowired
+	AdminServiceImplementation adminServiceImplementation;
+	
+	@Autowired
+	AdminSecurityServiceImplementation adminSecurityServiceImplementation;
+	
+	@Autowired
+	CityServiceImplementation cityServiceImplementation;
+	
+	@Autowired
+	TicketBookingServiceImp ticketBookingServiceImp;
+	
+	
+	
+	
 	@MockBean
 	UserRepository userRepository;
 
@@ -65,6 +91,20 @@ class AirlineMangementsystemApplicationTests {
 	
 	@MockBean
 	AirLineRepository airLineRepository;
+	
+	@MockBean
+	AdminRepository AdminRepository;
+
+	@MockBean
+	AdminSecurityRepository adminSecurityRepository;
+	
+	@MockBean
+	CityRepository cityRepository;
+	
+	@MockBean
+	TicketBookingRepository TicketBookingRepository;
+	
+	
 	
 	@Test
 	public void UserfindAllTest() {
@@ -212,6 +252,83 @@ class AirlineMangementsystemApplicationTests {
 		airlineServiceImplementation.deleteById(id);
 		verify(airLineRepository, times(1)).deleteById(id);
 	}
+	
+	@Test
+	public void AdminfindAllTest() throws ParseException {
+		when(AdminRepository.findAll()).thenReturn(Stream.of(new Admin("pasupath@gmail.com", "pasupat"), new Admin("p@gmail.com", "pasupathi"))
+				.collect(Collectors.toList()));
+		assertEquals(2, adminServiceImplementation.findAll().size());
+	}
+
+	@Test
+	public void adminfindByUsernameTest() {
+		String username = "aaa@gmail.com";
+		when(AdminRepository.findByUsername(username))
+				.thenReturn(Stream.of(new Admin("aaaa@gmail.com","aaaa")).collect(Collectors.toList()));
+		assertEquals(1, adminServiceImplementation.findByUsername(username).size());	}
+
+	@Test
+	public void saveAdminTest() {
+		Admin admin = new Admin("aaa@gmail.com", "aaa");
+		when(AdminRepository.save(admin)).thenReturn(admin);
+		assertEquals(admin, adminServiceImplementation.save(admin));
+	}
+
+	@Test
+	public void deleteAdminTest() {
+		String username = "aaa@gmail.com";
+		adminServiceImplementation.deleteById(username);
+		verify(AdminRepository, times(1)).deleteById(username);
+	}
+	
+	
+	@Test
+	public void cityfindAllTest() throws ParseException {
+		when(cityRepository.findAll()).thenReturn(Stream.of(new City("Kolkata"), new City("Goa"))
+				.collect(Collectors.toList()));
+		assertEquals(2, cityServiceImplementation.findAll().size());
+	}
+
+	@Test
+	public void cityfindBycityTest() {
+		String city = "Kolkata";
+		when(cityRepository.findBycity(city))
+				.thenReturn(Stream.of(new City("Madras")).collect(Collectors.toList()));
+		assertEquals(1, cityServiceImplementation.findBycity(city).size());	}
+
+	@Test
+	public void saveCityTest() {
+		City city = new City("Madras");
+		when(cityRepository.save(city)).thenReturn(city);
+		assertEquals(city, cityServiceImplementation.save(city));
+	}
+
+	@Test
+	public void deleteCityTest() {
+		String city = "Madras";
+		cityServiceImplementation.delete(city);
+		verify(cityRepository, times(1)).deleteById(city);
+	}
+	
+	
+	@Test
+	public void TicketBookingfindAllTest() {
+		when(ticketBookingServiceImp.getAll()).thenReturn(
+				Stream.of(new ticketBooking(122334L, "Madras","Kolkata",2019), new ticketBooking(121312312L, "Madrs","Kolka",2020))
+						.collect(Collectors.toList()));
+		assertEquals(2, ticketBookingServiceImp.getAll().size());
+	}
+
+	
+
+
+	@Test
+	public void deleteTicketBookingTest() {
+		String username = "aaa@gmail.com";
+		userSecurityServiceImp.deleteById(username);
+		verify(userSecurityRepository, times(1)).deleteById(username);
+	}
+	
 
 	
 

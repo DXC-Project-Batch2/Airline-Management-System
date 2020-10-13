@@ -32,7 +32,7 @@ public class CityController {
 	@GetMapping(path="city/{cityname}")
 	public List<City> getCity(@PathVariable("cityname") String cityname) 
 	{
-		return cityServiceImplementation.findByCityname(cityname);
+		return cityServiceImplementation.findBycity(cityname);
 	}
 	
 	@PostMapping(path ="city")
