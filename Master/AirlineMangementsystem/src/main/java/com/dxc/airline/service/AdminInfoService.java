@@ -2,9 +2,13 @@ package com.dxc.airline.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+import com.dxc.airline.model.AdminInfo;
+@Service
 public interface AdminInfoService<E>{
-	boolean save(E e);
-	E find(String username);
+	E save(E e);
+	List<AdminInfo> findByUsername(String username);
 	List<E> findAll();
 	boolean update(E e);
 	boolean delete(String username);

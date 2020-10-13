@@ -25,9 +25,9 @@ public class AdminInfoController {
 	
 	@GetMapping(path = "admininfo/{username}")
 	@ResponseBody
-	public AdminInfo getUserInfo(@PathVariable("username") String username) {
+	public List<AdminInfo> getUserInfo(@PathVariable("username") String username) {
 		
-		return adminInfoServiceImplementation.find(username);
+		return adminInfoServiceImplementation.findByUsername(username);
 	}
 	
 	@GetMapping(path = "admininfo")
@@ -39,7 +39,7 @@ public class AdminInfoController {
 	
 	@PostMapping(path = "admininfo" )
 	@ResponseBody
-	public boolean save(@RequestBody AdminInfo adminInfo) {
+	public AdminInfo save(@RequestBody AdminInfo adminInfo) {
 		
 		return adminInfoServiceImplementation.save(adminInfo);
 	}

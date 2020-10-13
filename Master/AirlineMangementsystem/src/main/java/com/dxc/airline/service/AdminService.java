@@ -2,8 +2,10 @@ package com.dxc.airline.service;
 
 import java.util.List;
 
-import com.dxc.airline.model.Admin;
+import org.springframework.stereotype.Service;
 
+import com.dxc.airline.model.Admin;
+@Service
 
 public interface AdminService<E> {
 	

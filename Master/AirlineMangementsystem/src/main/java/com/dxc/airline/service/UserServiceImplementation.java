@@ -1,7 +1,6 @@
 package com.dxc.airline.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,26 +28,16 @@ public class UserServiceImplementation implements UserService{
 
 	@Override
 	@Transactional
-	public void save(User theUser) {
+	public User save(User theUser) {
 		
-		userRepository.save(theUser);
+	return userRepository.save(theUser);
+	
 	}
 
 	@Override
 	@Transactional
-	public User findById(String username) {
-		Optional<User> result = userRepository.findById(username);
-		
-		User theUser = null;
-		
-		if (result.isPresent()) {
-			theUser = result.get();
-		}
-		else {
-			throw new RuntimeException("Did not find username - " + username);
-		}
-		
-		return theUser;
+	public List<User> findByUsername(String username) {
+		return userRepository.findByUsername(username);
 	}
 
 	@Override
