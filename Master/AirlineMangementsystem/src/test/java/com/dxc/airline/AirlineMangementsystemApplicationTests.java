@@ -311,23 +311,7 @@ class AirlineMangementsystemApplicationTests {
 	}
 	
 	
-	@Test
-	public void TicketBookingfindAllTest() {
-		when(ticketBookingServiceImp.getAll()).thenReturn(
-				Stream.of(new ticketBooking(122334L, "Madras","Kolkata",2019), new ticketBooking(121312312L, "Madrs","Kolka",2020))
-						.collect(Collectors.toList()));
-		assertEquals(2, ticketBookingServiceImp.getAll().size());
-	}
-
 	
-
-
-	@Test
-	public void deleteTicketBookingTest() {
-		String username = "aaa@gmail.com";
-		userSecurityServiceImp.deleteById(username);
-		verify(userSecurityRepository, times(1)).deleteById(username);
-	}
 	
 
 	

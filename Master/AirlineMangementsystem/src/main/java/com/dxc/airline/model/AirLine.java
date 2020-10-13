@@ -7,7 +7,10 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Component
@@ -17,6 +20,8 @@ public class AirLine {
 	int planeId; 
 	String source;
 	String destination;
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@JsonFormat( shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "UTC")
 	Date date;
 	String duration;
 	String starting_time;

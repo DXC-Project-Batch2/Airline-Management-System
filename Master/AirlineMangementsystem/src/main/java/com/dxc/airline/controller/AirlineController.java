@@ -3,6 +3,7 @@ package com.dxc.airline.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,11 +23,13 @@ public class AirlineController {
 	@Autowired
 	AirlineService service;
 	
+	@CrossOrigin
 	@GetMapping(path="/airline")
 	public List<AirLine> findAll(){
 		
 		return service.findAll();
 	}
+	
 	
 	@PostMapping(path="/airline/add")
 	public AirLine save(@RequestBody AirLine theairline ) {
@@ -34,6 +37,7 @@ public class AirlineController {
 		return service.save(theairline);
 	}
 	
+	@CrossOrigin
 	@GetMapping(path="/airlineId/{id}")
 	public List<AirLine> findByAirlineid(@PathVariable("id")int id) {
 		
