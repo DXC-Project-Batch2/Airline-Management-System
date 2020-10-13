@@ -21,6 +21,10 @@
 	</properties>
 
 	<dependencies>
+<<<<<<< HEAD
+		
+		
+=======
 	<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -34,6 +38,7 @@
             <scope>runtime</scope>
         </dependency>
         
+>>>>>>> branch 'master' of https://github.com/DXC-Project-Batch2/Airline-Management-System.git
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
