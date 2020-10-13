@@ -19,7 +19,7 @@ public class AdminServiceImplementation implements AdminService<Admin> {
 	public List<Admin> findAll() {
 		// TODO Auto-generated method stub
 		
-		
+		System.out.println(adminRepository.findAll());
 		return adminRepository.findAll();
 	}
 
