@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dxc.airline.exception.ScheduleFlightException;
 import com.dxc.airline.model.ScheduleFlight;
 import com.dxc.airline.repository.ScheduleFlightRepository;
 @Service
@@ -17,9 +18,26 @@ public class ScheduleFlightimp implements IScheduleFlight {
 	ScheduleFlight emptyScheduleFlight;
 
 	@Override
-	public ScheduleFlight addFlight(ScheduleFlight flight) {
+	public ScheduleFlight addFlight(ScheduleFlight flight)throws ScheduleFlightException {
+		
+		ScheduleFlight isValid=validateScheduleFlight(flight);
+		
+		if(isValid!=null) {
 		
 		return repo.save(flight);
+		}else {
+			throw new ScheduleFlightException("ScheduleFlight is Failed");
+		}
+	}
+	
+	private ScheduleFlight validateScheduleFlight(ScheduleFlight flight) {
+		
+		if((flight.getSeatingCapacity()>0) && (flight.getAmount()>0)) {
+			
+			return flight;
+		}
+		
+		return null;
 	}
 
 	@Override
