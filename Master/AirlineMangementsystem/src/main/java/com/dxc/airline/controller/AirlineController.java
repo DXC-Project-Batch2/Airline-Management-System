@@ -38,10 +38,24 @@ public class AirlineController {
 	}
 	
 	@CrossOrigin
-	@GetMapping(path="/airlineId/{id}")
+	@GetMapping(path="/airline/{id}")
 	public List<AirLine> findByAirlineid(@PathVariable("id")int id) {
 		
 		return service.findByAirlineid(id);
+	}
+	
+	
+	@CrossOrigin
+	@GetMapping("/airline/{source}/{destination}")
+	public List<AirLine> getAirline(@PathVariable String source, @PathVariable String destination) {
+		
+		List<AirLine> theAirline = service.findByCities(source, destination);
+		
+		if (theAirline == null) {
+			throw new RuntimeException("Flight  not found - ");
+		}
+		
+		return theAirline;
 	}
 	
 	@DeleteMapping(path="/airlineDelete/{id}")

@@ -16,4 +16,6 @@ public interface AirlineService {
 
 	public void deleteById(int id);
 	
+	public List<AirLine> findByCities(String source, String destination);
+	
 }

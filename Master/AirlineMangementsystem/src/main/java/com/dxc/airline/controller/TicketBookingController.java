@@ -30,6 +30,7 @@ public class TicketBookingController {
 		return bookings;
 	}
 	
+	@CrossOrigin
 	@GetMapping(path="TicketBooking/{id}")
 	public List<TicketBooking> getBooking(@PathVariable("id") Long id) 
 	{
@@ -44,6 +45,7 @@ public class TicketBookingController {
 		return ticketBookingServiceImp.add(ticketBooking);
 	}
 	
+	@CrossOrigin
 	@PutMapping(path = "TicketBooking")
 	@ResponseBody
 	public boolean update(@RequestBody TicketBooking ticketBooking) {
@@ -51,6 +53,7 @@ public class TicketBookingController {
 		return ticketBookingServiceImp.update(ticketBooking);
 	}
 	
+	@CrossOrigin
 	@DeleteMapping(path = "TicketBooking/{username}")
 	@ResponseBody
 	public void delete(@PathVariable("id") Long id) {

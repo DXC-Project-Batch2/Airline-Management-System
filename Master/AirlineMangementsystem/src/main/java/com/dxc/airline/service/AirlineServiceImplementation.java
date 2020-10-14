@@ -48,6 +48,13 @@ public class AirlineServiceImplementation implements AirlineService{
 		// TODO Auto-generated method stub
 		airlineRepository.deleteById(id);
 	}
+	
+
+	@Override
+	public List<AirLine> findByCities(String source, String destination) {
+		List<AirLine> theAirline = airlineRepository.findByCities(source, destination);
+		return theAirline;
+	}
 
 	
 }
