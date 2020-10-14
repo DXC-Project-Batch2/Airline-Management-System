@@ -36,10 +36,10 @@ public class AdminSecurityServiceImplementation  implements AdminSecurityService
 	}
 
 	@Override
-	public boolean delete(String username) {
+	public void delete(String username) {
 		// TODO Auto-generated method stub
 		adminSecurityRepository.deleteById(username);
-		return true;
+		
 	}
 
 }
