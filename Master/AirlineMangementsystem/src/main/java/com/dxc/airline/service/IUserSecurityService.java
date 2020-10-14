@@ -17,7 +17,7 @@ public interface IUserSecurityService {
 	
 	public List<UserSecurity> findAll();
 	
-	public boolean update(UserSecurity e);
+	public UserSecurity update(UserSecurity e);
 
 	public void deleteById(String username);
 
