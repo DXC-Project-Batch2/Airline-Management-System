@@ -107,7 +107,7 @@ class AirlineMangementsystemApplicationTests {
 	
 	
 	@Test
-	public void UserfindAllTest() {
+	public void UserfindAllTest() throws ParseException{
 		when(userRepository.findAll()).thenReturn(
 				Stream.of(new User("pasupathi@gmail.com", "pasupathi"), new User("p@gmail.com", "pasupathi"))
 						.collect(Collectors.toList()));
@@ -115,28 +115,28 @@ class AirlineMangementsystemApplicationTests {
 	}
 
 	@Test
-	public void UserfindByUsernameTest() {
+	public void UserfindByUsernameTest() throws ParseException {
 		String username = "aaa@gmail.com";
 		when(userRepository.findByUsername(username))
 				.thenReturn(Stream.of(new User("aaaa@gmail.com","aaaa")).collect(Collectors.toList()));
 		assertEquals(1, userServiceImplementation.findByUsername(username).size());	}
 
 	@Test
-	public void saveUserTest() {
+	public void saveUserTest() throws ParseException{
 		User user = new User("aaa@gmail.com", "aaa");
 		when(userRepository.save(user)).thenReturn(user);
 		assertEquals(user, userServiceImplementation.save(user));
 	}
 
 	@Test
-	public void deleteUserTest() {
+	public void deleteUserTest() throws ParseException{
 		String username = "aaa@gmail.com";
 		userServiceImplementation.deleteById(username);
 		verify(userRepository, times(1)).deleteById(username);
 	}
 
 	@Test
-	public void UserSecurityfindAllTest() {
+	public void UserSecurityfindAllTest() throws ParseException{
 		when(userSecurityServiceImp.findAll()).thenReturn(
 				Stream.of(new UserSecurity("pasupathi@gmail.com", "what is favorite number?","100"), new UserSecurity("p@gmail.com",  "what is favorite number?","100"))
 						.collect(Collectors.toList()));
@@ -144,21 +144,21 @@ class AirlineMangementsystemApplicationTests {
 	}
 
 	@Test
-	public void UserSecurityfindByUsernameTest() {
+	public void UserSecurityfindByUsernameTest() throws ParseException{
 		String username = "aaa@gmail.com";
 		when(userSecurityRepository.findByUsername(username))
 				.thenReturn(Stream.of(new UserSecurity("pasupathi@gmail.com", "what is favorite number?","100")).collect(Collectors.toList()));
 		assertEquals(1, userSecurityServiceImp.findByUsername(username).size());	}
 
 	@Test
-	public void saveUserSecurityTest() {
+	public void saveUserSecurityTest() throws ParseException{
 		UserSecurity userSecurity = new UserSecurity("pasupathi@gmail.com", "what is favorite number?","100");
 		when(userSecurityRepository.save(userSecurity)).thenReturn(userSecurity);
 		assertEquals(userSecurity, userSecurityServiceImp.add(userSecurity));
 	}
 
 	@Test
-	public void deleteUserSecurityTest() {
+	public void deleteUserSecurityTest() throws ParseException{
 		String username = "aaa@gmail.com";
 		userSecurityServiceImp.deleteById(username);
 		verify(userSecurityRepository, times(1)).deleteById(username);
@@ -188,7 +188,7 @@ class AirlineMangementsystemApplicationTests {
 	}
 
 	@Test
-	public void deleteadminSecurityTest() {
+	public void deleteadminSecurityTest() throws ParseException{
 		String username = "aaa@gmail.com";
 		adminInfoServiceImplementation.delete(username);
 		verify(adminInfoRepository, times(1)).deleteById(username);
@@ -217,7 +217,7 @@ class AirlineMangementsystemApplicationTests {
 	}
 
 	@Test
-	public void deleteUserInfoTest() {
+	public void deleteUserInfoTest() throws ParseException {
 		String username = "aaa@gmail.com";
 		userInfoServiceImplementation.deleteById(username);
 		verify(userInfoRepository, times(1)).deleteById(username);
@@ -247,7 +247,7 @@ class AirlineMangementsystemApplicationTests {
 	}
 
 	@Test
-	public void deleteAirlineTest() {
+	public void deleteAirlineTest() throws ParseException {
 		int id = 111;
 		airlineServiceImplementation.deleteById(id);
 		verify(airLineRepository, times(1)).deleteById(id);
@@ -261,21 +261,21 @@ class AirlineMangementsystemApplicationTests {
 	}
 
 	@Test
-	public void adminfindByUsernameTest() {
+	public void adminfindByUsernameTest() throws ParseException{
 		String username = "aaa@gmail.com";
 		when(AdminRepository.findByUsername(username))
 				.thenReturn(Stream.of(new Admin("aaaa@gmail.com","aaaa")).collect(Collectors.toList()));
 		assertEquals(1, adminServiceImplementation.findByUsername(username).size());	}
 
 	@Test
-	public void saveAdminTest() {
+	public void saveAdminTest() throws ParseException {
 		Admin admin = new Admin("aaa@gmail.com", "aaa");
 		when(AdminRepository.save(admin)).thenReturn(admin);
 		assertEquals(admin, adminServiceImplementation.save(admin));
 	}
 
 	@Test
-	public void deleteAdminTest() {
+	public void deleteAdminTest() throws ParseException{
 		String username = "aaa@gmail.com";
 		adminServiceImplementation.deleteById(username);
 		verify(AdminRepository, times(1)).deleteById(username);
@@ -290,21 +290,21 @@ class AirlineMangementsystemApplicationTests {
 	}
 
 	@Test
-	public void cityfindBycityTest() {
+	public void cityfindBycityTest() throws ParseException{
 		String city = "Kolkata";
 		when(cityRepository.findBycity(city))
 				.thenReturn(Stream.of(new City("Madras")).collect(Collectors.toList()));
 		assertEquals(1, cityServiceImplementation.findBycity(city).size());	}
 
 	@Test
-	public void saveCityTest() {
+	public void saveCityTest() throws ParseException {
 		City city = new City("Madras");
 		when(cityRepository.save(city)).thenReturn(city);
 		assertEquals(city, cityServiceImplementation.save(city));
 	}
 
 	@Test
-	public void deleteCityTest() {
+	public void deleteCityTest() throws ParseException {
 		String city = "Madras";
 		cityServiceImplementation.delete(city);
 		verify(cityRepository, times(1)).deleteById(city);
