@@ -1,6 +1,7 @@
 package com.dxc.airline.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,9 +38,13 @@ public class UserSecurityServiceImp implements IUserSecurityService {
 
 	@Override
 	@Transactional
-	public boolean update(UserSecurity e) {
+	public UserSecurity update(UserSecurity e) {
 		// TODO Auto-generated method stub
-		return false;
+		Optional<UserSecurity> findUserById = repo.findById(e.getUsername());
+		if (findUserById.isPresent()) {
+			repo.save(e);
+		}
+		return e;
 	}
 
 	@Override

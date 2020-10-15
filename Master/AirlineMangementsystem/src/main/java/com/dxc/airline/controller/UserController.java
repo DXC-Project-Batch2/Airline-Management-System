@@ -3,6 +3,7 @@ package com.dxc.airline.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,26 +17,27 @@ import com.dxc.airline.model.User;
 import com.dxc.airline.service.UserServiceImplementation;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 	
 	@Autowired
 	UserServiceImplementation userServiceImplementation;
 	
-	@GetMapping(path = "User/{username}")
+	@GetMapping(path = "user/{username}")
 	@ResponseBody
 	public List<User> getUserInfo(@PathVariable("username") String username) {
 		
 		return userServiceImplementation.findByUsername(username);
 	}
 	
-	@GetMapping(path = "users")
+	@GetMapping(path = "user")
 	@ResponseBody
 	public List<User> getUsers(){
 		
 		return userServiceImplementation.findAll();
 	}
 	
-	@PostMapping("/User")
+	@PostMapping("user")
 	public User addUser(@RequestBody User theUser) {
 		
 		userServiceImplementation.save(theUser);
@@ -44,7 +46,7 @@ public class UserController {
 	}
 
 	
-	@PutMapping("/User")
+	@PutMapping("user")
 	@ResponseBody
 	public User update(@RequestBody User theUser) {
 		
