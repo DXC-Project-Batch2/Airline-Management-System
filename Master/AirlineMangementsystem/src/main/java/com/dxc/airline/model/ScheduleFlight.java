@@ -20,7 +20,9 @@ public class ScheduleFlight {
 	@NotNull
 	@Size(min=2, message="Name should have atleast 2 characters")
 	private String destination;
+	
 	private int seatingCapacity;
+	
 	private int amount;
 	public int getFlightId() {
 		return flightId;

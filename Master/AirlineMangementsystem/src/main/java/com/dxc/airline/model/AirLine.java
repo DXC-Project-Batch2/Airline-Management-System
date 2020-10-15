@@ -6,6 +6,8 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -18,15 +20,20 @@ public class AirLine {
 
 	@Id
 	int planeId; 
+	
+	@NotNull
+	@Size(min=2,message="Name should have atleast 2 characters")
 	String source;
+	
 	String destination;
+	
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@JsonFormat( shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "UTC")
 	Date date;
 	String duration;
 	String starting_time;
 	String ending_time;
-	long prize;
+	int prize;
 	int avaliable_seats;
 	int sold_out;
 	
@@ -36,7 +43,7 @@ public class AirLine {
 	}
 
 	public AirLine(int planeId, String source, String destination, String strdate, String duration, String starting_time,
-			String ending_time, long prize, int avaliable_seats, int sold_out) throws ParseException {
+			String ending_time, int prize, int avaliable_seats, int sold_out) throws ParseException {
 		super();
 		this.planeId = planeId;
 		this.source = source;
@@ -107,11 +114,11 @@ public class AirLine {
 		this.ending_time = ending_time;
 	}
 
-	public long getPrize() {
+	public int getPrize() {
 		return prize;
 	}
 
-	public void setPrize(long prize) {
+	public void setPrize(int prize) {
 		this.prize = prize;
 	}
 
