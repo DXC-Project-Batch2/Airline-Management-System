@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dxc.airline.exception.ScheduleFlightException;
+import com.dxc.airline.exception.TicketBookingException;
+import com.dxc.airline.model.ScheduleFlight;
 import com.dxc.airline.model.TicketBooking;
 import com.dxc.airline.repository.TicketBookingRepository;
 
@@ -15,8 +18,27 @@ public class TicketBookingServiceImp implements ITicketBookingService {
 	TicketBookingRepository repo;
 
 	@Override
-	public TicketBooking add(TicketBooking booking) {
-		return repo.save(booking);
+	public TicketBooking add(TicketBooking booking) throws TicketBookingException {
+		
+
+		TicketBooking isValid= validateTicketBooking(booking);
+		
+		if(isValid!=null) {
+			
+			return repo.save(booking);
+		}else {
+			
+			throw new TicketBookingException("Ticket booking failed, try again...");
+		}
+	}
+	public TicketBooking validateTicketBooking(TicketBooking booking) {
+		
+		if((booking.getNoOfPassengers()>0) && (booking.getFrom() != booking.getTo())) {
+			
+			return booking;
+		}
+		
+		return null;
 	}
 
 	@Override

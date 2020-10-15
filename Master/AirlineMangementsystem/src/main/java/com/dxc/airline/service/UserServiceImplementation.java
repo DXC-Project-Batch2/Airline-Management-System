@@ -24,11 +24,13 @@ public class UserServiceImplementation implements UserService{
 	@Override
 	@Transactional
 	public List<User> findAll() {
+		
 		return userRepository.findAll();	}
 
 	@Override
 	@Transactional
 	public User save(User theUser) {
+	
 		
 	return userRepository.save(theUser);
 	

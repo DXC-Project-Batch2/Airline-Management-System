@@ -2,6 +2,8 @@ package com.dxc.airline.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
@@ -10,7 +12,12 @@ import org.springframework.stereotype.Component;
 public class User {
 	
 	@Id
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1,max =100)
 	String username;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1)
 	String password;
 	
 	

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -20,8 +22,15 @@ public class TicketBooking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long ticketId;
+	
+	@NotNull
+	@Size(min = 3, max = 20,message = "Name of destination should have minimum 3 characters")
 	private String from;
+	
+	@NotNull
+	@Size(min = 3, max = 20,message = "Name of destination should have minimum 3 characters")
 	private String to;
+	
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@JsonFormat( shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "UTC")
 	private Date date;

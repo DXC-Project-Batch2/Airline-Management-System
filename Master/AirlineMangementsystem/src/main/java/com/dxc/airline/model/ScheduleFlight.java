@@ -2,6 +2,8 @@ package com.dxc.airline.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
@@ -10,9 +12,18 @@ import org.springframework.stereotype.Component;
 public class ScheduleFlight {
 	@Id
 	private int flightId;
+	
+	
+	@NotNull
+	@Size(min = 3, max = 20,message = "Name of source should have minimum 3 characters")
 	private String source;
+	
+	@NotNull
+	@Size(min = 3, max = 20,message = "Name of destination should have minimum 3 characters")
 	private String destination;
+	
 	private int seatingCapacity;
+	
 	private int amount;
 	public int getFlightId() {
 		return flightId;

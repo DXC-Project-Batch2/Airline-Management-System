@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 public class City {
 
 	@Id
+	
 	String city;
 
 	public City() {

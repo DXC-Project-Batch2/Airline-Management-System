@@ -7,30 +7,81 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Component
 @Entity
 public class AdminInfo {
-	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1,max =40)
 	String name;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1,max =40)
 	String Lastname;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 4,max =11)
 	String gender;
+	
+	@NotNull(message = "Please enter in MM/dd/yyyy format")
+	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	Date dob;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1,max =80)
 	String fathername;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1,max =80)
 	String passportname;
+	
+	
 	long passportnumber;
+	
+	@NotNull(message = "Please enter in MM/dd/yyyy format")
+	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	Date expiry;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1,max =10)
 	String doorNumber;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1,max =80)
 	String street;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1,max =80)
 	String area;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1, max = 56)
 	String country;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1, max = 56)
 	String state;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1, max = 56)
 	String city;
+	
+	
 	long postalCode;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1, max = 150)
 	String landMark;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 6, max = 56)
 	String mobile; 
+	
 	@Id
 	String username;
 	

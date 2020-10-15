@@ -1,8 +1,15 @@
 package com.dxc.airline.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -11,19 +18,61 @@ public class Registration {
 	
 	@Id
 	private long mobileNumber;
+	
+	@Email
+	@NotNull(message = "A valid E-mail id is required")
+	@Size(min = 2, max = 100)
 	private String mailId;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1,max =40)
 	private String firstName;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1,max =40)
 	private String lastName;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1,max =40)
 	private String fatherName;
-	private long DOB;
+	
+	@NotNull(message = "Please enter in MM/dd/yyyy format")
+	@DateTimeFormat(pattern = "MM/dd/yyyy")
+	private Date DOB;
+
+	@NotNull(message = "Mandatory field")
+	@Size(min = 7,max = 7)
 	private String passportNumber;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1, max = 100)
 	private String addressLine1;
+	
+	@Size(min = 1, max = 100)
 	private String adrressLine2;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1, max = 100)
 	private String state;
+	
+	
 	private long postalcode;
+	
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1, max = 56)
 	private String country;
+	
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1)
 	private String password;
+	
+	@NotNull(message = "Mandatory field")
+	@Size(min = 1)
 	private String conformPassword;
+	
+	
 	public long getMobileNumber() {
 		return mobileNumber;
 	}
@@ -54,10 +103,10 @@ public class Registration {
 	public void setFatherName(String fatherName) {
 		this.fatherName = fatherName;
 	}
-	public long getDOB() {
+	public Date getDOB() {
 		return DOB;
 	}
-	public void setDOB(long dOB) {
+	public void setDOB(Date dOB) {
 		DOB = dOB;
 	}
 	public String getPassportNumber() {
