@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dxc.airline.model.AirLine;
 import com.dxc.airline.service.AirlineService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class AirlineController {
 	
@@ -36,6 +38,12 @@ public class AirlineController {
 	public AirLine save(@RequestBody AirLine theairline ) {
 		
 		return service.save(theairline);
+	}
+	
+	@PutMapping(path = "/airline/update")
+	public AirLine update(@RequestBody AirLine theairline ) {
+		
+		return service.update(theairline);
 	}
 	
 	@CrossOrigin
