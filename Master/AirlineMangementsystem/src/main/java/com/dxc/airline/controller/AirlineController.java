@@ -48,11 +48,17 @@ public class AirlineController {
 	
 	@CrossOrigin
 	@GetMapping(path="/airline/{id}")
-	public List<AirLine> findByAirlineid(@PathVariable("id")int id) {
+	public AirLine findById(@PathVariable("id")int id) {
 		
-		return service.findByAirlineid(id);
+AirLine theAirline = service.findById(id);
+		
+		if (theAirline == null) {
+			throw new RuntimeException("flight not found - ");
+		}
+		
+		return theAirline;
 	}
-	
+
 	
 	@CrossOrigin
 	@GetMapping("/airline/{source}/{destination}")

@@ -14,7 +14,7 @@ public interface AirlineService {
 	
 	public AirLine update(AirLine theAirLine);
 	
-	public List<AirLine> findByAirlineid(int id);
+	public AirLine findById(int id);
 
 	public void deleteById(int id);
 	

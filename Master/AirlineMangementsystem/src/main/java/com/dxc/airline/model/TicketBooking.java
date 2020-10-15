@@ -25,11 +25,11 @@ public class TicketBooking {
 	
 	@NotNull
 	@Size(min = 3, max = 20,message = "Name of destination should have minimum 3 characters")
-	private String from;
+	private String source;
 	
 	@NotNull
 	@Size(min = 3, max = 20,message = "Name of destination should have minimum 3 characters")
-	private String to;
+	private String destination;
 	
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@JsonFormat( shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "UTC")
@@ -41,8 +41,8 @@ public class TicketBooking {
 	public TicketBooking(long ticketId, String strdate,String from, String to, Date date) throws ParseException {
 		super();
 		this.ticketId = ticketId;
-		this.from = from;
-		this.to = to;
+		this.source = from;
+		this.destination = to;
 		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
 		date=sdf.parse(strdate);
 	}
@@ -56,17 +56,18 @@ public class TicketBooking {
 	public void setTicketId(long ticketId) {
 		this.ticketId = ticketId;
 	}
-	public String getFrom() {
-		return from;
+	
+	public String getSource() {
+		return source;
 	}
-	public void setFrom(String from) {
-		this.from = from;
+	public void setSource(String source) {
+		this.source = source;
 	}
-	public String getTo() {
-		return to;
+	public String getDestination() {
+		return destination;
 	}
-	public void setTo(String to) {
-		this.to = to;
+	public void setDestination(String destination) {
+		this.destination = destination;
 	}
 	public Date getDate() {
 		return date;

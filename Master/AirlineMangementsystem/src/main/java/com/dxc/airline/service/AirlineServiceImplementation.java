@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dxc.airline.exception.AirlineException;
-import com.dxc.airline.exception.TicketBookingException;
 import com.dxc.airline.model.AirLine;
-import com.dxc.airline.model.TicketBooking;
 import com.dxc.airline.repository.AirLineRepository;
 
 
@@ -71,12 +69,25 @@ public class AirlineServiceImplementation implements AirlineService{
 	
 	@Override
 	@Transactional
-	public List<AirLine> findByAirlineid(int id) {
+	public AirLine findById(int id) {
 	
-		return airlineRepository.findByplaneId(id);
+Optional<AirLine> result = airlineRepository.findById(id);
+		
+		AirLine theAirline = null;
+		
+		if (result.isPresent()) {
+			theAirline = result.get();
+		}
+		else {
+			// we didn't find the employee
+			throw new RuntimeException("Did not find flight ");
+		}
+		
+		return theAirline;
 		
 	}
 
+	
 	@Override
 	@Transactional
 	public void deleteById(int id) {

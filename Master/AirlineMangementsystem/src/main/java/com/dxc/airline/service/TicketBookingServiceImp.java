@@ -33,7 +33,7 @@ public class TicketBookingServiceImp implements ITicketBookingService {
 	}
 	public TicketBooking validateTicketBooking(TicketBooking booking) {
 		
-		if((booking.getNoOfPassengers()>0) && (booking.getFrom() != booking.getTo())) {
+		if((booking.getNoOfPassengers()>0) && (booking.getSource() != booking.getDestination())) {
 			
 			return booking;
 		}
