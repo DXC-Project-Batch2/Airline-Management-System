@@ -65,11 +65,11 @@ public class RegistrationController {
 		
 		if(username.endsWith("@dxc.com"))
 		{
-			return adminInfoServiceImplementation.findByUsername(username);
+			return (List<AdminInfo>) adminInfoServiceImplementation.findByUsername(username);
 		}
 		else
 		{
-			return userInfoServiceImplementation.findByUsername(username);
+			return (List<UserInfo>) userInfoServiceImplementation.findByUsername(username);
 		}
 	}
 	

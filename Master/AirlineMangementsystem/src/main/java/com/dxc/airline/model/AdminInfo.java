@@ -24,8 +24,6 @@ public class AdminInfo {
 	@Size(min = 1,max =40)
 	String Lastname;
 	
-	@NotNull(message = "Mandatory field")
-	@Size(min = 4,max =11)
 	String gender;
 	
 	@NotNull(message = "Please enter in MM/dd/yyyy format")
@@ -74,8 +72,6 @@ public class AdminInfo {
 	
 	long postalCode;
 	
-	@NotNull(message = "Mandatory field")
-	@Size(min = 1, max = 150)
 	String landMark;
 	
 	@NotNull(message = "Mandatory field")

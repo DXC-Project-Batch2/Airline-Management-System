@@ -48,9 +48,9 @@ public class UserInfoServiceImplementation implements UserInfoService<UserInfo> 
 	}
 
 	@Override
-	public List<UserInfo> findByUsername(String username) {
+	public UserInfo findByUsername(String username) {
 		// TODO Auto-generated method stub
-		return userInfoRepository.findByUsername(username);
+		return userInfoRepository.findById(username).orElse(new UserInfo());
 	}
 
 	@Override

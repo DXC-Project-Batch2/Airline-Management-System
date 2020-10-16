@@ -25,7 +25,7 @@ public class UserSecurityController {
 	
 	@GetMapping(path = "usersecurity/{username}")
 	@ResponseBody
-	public List<UserSecurity> getuserSecurity(@PathVariable("username") String username) {
+	public UserSecurity getuserSecurity(@PathVariable("username") String username) {
 		
 		return userSecurityServiceImp.findByUsername(username);
 	}

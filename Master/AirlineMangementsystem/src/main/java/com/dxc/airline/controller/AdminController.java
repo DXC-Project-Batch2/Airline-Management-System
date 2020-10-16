@@ -25,9 +25,9 @@ public class AdminController {
 	
 	@GetMapping(path = "Admin/{username}")
 	@ResponseBody
-	public List<Admin> getUserInfo(@PathVariable("username") String username) {
+	public Admin getUserInfo(@PathVariable("username") String username) {
 		
-		return adminServiceImplementation.findByUsername(username);
+		return adminServiceImplementation.findById(username);
 	}
 	
 	@GetMapping(path = "Admin")

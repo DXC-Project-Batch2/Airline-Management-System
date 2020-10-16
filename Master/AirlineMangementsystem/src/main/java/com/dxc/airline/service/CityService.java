@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface CityService<E>{
 	E save(E e);
-	List<E> findBycity(String city);
+	E findBycity(String city);
 	List<E> findAll();
 	boolean update(E e);
 	boolean delete(String city);

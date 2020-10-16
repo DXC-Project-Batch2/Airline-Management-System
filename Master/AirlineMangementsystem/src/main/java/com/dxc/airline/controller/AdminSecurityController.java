@@ -33,9 +33,9 @@ public class AdminSecurityController {
 	
 	@GetMapping(path="AdminSecurity/{username}")
 	@ResponseBody
-	public List<AdminSecurity> getAdminSecurity(@PathVariable("username") String username) 
+	public AdminSecurity getAdminSecurity(@PathVariable("username") String username) 
 	{
-		return adminSecurityServiceImplementation.findByUsername(username);
+		return adminSecurityServiceImplementation.findByid(username);
 	}
 	
 	@PostMapping(path ="AdminSecurity")

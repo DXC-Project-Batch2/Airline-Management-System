@@ -14,7 +14,7 @@ public interface AdminService<E> {
 	
 	public boolean update(E e);
 
-	public List<E> findByUsername(String username);
+	public E findById(String username);
 
 	public void deleteById(String username);
 

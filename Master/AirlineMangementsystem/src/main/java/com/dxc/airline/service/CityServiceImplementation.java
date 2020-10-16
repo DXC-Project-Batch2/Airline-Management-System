@@ -20,8 +20,8 @@ public class CityServiceImplementation implements CityService<City>{
 		}
 
 	@Override
-	public List<City> findBycity(String city) {
-		return cityRepository.findBycity(city);
+	public City findBycity(String city) {
+		return cityRepository.findById(city).orElse(new City());
  	}
 
 	@Override

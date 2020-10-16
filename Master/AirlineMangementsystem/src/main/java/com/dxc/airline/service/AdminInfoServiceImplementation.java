@@ -20,8 +20,8 @@ public class AdminInfoServiceImplementation implements AdminInfoService<AdminInf
 	}
 
 	@Override
-	public List<AdminInfo> findByUsername(String username) {
-		return adminInfoRepository.findByUsername(username);
+	public AdminInfo findByUsername(String username) {
+		return adminInfoRepository.findById(username).orElse(new AdminInfo());
 	}
 
 	@Override

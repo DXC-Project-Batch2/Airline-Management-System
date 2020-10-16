@@ -12,7 +12,7 @@ public interface UserInfoService<E> {
 	
 	public E update(E e);
 
-	public List<E> findByUsername(String username);
+	public E findByUsername(String username);
 
 	public void deleteById(String username);
 

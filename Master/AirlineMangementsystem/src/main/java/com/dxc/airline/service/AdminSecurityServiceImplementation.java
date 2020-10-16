@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.dxc.airline.model.AdminSecurity;
 import com.dxc.airline.repository.AdminSecurityRepository;
+
 @Service
 public class AdminSecurityServiceImplementation  implements AdminSecurityService<AdminSecurity> {
 
@@ -20,8 +21,8 @@ public class AdminSecurityServiceImplementation  implements AdminSecurityService
 	}
 
 	@Override
-	public List<AdminSecurity> findByUsername(String username) {
-	return adminSecurityRepository.findByUsername(username);
+	public AdminSecurity findByid(String username) {
+	return adminSecurityRepository.findById(username).orElse(new AdminSecurity());
 	}
 
 	@Override

@@ -25,8 +25,8 @@ public class UserSecurityServiceImp implements IUserSecurityService {
 
 	@Override
 	@Transactional
-	public List<UserSecurity> findByUsername(String username) {
-		return repo.findByUsername(username);
+	public UserSecurity findByUsername(String username) {
+		return repo.findById(username).orElse(new UserSecurity());
 	}
 
 	@Override

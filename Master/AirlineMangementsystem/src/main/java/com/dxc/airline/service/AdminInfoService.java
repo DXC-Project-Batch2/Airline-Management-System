@@ -8,7 +8,7 @@ import com.dxc.airline.model.AdminInfo;
 @Service
 public interface AdminInfoService<E>{
 	E save(E e);
-	List<AdminInfo> findByUsername(String username);
+	AdminInfo findByUsername(String username);
 	List<E> findAll();
 	boolean update(E e);
 	boolean delete(String username);
