@@ -18,5 +18,7 @@ public interface IAirportService {
 	//public Airport findByAirportCode(String airportcode);
 	
 	public Airport findBycode(String airportcode);
+	
+	public void delete(String airportcode);
 
 }

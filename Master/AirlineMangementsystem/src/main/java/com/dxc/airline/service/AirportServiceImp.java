@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dxc.airline.model.AirLine;
 import com.dxc.airline.model.Airport;
 import com.dxc.airline.repository.AirportRepository;
 
@@ -22,8 +23,11 @@ public class AirportServiceImp implements IAirportService {
 
 	@Override
 	public Airport update(Airport airport) {
-		
-		return repo.save(airport);
+		Optional<Airport> findbyId = repo.findById(airport.getAirportCode());
+		if(findbyId.isPresent()) {
+			repo.save(airport);
+		}
+		return airport;
 	}
 
 	@Override
@@ -45,6 +49,10 @@ public class AirportServiceImp implements IAirportService {
 		}
 		
 		return airport;
+	}
+	
+	public void delete(String airportcode) {
+		repo.deleteById(airportcode);
 	}
 
 	
