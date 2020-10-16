@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dxc.airline.model.AirLine;
 import com.dxc.airline.model.TicketBooking;
 import com.dxc.airline.service.TicketBookingServiceImp;
 
@@ -32,9 +33,15 @@ public class TicketBookingController {
 	
 	@CrossOrigin
 	@GetMapping(path="TicketBooking/{id}")
-	public List<TicketBooking> getBooking(@PathVariable("id") Long id) 
+	public TicketBooking getBooking(@PathVariable("id") Long id) 
 	{
-		return ticketBookingServiceImp.findByTicketId(id);
+		TicketBooking theTicket = ticketBookingServiceImp.findById(id);
+		
+		if (theTicket == null) {
+			throw new RuntimeException("Ticket not found - ");
+		}
+		
+		return theTicket;
 	}
 	
 	@CrossOrigin
@@ -54,7 +61,7 @@ public class TicketBookingController {
 	}
 	
 	@CrossOrigin
-	@DeleteMapping(path = "TicketBooking/{username}")
+	@DeleteMapping(path = "TicketBooking/{id}")
 	@ResponseBody
 	public void delete(@PathVariable("id") Long id) {
 		
