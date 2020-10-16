@@ -1,6 +1,7 @@
 package com.dxc.airline.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,9 +33,18 @@ public class AirportServiceImp implements IAirportService {
 	}
 
 	@Override
-	public Airport findByAirportCode(String airportcode) {
+	public Airport findBycode(String airportcode) {
 		
-		return repo.findByAirportCode(airportcode);
+		Optional<Airport> res = repo.findById(airportcode);
+		Airport airport = null;
+		if (res.isPresent()) {
+			airport = res.get();
+		}
+		else {
+			throw new RuntimeException("Did not find airport ");
+		}
+		
+		return airport;
 	}
 
 	

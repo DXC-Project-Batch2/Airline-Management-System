@@ -42,10 +42,19 @@ public class AirportController {
 		
 		return service.findAll();
 	}
-	@GetMapping(path="/airport/{airportcode}")
+	
+	/*@GetMapping(path="/airport/{airportcode}")
 	public Airport findByAirportCode(@PathVariable String airportcode) {
 		
 		return service.findByAirportCode(airportcode);
+	}*/
+	
+	@GetMapping(path="/airport/{airportcode}")
+	public Airport findBycode(@PathVariable String airportcode) {
+		
+		return service.findBycode(airportcode);
 	}
+	
+	
 
 }

@@ -15,6 +15,8 @@ public interface IAirportService {
 	
 	public List<Airport> findAll();
 	
-	public Airport findByAirportCode(String airportcode);
+	//public Airport findByAirportCode(String airportcode);
+	
+	public Airport findBycode(String airportcode);
 
 }
