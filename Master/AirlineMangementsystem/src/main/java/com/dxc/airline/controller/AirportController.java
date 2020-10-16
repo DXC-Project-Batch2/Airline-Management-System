@@ -39,7 +39,7 @@ public class AirportController {
 		return service.update(airport);
 	}
 	
-	@GetMapping(path="/airport/findall")
+	@GetMapping(path="/airport")
 	public List<Airport> findAll(){
 		
 		return service.findAll();
