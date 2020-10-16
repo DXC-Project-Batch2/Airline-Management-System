@@ -9,13 +9,13 @@ import com.dxc.airline.model.TicketBooking;
 @Service
 public interface ITicketBookingService {
 	
-	public TicketBooking add(TicketBooking booking);
+public TicketBooking add(TicketBooking booking);
 	
 	public boolean delete(long id);
 	
 	public List<TicketBooking> getAll();
 
-	public List<TicketBooking> findByTicketId(long id);
+	public TicketBooking findById(long id);
 
 	public boolean update(TicketBooking booking);
 }
