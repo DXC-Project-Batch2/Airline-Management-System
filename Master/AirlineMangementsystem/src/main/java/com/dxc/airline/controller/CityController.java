@@ -54,7 +54,7 @@ public class CityController {
 	@DeleteMapping(path = "city/{username}")
 	@ResponseBody
 	public void delete(@PathVariable("city") String city) {
-		
+		//
 		cityServiceImplementation.delete(city);
 	}
 	

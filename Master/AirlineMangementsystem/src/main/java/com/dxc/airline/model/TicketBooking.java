@@ -36,54 +36,65 @@ public class TicketBooking {
 	private Date date;
 	private int noOfPassengers;
 	
-	
-	
-	public TicketBooking(long ticketId, String strdate,String from, String to, Date date) throws ParseException {
-		super();
-		this.ticketId = ticketId;
-		this.source = from;
-		this.destination = to;
-		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
-		date=sdf.parse(strdate);
-	}
 	public TicketBooking() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public TicketBooking(long ticketId, String source, String destination,String strdate, int noOfPassengers) throws ParseException {
+		super();
+		this.ticketId = ticketId;
+		this.source = source;
+		this.destination = destination;
+		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+		date=sdf.parse(strdate);
+		this.noOfPassengers = noOfPassengers;
+	}
+
 	public long getTicketId() {
 		return ticketId;
 	}
+
 	public void setTicketId(long ticketId) {
 		this.ticketId = ticketId;
 	}
-	
+
 	public String getSource() {
 		return source;
 	}
+
 	public void setSource(String source) {
 		this.source = source;
 	}
+
 	public String getDestination() {
 		return destination;
 	}
+
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
+
 	public Date getDate() {
 		return date;
 	}
+
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
+
 	public int getNoOfPassengers() {
 		return noOfPassengers;
 	}
+
 	public void setNoOfPassengers(int noOfPassengers) {
 		this.noOfPassengers = noOfPassengers;
 	}
-	
-	
-	
 
+	@Override
+	public String toString() {
+		return "TicketBooking [ticketId=" + ticketId + ", source=" + source + ", destination=" + destination + ", date="
+				+ date + ", noOfPassengers=" + noOfPassengers + "]";
+	}
+	
 }

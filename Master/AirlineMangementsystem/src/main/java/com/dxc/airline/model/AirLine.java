@@ -1,5 +1,7 @@
 package com.dxc.airline.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -47,14 +49,15 @@ public class AirLine {
 	}
 	public AirLine(int planeId, String carrierName,
 			@NotNull @Size(min = 2, message = "Name should have atleast 2 characters") String source,
-			String destination, Date date, String duration, String starting_time, String ending_time, int prize,
-			int avaliable_seats, int sold_out) {
+			String destination, String strdate, String duration, String starting_time, String ending_time, int prize,
+			int avaliable_seats, int sold_out) throws ParseException {
 		super();
 		this.planeId = planeId;
 		this.carrierName = carrierName;
 		this.source = source;
 		this.destination = destination;
-		this.date = date;
+		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+		date=sdf.parse(strdate);
 		this.duration = duration;
 		this.starting_time = starting_time;
 		this.ending_time = ending_time;
