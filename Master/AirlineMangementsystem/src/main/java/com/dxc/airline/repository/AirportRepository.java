@@ -8,6 +8,4 @@ import com.dxc.airline.model.Airport;
 @Repository
 public interface AirportRepository extends JpaRepository<Airport, String> {
 	
-	//Airport findByAirportCode(String airportcode);
-
 }

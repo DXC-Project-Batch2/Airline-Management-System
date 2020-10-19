@@ -31,7 +31,7 @@ public class AdminTest {
 	AdminRepository adminRepository;
 	
 	@Test
-	public void UserfindAllTest() {
+	public void AdminfindAllTest() {
 		when(adminRepository.findAll()).thenReturn(
 				Stream.of(new Admin("pasupathi@dxc.com", "pasupathi"), new Admin("p@dxc.com", "pasupathi"))
 						.collect(Collectors.toList()));
@@ -39,7 +39,7 @@ public class AdminTest {
 	}
 
 	@Test
-	public void UserfindByUsernameTest() {
+	public void AdminfindByUsernameTest() {
 		
 		Admin admin = new Admin("p@dxc.com", "ppp");
 		when(adminRepository.findById("p@dxc.com")).thenReturn(Optional.of(admin));
@@ -47,14 +47,14 @@ public class AdminTest {
 	}
 
 	@Test
-	public void saveUserTest() {
+	public void saveAdminTest() {
 		Admin admin = new Admin("aaa@dxc.com", "aaa");
 		when(adminRepository.save(admin)).thenReturn(admin);
 		assertEquals(admin, adminServiceImplementation.save(admin));
 	}
 
 	@Test
-	public void deleteUserTest() {
+	public void deleteAdminTest() {
 		String username = "aaa@dxc.com";
 		adminServiceImplementation.deleteById(username);
 		verify(adminRepository, times(1)).deleteById(username);

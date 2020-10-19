@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dxc.airline.model.AirLine;
 import com.dxc.airline.model.Airport;
 import com.dxc.airline.repository.AirportRepository;
 

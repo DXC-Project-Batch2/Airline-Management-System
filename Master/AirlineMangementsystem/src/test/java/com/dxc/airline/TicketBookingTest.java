@@ -1,4 +1,5 @@
 package com.dxc.airline;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -31,7 +32,7 @@ public class TicketBookingTest {
 	TicketBookingRepository TicketBookingRepository;
 
 	@Test
-	public void UserfindAllTest() throws ParseException {
+	public void TicketBookingfindAllTest() throws ParseException {
 		when(TicketBookingRepository.findAll()).thenReturn(
 				Stream.of(new TicketBooking(101,"goa", "chennai", "18-10-2020", 44),new TicketBooking(102,"chennai", "goa", "18-10-2020", 44))
 						.collect(Collectors.toList()));
@@ -39,7 +40,7 @@ public class TicketBookingTest {
 	}
 
 	@Test
-	public void UserfindByUsernameTest() throws ParseException {
+	public void TicketBookingfindByUsernameTest() throws ParseException {
 		
 		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "goa", "18-10-2020", 44);
 		when(TicketBookingRepository.findById((long) 101)).thenReturn(Optional.of(ticketBooking));
@@ -47,14 +48,14 @@ public class TicketBookingTest {
 	}
 
 	@Test
-	public void saveUserTest() throws ParseException {
+	public void saveTicketBookingTest() throws ParseException {
 		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "goa", "18-10-2020", 44);
 		when(TicketBookingRepository.save(ticketBooking)).thenReturn(ticketBooking);
 		assertEquals(ticketBooking, ticketBookingServiceImp.add(ticketBooking));
 	}
 
 	@Test
-	public void deleteUserTest() {
+	public void deleteTicketBookingTest() {
 		Long ticketid =(long) 101;
 		ticketBookingServiceImp.delete(ticketid);
 		verify(TicketBookingRepository, times(1)).deleteById(ticketid);

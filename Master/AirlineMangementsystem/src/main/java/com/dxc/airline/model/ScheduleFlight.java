@@ -25,6 +25,24 @@ public class ScheduleFlight {
 	private int seatingCapacity;
 	
 	private int amount;
+	
+	
+	
+	public ScheduleFlight() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public ScheduleFlight(int flightId,String source,String destination,int seatingCapacity, int amount) {
+		super();
+		this.flightId = flightId;
+		this.source = source;
+		this.destination = destination;
+		this.seatingCapacity = seatingCapacity;
+		this.amount = amount;
+	}
+
+
 	public int getFlightId() {
 		return flightId;
 	}
@@ -54,6 +72,13 @@ public class ScheduleFlight {
 	}
 	public void setAmount(int amount) {
 		this.amount = amount;
+	}
+
+
+	@Override
+	public String toString() {
+		return "ScheduleFlight [flightId=" + flightId + ", source=" + source + ", destination=" + destination
+				+ ", seatingCapacity=" + seatingCapacity + ", amount=" + amount + "]";
 	}
 	
 

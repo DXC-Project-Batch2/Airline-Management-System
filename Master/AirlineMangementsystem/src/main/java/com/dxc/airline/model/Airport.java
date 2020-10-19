@@ -12,6 +12,19 @@ public class Airport {
 	private String AirportCode;
 	private String AirportName;
 	private String AirportLocation;
+	
+	public Airport() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Airport(String airportCode, String airportName, String airportLocation) {
+		super();
+		AirportCode = airportCode;
+		AirportName = airportName;
+		AirportLocation = airportLocation;
+	}
+
 	public String getAirportCode() {
 		return AirportCode;
 	}
@@ -30,8 +43,11 @@ public class Airport {
 	public void setAirportLocation(String airportLocation) {
 		AirportLocation = airportLocation;
 	}
-	
-	
-	
 
+	@Override
+	public String toString() {
+		return "Airport [AirportCode=" + AirportCode + ", AirportName=" + AirportName + ", AirportLocation="
+				+ AirportLocation + "]";
+	}
+	
 }

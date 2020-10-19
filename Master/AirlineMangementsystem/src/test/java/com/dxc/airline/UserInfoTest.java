@@ -32,7 +32,7 @@ public class UserInfoTest {
 	UserInfoRepository userInfoRepository;
 
 	@Test
-	public void adminInfofindAllTest() throws ParseException{
+	public void userInfofindAllTest() throws ParseException{
 		when(userInfoRepository.findAll()).thenReturn(Stream.of(
 				new UserInfo("pasupathi", "aduri", "male", "18-07-1999", "bhadra", "Pasupathi Nadh", 12345678, "22-09-2099", "3-44", "saliepeta", "saliepeta", "india", "andhra pradesh", "tadepalligudem", 534101, "null", "9003299897", "pasupathi@dxc.com"),new UserInfo("pasupathi", "aduri", "male", "18-07-1999", "bhadra", "Pasupathi Nadh", 12345678, "22-09-2099", "3-44", "saliepeta", "saliepeta", "india", "andhra pradesh", "tadepalligudem", 534101, "null", "9003299897", "pasupathi@dxc.com")
 				).collect(Collectors.toList()));
@@ -40,21 +40,21 @@ public class UserInfoTest {
 	}
 
 	@Test
-	public void adminInfofindByUsernameTest() throws ParseException{
+	public void userInfofindByUsernameTest() throws ParseException{
 		UserInfo userInfo = new UserInfo("pasupathi", "aduri", "male", "18-07-1999", "bhadra", "Pasupathi Nadh", 12345678, "22-09-2099", "3-44", "saliepeta", "saliepeta", "india", "andhra pradesh", "tadepalligudem", 534101, "null", "9003299897", "pasupathi@dxc.com");
 		when(userInfoRepository.findById("pasupathi@dxc.com")).thenReturn(Optional.of(userInfo));
 		assertEquals(userInfo, userInfoServiceImplementation.findByUsername(userInfo.getUsername()));
 	}
 
 	@Test
-	public void saveadminInfoTest() throws ParseException{
+	public void saveuserInfoTest() throws ParseException{
 		UserInfo userInfo = new UserInfo("pasupathi", "aduri", "male", "18-07-1999", "bhadra", "Pasupathi Nadh", 12345678, "22-09-2099", "3-44", "saliepeta", "saliepeta", "india", "andhra pradesh", "tadepalligudem", 534101, "null", "9003299897", "pasupathi@dxc.com");
 		when(userInfoRepository.save(userInfo)).thenReturn(userInfo);
 		assertEquals(userInfo, userInfoServiceImplementation.save(userInfo));
 	}
 
 	@Test
-	public void deleteadminInfoTest(){
+	public void deleteuserInfoTest(){
 		String username = "aaa@gmail.com";
 		userInfoServiceImplementation.deleteById(username);
 		verify(userInfoRepository, times(1)).deleteById(username);

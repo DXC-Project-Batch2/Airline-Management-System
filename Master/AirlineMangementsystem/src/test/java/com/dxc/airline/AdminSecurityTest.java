@@ -31,7 +31,7 @@ public class AdminSecurityTest {
 	AdminSecurityRepository adminSecurityRepository;
 	
 	@Test
-	public void UserSecurityfindAllTest() {
+	public void AdminSecurityfindAllTest() {
 		when(adminSecurityServiceImplementation.findAll()).thenReturn(Stream
 				.of(new AdminSecurity("pasupathi@gmail.com", "what is favorite number?", "100"),
 						new AdminSecurity("p@gmail.com", "what is favorite number?", "100"))
@@ -40,7 +40,7 @@ public class AdminSecurityTest {
 	}
 
 	@Test
-	public void UserSecurityfindByUsernameTest() {
+	public void AdminSecurityfindByUsernameTest() {
 		
 		AdminSecurity adminSecurity = new AdminSecurity("p@dxc.com", "what is favorite number?", "100");
 		when(adminSecurityRepository.findById("p@dxc.com")).thenReturn(Optional.of(adminSecurity));
@@ -49,14 +49,14 @@ public class AdminSecurityTest {
 	}
 
 	@Test
-	public void saveUserSecurityTest() {
+	public void saveAdminSecurityTest() {
 		AdminSecurity adminSecurity = new AdminSecurity("pasupathi@gmail.com", "what is favorite number?", "100");
 		when(adminSecurityRepository.save(adminSecurity)).thenReturn(adminSecurity);
 		assertEquals(adminSecurity, adminSecurityServiceImplementation.save(adminSecurity));
 	}
 
 	@Test
-	public void deleteUserSecurityTest() {
+	public void deleteAdminSecurityTest() {
 		String username = "aaa@gmail.com";
 		adminSecurityServiceImplementation.delete(username);
 		verify(adminSecurityRepository, times(1)).deleteById(username);
