@@ -17,6 +17,7 @@ import com.dxc.airline.model.AirLine;
 import com.dxc.airline.model.TicketBooking;
 import com.dxc.airline.service.TicketBookingServiceImp;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class TicketBookingController {
 	
