@@ -20,4 +20,6 @@ public interface AirlineService {
 	
 	public List<AirLine> findByCities(String source, String destination);
 	
+	public List<AirLine> findByUser(String source, String destination,String date);
+	
 }

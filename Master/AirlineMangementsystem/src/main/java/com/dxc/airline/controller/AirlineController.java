@@ -1,8 +1,12 @@
 package com.dxc.airline.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.ParseException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -77,6 +81,26 @@ AirLine theAirline = service.findById(id);
 	public void deleteById(@PathVariable("id")int id) {
 		
 		service.deleteById(id);
+	}
+	
+	@GetMapping("/airline/{source}/{destination}/{date}")
+	public List<AirLine> getAirline(@PathVariable String source, @PathVariable String destination,@PathVariable String date) throws ParseException, java.text.ParseException {
+		//*for converting a string date to requried datetime*//
+		
+		String str = date+"  05:30:00.000000";
+		DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+		Date dat = df.parse(str);
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+		String strDate = dateFormat.format(dat);
+		
+		List<AirLine> theAirline = service.findByUser(source, destination, strDate);
+		
+		if (theAirline == null) {
+			throw new RuntimeException("Flight  not found - ");
+		}
+		
+		return theAirline;
 	}
 	
 	

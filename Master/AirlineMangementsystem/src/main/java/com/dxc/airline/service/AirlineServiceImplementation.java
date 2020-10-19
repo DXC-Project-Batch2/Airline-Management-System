@@ -94,5 +94,12 @@ public class AirlineServiceImplementation implements AirlineService {
 		List<AirLine> theAirline = airlineRepository.findByCities(source, destination);
 		return theAirline;
 	}
+	
+	@Override
+	public List<AirLine> findByUser(String source, String destination,String date) {
+		System.out.println(date);
+		List<AirLine> theAirline = airlineRepository.findByUser(source, destination,date);
+		return theAirline;
+	}
 
 }
