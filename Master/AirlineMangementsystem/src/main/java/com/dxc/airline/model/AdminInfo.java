@@ -38,7 +38,7 @@ public class AdminInfo {
 	@Size(min = 1,max =80)
 	String passportname;
 	
-	
+	@NotNull(message = "Mandatory field")
 	long passportnumber;
 	
 	@NotNull(message = "Please enter in MM/dd/yyyy format")
@@ -69,7 +69,7 @@ public class AdminInfo {
 	@Size(min = 1, max = 56)
 	String city;
 	
-	
+	@NotNull(message = "Mandatory field")
 	long postalCode;
 	
 	String landMark;

@@ -27,7 +27,9 @@ public class UserServiceImplementation implements UserService{
 	@Transactional
 	public List<User> findAll() {
 		
-		return userRepository.findAll();	}
+		return userRepository.findAll();	
+		
+	}
 
 	@Override
 	@Transactional

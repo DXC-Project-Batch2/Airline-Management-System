@@ -21,7 +21,7 @@ public class UserSecurity {
 	private String securityQuestion;
 	
 	@NotNull(message = "Minimum size of character is 10")
-	@Size(min = 10,max =400)
+	@Size(min = 1,max =400)
 	private String answer;
 	public UserSecurity() {
 		super();

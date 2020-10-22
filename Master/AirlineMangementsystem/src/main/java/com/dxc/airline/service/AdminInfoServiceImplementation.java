@@ -1,6 +1,7 @@
 package com.dxc.airline.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,16 +13,28 @@ public class AdminInfoServiceImplementation implements AdminInfoService<AdminInf
 
 	@Autowired
 	AdminInfoRepository adminInfoRepository;
-	
-	@Override
-	public AdminInfo save(AdminInfo e) {
 		
-		return adminInfoRepository.save(e);
+	@Override
+	public boolean save(AdminInfo e) {
+			
+		boolean res=false;
+		
+		if(adminInfoRepository.save(e) != null)
+		{
+			return true;
+		}
+		return res;
+			
 	}
 
 	@Override
 	public AdminInfo findByUsername(String username) {
-		return adminInfoRepository.findById(username).orElse(new AdminInfo());
+		Optional<AdminInfo> adminInfo =adminInfoRepository.findById(username);
+		if(adminInfo.isPresent())
+		{
+			return adminInfo.get();
+		}
+		return null;
 	}
 
 	@Override

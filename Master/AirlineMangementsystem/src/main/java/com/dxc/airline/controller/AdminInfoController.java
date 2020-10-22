@@ -41,7 +41,7 @@ public class AdminInfoController {
 	
 	@PostMapping(path = "admininfo" )
 	@ResponseBody
-	public AdminInfo save(@RequestBody AdminInfo adminInfo) {
+	public boolean save(@RequestBody AdminInfo adminInfo) {
 		
 		return adminInfoServiceImplementation.save(adminInfo);
 	}
