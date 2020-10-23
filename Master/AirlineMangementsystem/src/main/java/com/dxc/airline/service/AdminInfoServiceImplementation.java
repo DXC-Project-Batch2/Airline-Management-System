@@ -15,16 +15,9 @@ public class AdminInfoServiceImplementation implements AdminInfoService<AdminInf
 	AdminInfoRepository adminInfoRepository;
 		
 	@Override
-	public boolean save(AdminInfo e) {
+	public AdminInfo save(AdminInfo e) {
 			
-		boolean res=false;
-		
-		if(adminInfoRepository.save(e) != null)
-		{
-			return true;
-		}
-		return res;
-			
+		return adminInfoRepository.save(e);	
 	}
 
 	@Override
@@ -43,16 +36,19 @@ public class AdminInfoServiceImplementation implements AdminInfoService<AdminInf
 	}
 
 	@Override
-	public boolean update(AdminInfo e) {
-		// TODO Auto-generated method stub
-		return false;
+	public AdminInfo update(AdminInfo e) {
+		Optional<AdminInfo> adminInfo =adminInfoRepository.findById(e.getUsername());
+		if(adminInfo.isPresent())
+		{
+			return adminInfoRepository.save(e);
+		}
+		return null;
 	}
 
 	@Override
-	public boolean delete(String username) {
+	public void delete(String username) {
 		// TODO Auto-generated method stub
 		adminInfoRepository.deleteById(username);
-		return true;
 	}
 
 }

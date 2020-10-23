@@ -32,7 +32,7 @@ public class TicketBookingServiceImp implements ITicketBookingService {
 
 	public TicketBooking validateTicketBooking(TicketBooking booking) {
 
-		if ((booking.getNoOfPassengers() > 0) && (booking.getSource() != booking.getDestination())) {
+		if ((booking.getNoOfPassengers() >= 0) && (booking.getSource() != booking.getDestination())) {
 
 			return booking;
 		}
@@ -41,9 +41,8 @@ public class TicketBookingServiceImp implements ITicketBookingService {
 	}
 
 	@Override
-	public boolean delete(long id) {
+	public void delete(long id) {
 		repo.deleteById(id);
-		return true;
 	}
 
 	@Override
@@ -67,9 +66,14 @@ public class TicketBookingServiceImp implements ITicketBookingService {
 	}
 
 	@Override
-	public boolean update(TicketBooking booking) {
+	public TicketBooking update(TicketBooking booking) {
+		Optional<TicketBooking> updateBooking = repo.findById(booking.getTicketId());
+		if(updateBooking.isPresent())
+		{
+			return repo.save(booking);
+		}
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 }

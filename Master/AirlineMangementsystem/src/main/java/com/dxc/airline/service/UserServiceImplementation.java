@@ -7,11 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.dxc.airline.model.Admin;
 import com.dxc.airline.model.User;
 import com.dxc.airline.repository.UserRepository;
-
-
 
 @Service
 public class UserServiceImplementation implements UserService{
@@ -34,7 +31,6 @@ public class UserServiceImplementation implements UserService{
 	@Override
 	@Transactional
 	public User save(User theUser) {
-	
 		
 	return userRepository.save(theUser);
 	
@@ -54,14 +50,13 @@ public class UserServiceImplementation implements UserService{
 	}
 
 	@Override
-	public boolean update(User e) {
+	public User update(User e) {
 		
-		boolean res = false;
 		Optional<User> userpresent = userRepository.findById(e.getUsername());
 		if(userpresent.isPresent()) {
-			res = userRepository.save(e) != null;
+			return userRepository.save(e);
 		}
-		return res;
+		return null;
 	}
 	
 }

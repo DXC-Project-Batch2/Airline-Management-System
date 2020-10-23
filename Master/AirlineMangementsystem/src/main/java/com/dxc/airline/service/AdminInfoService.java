@@ -4,12 +4,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.dxc.airline.model.AdminInfo;
 @Service
 public interface AdminInfoService<E>{
-	boolean save(E e);
-	AdminInfo findByUsername(String username);
+	E save(E e);
+	E findByUsername(String username);
 	List<E> findAll();
-	boolean update(E e);
-	boolean delete(String username);
+	E update(E e);
+	void delete(String username);
 }

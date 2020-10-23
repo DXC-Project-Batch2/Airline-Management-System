@@ -42,9 +42,9 @@ public class UserSecurityServiceImp implements IUserSecurityService {
 		// TODO Auto-generated method stub
 		Optional<UserSecurity> findUserById = repo.findById(e.getUsername());
 		if (findUserById.isPresent()) {
-			repo.save(e);
+			return repo.save(e);
 		}
-		return e;
+		return null;
 	}
 
 	@Override

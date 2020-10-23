@@ -8,6 +8,6 @@ public interface CityService<E>{
 	E save(E e);
 	E findBycity(String city);
 	List<E> findAll();
-	boolean update(E e);
+	E update(E e);
 	boolean delete(String city);
 }

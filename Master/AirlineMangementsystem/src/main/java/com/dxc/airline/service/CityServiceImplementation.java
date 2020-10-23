@@ -30,14 +30,13 @@ public class CityServiceImplementation implements CityService<City>{
 	}
 
 	@Override
-	public boolean update(City e) {
-		boolean res=false;
+	public City update(City e) {
+	
 		Optional<City> city = cityRepository.findById(e.getCity());
 		if (city.isPresent()) {
-			cityRepository.save(e);
-			return true;
+			return cityRepository.save(e);
 		}
-		return res;
+		return null;
 	}
 
 	@Override

@@ -19,8 +19,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 public class TicketBooking {
 	
-	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
 	private long ticketId;
 	
 	@NotNull

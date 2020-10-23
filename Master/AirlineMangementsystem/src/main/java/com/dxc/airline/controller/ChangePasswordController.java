@@ -44,13 +44,13 @@ public class ChangePasswordController {
 	{
 		admin = new Admin(e.getUsername(), e.getPassword());
 		 
-		if(e.getUsername().endsWith("@dxc.com") && adminServiceImplementation.update(admin))
+		if(e.getUsername().endsWith("@dxc.com") && adminServiceImplementation.update(admin)!=null)
 		{
 			return true;
 		}
 		else 
 			{
-			return userServiceImplementation.update(e);
+			return userServiceImplementation.update(e)!=null;
 		}
 	}
 

@@ -1,6 +1,7 @@
 package com.dxc.airline.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,10 +32,13 @@ public class AdminSecurityServiceImplementation  implements AdminSecurityService
 	}
 
 	@Override
-	public boolean update(AdminSecurity e) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public AdminSecurity update(AdminSecurity e) {
+		Optional<AdminSecurity> adminpresent = adminSecurityRepository.findById(e.getUsername());
+		if(adminpresent.isPresent()) {
+		return adminSecurityRepository.save(e);
+		}
+		return null;
+		}
 
 	@Override
 	public void delete(String username) {

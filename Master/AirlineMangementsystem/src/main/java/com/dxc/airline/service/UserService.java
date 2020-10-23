@@ -10,7 +10,7 @@ public interface UserService {
 
 	public List<User> findAll();
 
-	public boolean update(User e);
+	public User update(User e);
 	
 	public User save(User theUser);
 

@@ -58,9 +58,9 @@ public class AirlineServiceImplementation implements AirlineService {
 	public AirLine update(AirLine theAirline) {
 		Optional<AirLine> findbyId = airlineRepository.findById(theAirline.getPlaneId());
 		if (findbyId.isPresent()) {
-			airlineRepository.save(theAirline);
+			return airlineRepository.save(theAirline);
 		}
-		return theAirline;
+		return null;
 	}
 
 	@Override

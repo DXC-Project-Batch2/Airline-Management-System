@@ -43,14 +43,14 @@ public class AdminInfoController {
 	@ResponseBody
 	public boolean save(@RequestBody AdminInfo adminInfo) {
 		
-		return adminInfoServiceImplementation.save(adminInfo);
+		return adminInfoServiceImplementation.save(adminInfo) != null;
 	}
 	
 	@PutMapping(path = "admininfo")
 	@ResponseBody
 	public boolean update(@RequestBody AdminInfo adminInfo) {
 		
-		return adminInfoServiceImplementation.update(adminInfo);
+		return adminInfoServiceImplementation.update(adminInfo) != null;
 	}
 	
 	@DeleteMapping(path = "admininfo/{username}")

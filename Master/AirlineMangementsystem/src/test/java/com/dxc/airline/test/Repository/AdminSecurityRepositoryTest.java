@@ -15,8 +15,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.dxc.airline.model.AdminSecurity;
 import com.dxc.airline.repository.AdminSecurityRepository;
 
-
-
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class AdminSecurityRepositoryTest {

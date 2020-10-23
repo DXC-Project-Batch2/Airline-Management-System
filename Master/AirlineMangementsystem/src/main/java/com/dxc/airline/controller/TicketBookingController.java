@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dxc.airline.model.AirLine;
 import com.dxc.airline.model.TicketBooking;
 import com.dxc.airline.service.TicketBookingServiceImp;
 
@@ -58,7 +57,7 @@ public class TicketBookingController {
 	@ResponseBody
 	public boolean update(@RequestBody TicketBooking ticketBooking) {
 		
-		return ticketBookingServiceImp.update(ticketBooking);
+		return ticketBookingServiceImp.update(ticketBooking) != null;
 	}
 	
 	@CrossOrigin

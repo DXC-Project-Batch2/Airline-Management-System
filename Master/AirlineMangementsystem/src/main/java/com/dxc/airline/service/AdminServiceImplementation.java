@@ -30,14 +30,13 @@ public class AdminServiceImplementation implements AdminService<Admin> {
 		}
 
 	@Override
-	public boolean update(Admin e) {
+	public Admin update(Admin e) {
 		// TODO Auto-generated method stub
-		boolean res = false;
 		Optional<Admin> adminpresent = adminRepository.findById(e.getUsername());
 		if(adminpresent.isPresent()) {
-			res = adminRepository.save(e) != null;
+		return adminRepository.save(e);
 		}
-		return res;
+		return null;
 	}
 	
 	@Override

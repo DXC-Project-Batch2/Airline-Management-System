@@ -11,11 +11,11 @@ public interface ITicketBookingService {
 	
 public TicketBooking add(TicketBooking booking);
 	
-	public boolean delete(long id);
+	public void delete(long id);
 	
 	public List<TicketBooking> getAll();
 
 	public TicketBooking findById(long id);
 
-	public boolean update(TicketBooking booking);
+	public TicketBooking update(TicketBooking booking);
 }

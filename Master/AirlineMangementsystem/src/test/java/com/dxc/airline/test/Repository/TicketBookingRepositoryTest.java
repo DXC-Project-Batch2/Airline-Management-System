@@ -16,7 +16,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.dxc.airline.model.TicketBooking;
 import com.dxc.airline.repository.TicketBookingRepository;
 
-
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class TicketBookingRepositoryTest {
@@ -30,8 +29,7 @@ public class TicketBookingRepositoryTest {
 	//save
 	@Test
 	public void testSaveTicketBooking() throws ParseException{
-
-		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "hyderabad", "18-10-2020", 44);
+		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "hyderabad", "29-10-2020", 10);
 		TicketBooking savedInDb = entityManager.persist(ticketBooking);
 		TicketBooking getFromDatabase = ticketBookingRepository.getOne(savedInDb.getTicketId());
 		
@@ -41,49 +39,55 @@ public class TicketBookingRepositoryTest {
 	//findbyid
 	@Test
 	public void testGetTicketBookingById() throws ParseException{
-	
-		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "hyderabad", "18-10-2020", 44);
-		TicketBooking savedInDb = entityManager.persist(ticketBooking);
+
+		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "hyderabad", "29-10-2020", 10);
+
+		//Save ticketBooking in DB
+		TicketBooking adminSecuritySavedInDb = entityManager.persist(ticketBooking);
 		
-		Optional<TicketBooking> FromInDb = ticketBookingRepository.findById(ticketBooking.getTicketId());
-		assertThat(savedInDb).isEqualTo(FromInDb.get());
+		//Get ticketBooking from DB
+		Optional<TicketBooking> adminSecurityFromInDb = ticketBookingRepository.findById(ticketBooking.getTicketId());
+		assertThat(adminSecuritySavedInDb).isEqualTo(adminSecurityFromInDb.get());
 	}
 	
 	//findAll
 	@Test
-	public void testGetAllTicketBooking() throws ParseException{
+	public void testGetAllTicketBookings() throws ParseException{
 		
-		TicketBooking ticketBooking1 = new TicketBooking(101,"chennai", "hyderabad", "18-10-2020", 44);
-		TicketBooking ticketBooking2 = new TicketBooking(102,"chennai", "hyderabad", "18-10-2020", 44);
+		TicketBooking ticketBooking1 = new TicketBooking(101,"chennai", "hyderabad", "29-10-2020", 10);
+		TicketBooking ticketBooking2 = new TicketBooking(102,"chennai", "hyderabad", "29-10-2020", 10);
+		
 		//Save both ticketBooking in DB
 		entityManager.persist(ticketBooking1);
 		entityManager.persist(ticketBooking2);
 		
-		
-		List<TicketBooking> ticketBookings = ticketBookingRepository.findAll();
-		assertThat(ticketBookings.size()).isEqualTo(2);
+		List<TicketBooking> adminSecurities = ticketBookingRepository.findAll();
+		assertThat(adminSecurities.size()).isEqualTo(2);
 	}
 	
 	//delete
 	@Test
-	public void testDeleteByTicketBooking() throws ParseException {
+	public void testDeleteTicketBookingById() throws ParseException{
 	
-		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "hyderabad", "18-10-2020", 44);
+		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "hyderabad", "29-10-2020", 10);
+
 		//Save ticketBooking in DB
 		entityManager.persist(ticketBooking);
 		
 		//delete one ticketBooking DB
 		entityManager.remove(ticketBooking);
 		
-		List<TicketBooking> ticketBookings = ticketBookingRepository.findAll();
-		assertThat(ticketBookings.size()).isEqualTo(0);
-		}
+		List<TicketBooking> adminSecurities = ticketBookingRepository.findAll();
+		assertThat(adminSecurities.size()).isEqualTo(0);
+	}
 	
 	//update
 	@Test
 	public void testUpdateTicketBooking() throws ParseException{
 		
-		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "hyderabad", "18-10-2020", 44);
+		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "hyderabad", "29-10-2020", 10);
+
+		
 		//save ticketBooking info in DB
 		entityManager.persist(ticketBooking);
 		
@@ -91,12 +95,10 @@ public class TicketBookingRepositoryTest {
 
 		getFromDb.setSource("mumbai");
 		getFromDb.setDestination("hyderabad");
-		
 		entityManager.persist(getFromDb);
 		
 		assertThat(getFromDb.getSource()).isEqualTo("mumbai");
 		assertThat(getFromDb.getDestination()).isEqualTo("hyderabad");
-		
 	}
 	
 }

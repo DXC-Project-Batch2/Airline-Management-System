@@ -1,6 +1,7 @@
 package com.dxc.airline.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.dxc.airline.exception.ScheduleFlightException;
 import com.dxc.airline.model.ScheduleFlight;
 import com.dxc.airline.repository.ScheduleFlightRepository;
+
 @Service
 public class ScheduleFlightimp implements IScheduleFlight {
 	
@@ -46,7 +48,12 @@ public class ScheduleFlightimp implements IScheduleFlight {
 	@Override
 	public ScheduleFlight updateFlight(ScheduleFlight flight) {
 		
-		return repo.save(flight);
+		Optional<ScheduleFlight> present = repo.findById(flight.getFlightId());
+		if(present.isPresent())
+		{
+			return repo.save(flight);
+		}
+		return null;
 	}
 
 	@Override
