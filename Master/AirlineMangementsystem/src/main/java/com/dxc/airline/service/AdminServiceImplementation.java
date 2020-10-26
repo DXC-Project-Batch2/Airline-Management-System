@@ -50,6 +50,13 @@ public class AdminServiceImplementation implements AdminService<Admin> {
 		// TODO Auto-generated method stub
 		adminRepository.deleteById(username);
 	}
+
+	@Override
+	public Admin findByUsernameAndPassword(String username, String password) {
+		// TODO Auto-generated method stub
+		return adminRepository.findByUsernameAndPassword(username, password);
+	}
+	
 	
 
 }

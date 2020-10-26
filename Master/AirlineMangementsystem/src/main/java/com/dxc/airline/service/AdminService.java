@@ -16,5 +16,7 @@ public interface AdminService<E> {
 	public E findById(String username);
 
 	public void deleteById(String username);
+	
+	public E findByUsernameAndPassword(String username,String password);
 
 }

@@ -60,4 +60,27 @@ public class UserController {
 		
 		userServiceImplementation.deleteById(username);
 	}
+	
+	@PostMapping("/login")
+	public User LOgin(@RequestBody User user) throws Exception {
+
+		String tempEmail=user.getUsername();
+
+		 String tempPassword=user.getPassword();
+
+
+		 User userObj=null;
+
+
+		 if(tempEmail!=null && tempPassword!=null)
+		 {
+			 userObj=userServiceImplementation.findByUsernameAndPassword(tempEmail, tempPassword); 
+		 }
+
+		 if(userObj == null)
+		 {
+			 throw new Exception("Bad Credentials");
+		 }
+		 return userObj;
+	}
 }

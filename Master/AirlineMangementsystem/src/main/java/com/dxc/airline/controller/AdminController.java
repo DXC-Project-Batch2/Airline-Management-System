@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dxc.airline.model.Admin;
+import com.dxc.airline.model.User;
 import com.dxc.airline.service.AdminServiceImplementation;
 
 @RestController
@@ -61,4 +62,28 @@ public class AdminController {
 		
 		adminServiceImplementation.deleteById(username);
 	}
+	
+	@PostMapping("/adminLogin")
+	public Admin LOgin(@RequestBody User user) throws Exception {
+
+		String tempEmail=user.getUsername();
+
+		 String tempPassword=user.getPassword();
+
+
+		 Admin adminObj=null;
+
+
+		 if(tempEmail!=null && tempPassword!=null)
+		 {
+			 adminObj=adminServiceImplementation.findByUsernameAndPassword(tempEmail, tempPassword); 
+		 }
+
+		 if(adminObj == null)
+		 {
+			 throw new Exception("Bad Credentials");
+		 }
+		 return adminObj;
+	}
+	
 }

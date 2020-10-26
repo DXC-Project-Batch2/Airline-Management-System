@@ -18,4 +18,6 @@ public interface UserService {
 
 	public void deleteById(String username);
 	
+	public User findByUsernameAndPassword(String username,String password);
+	
 }
