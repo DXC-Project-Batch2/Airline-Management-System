@@ -23,6 +23,9 @@ public class TicketBooking {
 	@Id
 	private long ticketId;
 	
+	private String username;
+	private int flightId;
+	
 	@NotNull
 	@Size(min = 3, max = 20,message = "Name of destination should have minimum 3 characters")
 	private String source;
@@ -41,10 +44,12 @@ public class TicketBooking {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public TicketBooking(long ticketId, String source, String destination,String strdate, int noOfPassengers) throws ParseException {
+	public TicketBooking(long ticketId,String username,int flightId, String source, String destination,String strdate, int noOfPassengers) throws ParseException {
 		super();
 		this.ticketId = ticketId;
 		this.source = source;
+		this.username = username;
+		this.flightId = flightId;
 		this.destination = destination;
 		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
 		date=sdf.parse(strdate);
@@ -90,11 +95,23 @@ public class TicketBooking {
 	public void setNoOfPassengers(int noOfPassengers) {
 		this.noOfPassengers = noOfPassengers;
 	}
+	
 
-	@Override
-	public String toString() {
-		return "TicketBooking [ticketId=" + ticketId + ", source=" + source + ", destination=" + destination + ", date="
-				+ date + ", noOfPassengers=" + noOfPassengers + "]";
+	public String getUsername() {
+		return username;
 	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public int getFlightId() {
+		return flightId;
+	}
+
+	public void setFlightId(int flightId) {
+		this.flightId = flightId;
+	}
+
 	
 }
