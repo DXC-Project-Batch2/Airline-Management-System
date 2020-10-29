@@ -54,7 +54,7 @@ public class AdminInfoTest {
 	public void saveadminInfoTest() throws ParseException{
 		AdminInfo adminInfo = new AdminInfo("pasupathi", "aduri", "male", "18-07-1999", "bhadra", "Pasupathi Nadh", 12345678, "22-09-2099", "3-44", "saliepeta", "saliepeta", "india", "andhra pradesh", "tadepalligudem", 534101, "null", "9003299897", "pasupathi@dxc.com");
 		when(adminInfoRepository.save(adminInfo)).thenReturn(adminInfo);
-		assertEquals(adminInfo!=null, adminInfoServiceImplementation.save(adminInfo));
+		assertEquals(adminInfo, adminInfoServiceImplementation.save(adminInfo));
 	}
 
 	@Test
@@ -71,8 +71,8 @@ public class AdminInfoTest {
 	public void NotsaveadminInfoTest() throws ParseException{
 		AdminInfo adminInfo=null;
 		when(adminInfoRepository.save(adminInfo)).thenReturn(adminInfo);
-		assertEquals(adminInfo!=null, adminInfoServiceImplementation.save(adminInfo));
-		assertNotEquals(adminInfo==null, adminInfoServiceImplementation.save(adminInfo));
+		assertEquals(adminInfo, adminInfoServiceImplementation.save(adminInfo));
+		assertEquals(adminInfo, adminInfoServiceImplementation.save(adminInfo));
 	}
 	
 	@Test

@@ -56,9 +56,9 @@ public class TicketBookingTest {
 
 	@Test
 	public void deleteTicketBookingTest() {
-		Long ticketid =(long) 101;
+		int ticketid =101;
 		ticketBookingServiceImp.delete(ticketid);
-		verify(TicketBookingRepository, times(1)).deleteById(ticketid);
+		verify(TicketBookingRepository, times(1)).deleteById((long) ticketid);
 	}
 
 }

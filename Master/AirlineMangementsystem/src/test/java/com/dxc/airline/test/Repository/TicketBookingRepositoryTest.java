@@ -29,7 +29,8 @@ public class TicketBookingRepositoryTest {
 	//save
 	@Test
 	public void testSaveTicketBooking() throws ParseException{
-		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "hyderabad", "29-10-2020", 10);
+		
+		TicketBooking ticketBooking = new TicketBooking((long) 101,"chennai", "hyderabad", "29-10-2020", 10);
 		TicketBooking savedInDb = entityManager.persist(ticketBooking);
 		TicketBooking getFromDatabase = ticketBookingRepository.getOne(savedInDb.getTicketId());
 		
@@ -40,7 +41,7 @@ public class TicketBookingRepositoryTest {
 	@Test
 	public void testGetTicketBookingById() throws ParseException{
 
-		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "hyderabad", "29-10-2020", 10);
+		TicketBooking ticketBooking = new TicketBooking((long) 101,"chennai", "hyderabad", "29-10-2020", 10);
 
 		//Save ticketBooking in DB
 		TicketBooking adminSecuritySavedInDb = entityManager.persist(ticketBooking);
@@ -54,7 +55,7 @@ public class TicketBookingRepositoryTest {
 	@Test
 	public void testGetAllTicketBookings() throws ParseException{
 		
-		TicketBooking ticketBooking1 = new TicketBooking(101,"chennai", "hyderabad", "29-10-2020", 10);
+		TicketBooking ticketBooking1 = new TicketBooking((long) 101,"chennai", "hyderabad", "29-10-2020", 10);
 		TicketBooking ticketBooking2 = new TicketBooking(102,"chennai", "hyderabad", "29-10-2020", 10);
 		
 		//Save both ticketBooking in DB

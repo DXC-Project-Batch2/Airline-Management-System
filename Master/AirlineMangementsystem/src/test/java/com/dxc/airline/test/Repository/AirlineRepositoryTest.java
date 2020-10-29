@@ -74,19 +74,19 @@ public class AirlineRepositoryTest {
 		@Test
 		public void findByUser() throws ParseException{
 			
-			AirLine airLine1 = new AirLine(110, "airindia","chennai", "goa", "22-10-2020", "150 mins", "2:00 AM", "4:30 AM", 3000, 44,0);
-			AirLine airLine2 = new AirLine(111, "airindia","goa", "chennai", "22-10-2020", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);
-			AirLine airLine3 = new AirLine(112, "airindia","goa", "chennai", "23-10-2020", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);
+			AirLine airLine1 = new AirLine(110, "airindia","chennai", "goa", "22-10-2022", "150 mins", "2:00 AM", "4:30 AM", 3000, 44,0);
+			AirLine airLine2 = new AirLine(111, "airindia","goa", "chennai", "22-10-2022", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);
+			AirLine airLine3 = new AirLine(112, "airindia","goa", "chennai", "23-10-2022", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);
 			//Save airLine in DB
 			entityManager.persist(airLine1);
 			entityManager.persist(airLine2);
 			entityManager.persist(airLine3);
 			
 			//Get airLine from DB
-			List<AirLine> airLines = airLineRepository.findByUser("chennai", "vijayawada", "22-10-2020");
+			List<AirLine> airLines = airLineRepository.findByUser("chennai", "vijayawada", "22-10-2022");
 			assertThat(airLines.size()).isEqualTo(0);
 			
-			airLines = airLineRepository.findByUser("chennai", "goa", "22-10-2020");
+			airLines = airLineRepository.findByUser("chennai", "goa", "22-10-2022");
 			assertThat(airLines.size()).isEqualTo(1);
 
 		}
