@@ -34,7 +34,7 @@ public class TicketBookingServiceTest {
 	@Test
 	public void saveTest() throws ParseException{
 
-		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "hyderabad", "29-10-2020", 44);
+		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10);		
 		
 	    Mockito.when(ticketBookingRepository.save(ticketBooking)).thenReturn(ticketBooking);
 	    
@@ -47,7 +47,7 @@ public class TicketBookingServiceTest {
 	@Test
 	public void findByIdTest() throws ParseException{
 		
-		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "hyderabad", "29-10-2020", 44);
+		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10);		
 		Mockito.when(ticketBookingRepository.findById(ticketBooking.getTicketId())).thenReturn(Optional.of(ticketBooking));
 	    assertThat(ticketBookingServiceImp.findById(ticketBooking.getTicketId())).isEqualTo(ticketBooking);
 	}
@@ -56,8 +56,8 @@ public class TicketBookingServiceTest {
 	@Test
 	public void findallTest() throws ParseException{
 
-		TicketBooking ticketBooking1 = new TicketBooking(101,"chennai", "hyderabad", "29-10-2020", 44);
-		TicketBooking ticketBooking2 = new TicketBooking(102,"chennai", "hyderabad", "29-10-2020", 44);
+		TicketBooking ticketBooking1 = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10);		
+		TicketBooking ticketBooking2 = new TicketBooking(102, "ram@gmail.com", 102,"chennai", "hyderabad", "29-10-2020", 10);		
 		
 		
 		List<TicketBooking> ticketBookings = new ArrayList<>();
@@ -73,7 +73,7 @@ public class TicketBookingServiceTest {
 	@Test
 	public void deleteTest() throws ParseException{
 
-		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "hyderabad", "29-10-2020", 44);
+		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10);		
 		
 	    Mockito.when(ticketBookingRepository.findById(ticketBooking.getTicketId())).thenReturn(Optional.of(ticketBooking));
 	    Mockito.when(ticketBookingRepository.existsById(ticketBooking.getTicketId())).thenReturn(false);
@@ -85,7 +85,7 @@ public class TicketBookingServiceTest {
 	@Test
 	public void updateTest() throws ParseException{
 		
-		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "hyderabad", "29-10-2020", 44);
+		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10);		
 		
 	    Mockito.when(ticketBookingRepository.findById(ticketBooking.getTicketId())).thenReturn(Optional.of(ticketBooking));
 		

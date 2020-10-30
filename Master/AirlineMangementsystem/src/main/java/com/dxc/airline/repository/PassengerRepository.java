@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import com.dxc.airline.model.Passenger;
 
-public interface PassengerRepository extends JpaRepository<Passenger, Integer> {
+public interface PassengerRepository extends JpaRepository<Passenger, Long> {
 	 
 	@Query(value = "SELECT * FROM passenger WHERE username = :username", nativeQuery = true)
     List<Passenger> findByUserName(@Param("username") String username);

@@ -47,9 +47,10 @@ public class AdminSecurityController {
 	
 	@PutMapping(path = "AdminSecurity")
 	@ResponseBody
-	public boolean update(@RequestBody AdminSecurity adminSecurity) {
+	public AdminSecurity update(@RequestBody AdminSecurity adminSecurity) {
 		
-		return adminSecurityServiceImplementation.update(adminSecurity) != null;
+		return adminSecurityServiceImplementation.update(adminSecurity);
+		
 	}
 	
 	@DeleteMapping(path = "AdminSecurity/{username}")

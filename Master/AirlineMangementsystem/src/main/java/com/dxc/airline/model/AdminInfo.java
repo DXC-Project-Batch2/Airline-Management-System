@@ -1,6 +1,5 @@
 package com.dxc.airline.model;
 
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,6 +11,8 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Component
 @Entity
@@ -26,8 +27,8 @@ public class AdminInfo {
 	
 	String gender;
 	
-	@NotNull(message = "Please enter in MM/dd/yyyy format")
-	@DateTimeFormat(pattern = "MM/dd/yyyy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@JsonFormat( shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "UTC")
 	Date dob;
 	
 	@NotNull(message = "Mandatory field")
@@ -41,8 +42,8 @@ public class AdminInfo {
 	@NotNull(message = "Mandatory field")
 	long passportnumber;
 	
-	@NotNull(message = "Please enter in MM/dd/yyyy format")
-	@DateTimeFormat(pattern = "MM/dd/yyyy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@JsonFormat( shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "UTC")
 	Date expiry;
 	
 	@NotNull(message = "Mandatory field")

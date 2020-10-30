@@ -42,7 +42,8 @@ public class AdminServiceImplementation implements AdminService<Admin> {
 	@Override
 	public Admin findById(String username) {
 		// TODO Auto-generated method stub
-		return adminRepository.findById(username).orElse(new Admin());
+		return adminRepository.findById(username).get();
+
 	}
 
 	@Override

@@ -34,7 +34,7 @@ public class TicketBookingTest {
 	@Test
 	public void TicketBookingfindAllTest() throws ParseException {
 		when(TicketBookingRepository.findAll()).thenReturn(
-				Stream.of(new TicketBooking(101,"goa", "chennai", "18-10-2020", 44),new TicketBooking(102,"chennai", "goa", "18-10-2020", 44))
+				Stream.of(new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10),new TicketBooking(102, "pasupathi@gmail.com", 102,"chennai", "hyderabad", "29-10-2020", 1))
 						.collect(Collectors.toList()));
 		assertEquals(2, ticketBookingServiceImp.getAll().size());
 	}
@@ -42,14 +42,14 @@ public class TicketBookingTest {
 	@Test
 	public void TicketBookingfindByUsernameTest() throws ParseException {
 		
-		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "goa", "18-10-2020", 44);
-		when(TicketBookingRepository.findById((long) 101)).thenReturn(Optional.of(ticketBooking));
+		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10);		
+		when(TicketBookingRepository.findById((long) 0)).thenReturn(Optional.of(ticketBooking));
 		assertEquals(ticketBooking, ticketBookingServiceImp.findById(ticketBooking.getTicketId()));
 	}
 
 	@Test
 	public void saveTicketBookingTest() throws ParseException {
-		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "goa", "18-10-2020", 44);
+		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10);		
 		when(TicketBookingRepository.save(ticketBooking)).thenReturn(ticketBooking);
 		assertEquals(ticketBooking, ticketBookingServiceImp.add(ticketBooking));
 	}

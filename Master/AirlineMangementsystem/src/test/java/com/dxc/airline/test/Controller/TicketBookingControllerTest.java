@@ -40,11 +40,11 @@ public class TicketBookingControllerTest {
 	@Test
 	public void findbyUsernameTest() throws Exception {
 		
-		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "hyderabad", "29-10-2020", 10);
+		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10);		
 	
 		Mockito.when(ticketBookingServiceImp.findById(ticketBooking.getTicketId())).thenReturn(ticketBooking);
 		
-		String URI = "/TicketBooking/101";
+		String URI = "/TicketBooking/0";
 		
 		RequestBuilder requestBuilder = MockMvcRequestBuilders.get(
 				URI).accept(
@@ -59,8 +59,8 @@ public class TicketBookingControllerTest {
 	@Test
 	public void findAll() throws Exception {
 
-		TicketBooking ticketBooking1 = new TicketBooking(101,"chennai", "hyderabad", "29-10-2020", 10);
-		TicketBooking ticketBooking2 = new TicketBooking(102,"chennai", "hyderabad", "29-10-2020", 10);
+		TicketBooking ticketBooking1 = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 8);		
+		TicketBooking ticketBooking2 = new TicketBooking(102, "rama@gmail.com",102,"chennai", "hyderabad", "29-10-2020", 4);
 	
 		List<TicketBooking> ticketBookings = new ArrayList<>();
 		ticketBookings.add(ticketBooking1);
@@ -84,8 +84,8 @@ public class TicketBookingControllerTest {
 	@Test
 	public void saveTest() throws Exception {
 		
-		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "hyderabad", "29-10-2020", 10);
-	
+		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10);		
+
 		String inputInJson = this.mapToJson(ticketBooking);
 		
 		String URI = "/TicketBooking";
@@ -109,8 +109,8 @@ public class TicketBookingControllerTest {
 	@Test
 	public void updateTest() throws Exception {
 		
-		TicketBooking ticketBooking = new TicketBooking(101,"chennai", "hyderabad", "29-10-2020", 10);
-	
+		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10);		
+
 		String inputInJson = this.mapToJson(ticketBooking);
 		
 		String URI = "/TicketBooking";

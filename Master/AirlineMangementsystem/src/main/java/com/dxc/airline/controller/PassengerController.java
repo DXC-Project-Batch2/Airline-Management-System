@@ -17,8 +17,6 @@ import com.dxc.airline.service.PassengerService;
 @RestController
 public class PassengerController {
 	
-	
-	
 	@Autowired
 	PassengerService service;
 	

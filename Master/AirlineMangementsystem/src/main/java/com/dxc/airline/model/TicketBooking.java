@@ -46,7 +46,6 @@ public class TicketBooking {
 	
 	public TicketBooking(long ticketId,String username,int flightId, String source, String destination,String strdate, int noOfPassengers) throws ParseException {
 		super();
-		this.ticketId = ticketId;
 		this.source = source;
 		this.username = username;
 		this.flightId = flightId;
@@ -56,12 +55,30 @@ public class TicketBooking {
 		this.noOfPassengers = noOfPassengers;
 	}
 
+
+
 	public long getTicketId() {
 		return ticketId;
 	}
 
 	public void setTicketId(long ticketId) {
 		this.ticketId = ticketId;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public int getFlightId() {
+		return flightId;
+	}
+
+	public void setFlightId(int flightId) {
+		this.flightId = flightId;
 	}
 
 	public String getSource() {
@@ -95,23 +112,14 @@ public class TicketBooking {
 	public void setNoOfPassengers(int noOfPassengers) {
 		this.noOfPassengers = noOfPassengers;
 	}
+
+	@Override
+	public String toString() {
+		return "TicketBooking [ticketId=" + ticketId + ", username=" + username + ", flightId=" + flightId + ", source="
+				+ source + ", destination=" + destination + ", date=" + date + ", noOfPassengers=" + noOfPassengers
+				+ "]";
+	}
+
 	
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public int getFlightId() {
-		return flightId;
-	}
-
-	public void setFlightId(int flightId) {
-		this.flightId = flightId;
-	}
-
 	
 }

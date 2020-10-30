@@ -66,6 +66,11 @@ public class Passenger {
 	public void setFlight_id(int flight_id) {
 		this.flight_id = flight_id;
 	}
+	@Override
+	public String toString() {
+		return "Passenger [username=" + username + ", name=" + name + ", gender=" + gender + ", age=" + age
+				+ ", govt_id=" + govt_id + ", flight_id=" + flight_id + "]";
+	}
 	
 
 	

@@ -11,9 +11,9 @@ public interface PassengerService {
 	
 	public Passenger update(Passenger thePassenger);
 	
-	public Passenger findById(int id);
+	public Passenger findById(long id);
 
-	public void deleteById(int id);
+	public void deleteById(long id);
 	
 	
 	public List<Passenger> findByUserName(String username);

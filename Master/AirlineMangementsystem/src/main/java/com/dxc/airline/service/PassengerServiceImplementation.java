@@ -1,9 +1,10 @@
 package com.dxc.airline.service;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import com.dxc.airline.model.Passenger;
 
@@ -49,19 +50,23 @@ public class PassengerServiceImplementation implements PassengerService{
 	@Override
 	public Passenger update(Passenger thePassenger) {
 		// TODO Auto-generated method stub
+		Optional<Passenger> present = passengerRepository.findById(thePassenger.getGovt_id());
+		if(present.isPresent()) {
+		return passengerRepository.save(thePassenger);
+		}
 		return null;
 	}
 
 	@Override
-	public Passenger findById(int id) {
+	public Passenger findById(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return passengerRepository.findById(id).get();
 	}
 
 	@Override
-	public void deleteById(int id) {
+	public void deleteById(long id) {
 		// TODO Auto-generated method stub
-		
+		passengerRepository.deleteById(id);
 	}
 
 }

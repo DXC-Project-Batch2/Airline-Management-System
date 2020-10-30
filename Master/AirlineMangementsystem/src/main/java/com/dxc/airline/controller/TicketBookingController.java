@@ -55,9 +55,10 @@ public class TicketBookingController {
 	@CrossOrigin
 	@PutMapping(path = "TicketBooking")
 	@ResponseBody
-	public boolean update(@RequestBody TicketBooking ticketBooking) {
+	public TicketBooking update(@RequestBody TicketBooking ticketBooking) {
 		
-		return ticketBookingServiceImp.update(ticketBooking) != null;
+		return ticketBookingServiceImp.update(ticketBooking);
+		
 	}
 	
 	@CrossOrigin

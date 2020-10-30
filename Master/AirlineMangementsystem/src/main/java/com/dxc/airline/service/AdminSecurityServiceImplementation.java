@@ -33,6 +33,7 @@ public class AdminSecurityServiceImplementation  implements AdminSecurityService
 
 	@Override
 	public AdminSecurity update(AdminSecurity e) {
+		
 		Optional<AdminSecurity> adminpresent = adminSecurityRepository.findById(e.getUsername());
 		if(adminpresent.isPresent()) {
 		return adminSecurityRepository.save(e);

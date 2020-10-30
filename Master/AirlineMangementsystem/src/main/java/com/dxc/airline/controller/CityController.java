@@ -46,9 +46,10 @@ public class CityController {
 	
 	@PutMapping(path = "city")
 	@ResponseBody
-	public boolean update(@RequestBody City city) {
+	public City update(@RequestBody City city) {
 		
-		return cityServiceImplementation.update(city) != null;
+		return cityServiceImplementation.update(city);
+		
 	}
 	
 	@DeleteMapping(path = "city/{username}")

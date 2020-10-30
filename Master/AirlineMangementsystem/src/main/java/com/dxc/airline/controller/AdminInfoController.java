@@ -41,16 +41,18 @@ public class AdminInfoController {
 	
 	@PostMapping(path = "admininfo" )
 	@ResponseBody
-	public boolean save(@RequestBody AdminInfo adminInfo) {
+	public AdminInfo save(@RequestBody AdminInfo adminInfo) {
 		
-		return adminInfoServiceImplementation.save(adminInfo) != null;
+		return adminInfoServiceImplementation.save(adminInfo);
+		
 	}
 	
 	@PutMapping(path = "admininfo")
 	@ResponseBody
-	public boolean update(@RequestBody AdminInfo adminInfo) {
+	public AdminInfo update(@RequestBody AdminInfo adminInfo) {
 		
-		return adminInfoServiceImplementation.update(adminInfo) != null;
+		return adminInfoServiceImplementation.update(adminInfo);
+		
 	}
 	
 	@DeleteMapping(path = "admininfo/{username}")
