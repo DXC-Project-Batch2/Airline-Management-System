@@ -99,5 +99,63 @@ public class AirportServiceTest {
 		assertThat(airportServiceImp.update(airport)).isEqualTo(airport);
 		
 	}
-	
+
+	//Notsave
+		@Test
+		public void NotsaveTest() throws ParseException{
+
+			Airport airport = null;
+			
+		    Mockito.when(airportRepository.save(airport)).thenReturn(airport);
+		    
+		    assertThat(airportServiceImp.add(airport)).isEqualTo(airport);
+		
+		}
+		
+		
+		//NotfindbyId
+		@Test
+		public void NotfindByIdTest() throws ParseException{
+			
+			Airport airport = new Airport("c101", "vijayawada international airport", "NH16, Gannavaram");
+			Mockito.when(airportRepository.findById("c102")).thenReturn(Optional.of(airport));
+		    assertThat(airportServiceImp.findBycode("c102")).isEqualTo(airport);
+		    
+		}
+		
+		//NotfindAll
+		@Test
+		public void NotfindallTest() throws ParseException{
+
+			Airport airport1 = null;
+			Airport airport2 = null;
+			Airport airport3 = null;
+			
+			List<Airport> airports = new ArrayList<>();
+			airports.add(airport1);
+			airports.add(airport2);
+			airports.add(airport3);
+			
+			Mockito.when(airportRepository.findAll()).thenReturn(airports);
+			
+			assertThat(airportServiceImp.findAll()).isEqualTo(airports);
+		}
+				
+		//Notupdate
+		@Test
+		public void NotupdateTest() throws ParseException{
+			
+			Airport airport = new Airport("c101", "vijayawada international airport", "NH16, Gannavaram");
+			
+		    Mockito.when(airportRepository.findById("c102")).thenReturn(Optional.of(airport));
+			
+		    airport.setAirportLocation("Devanahalli, Bengaluru");
+		    airport.setAirportName("Bandalore international airport");
+		 
+			Mockito.when(airportRepository.save(airport)).thenReturn(airport);
+			
+			assertThat(airportServiceImp.update(airport)).isNotEqualTo(airport);
+			
+		}
+
 }

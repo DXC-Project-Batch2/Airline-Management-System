@@ -19,15 +19,18 @@ public class AdminServiceImplementation implements AdminService<Admin> {
 	public List<Admin> findAll() {
 		// TODO Auto-generated method stub
 		
-		System.out.println(adminRepository.findAll());
 		return adminRepository.findAll();
+	
 	}
 
 	@Override
 	public Admin save(Admin e) {
 		// TODO Auto-generated method stub
+		if(e!=null) {
 		return adminRepository.save(e);
 		}
+		return null;
+	}
 
 	@Override
 	public Admin update(Admin e) {
@@ -42,7 +45,12 @@ public class AdminServiceImplementation implements AdminService<Admin> {
 	@Override
 	public Admin findById(String username) {
 		// TODO Auto-generated method stub
-		return adminRepository.findById(username).get();
+		Optional<Admin> admin =adminRepository.findById(username);
+		if(admin.isPresent())
+		{
+			return admin.get();
+		}
+		return null;
 
 	}
 
@@ -55,7 +63,11 @@ public class AdminServiceImplementation implements AdminService<Admin> {
 	@Override
 	public Admin findByUsernameAndPassword(String username, String password) {
 		// TODO Auto-generated method stub
-		return adminRepository.findByUsernameAndPassword(username, password);
+		if(username!=null && password!=null) {
+			return adminRepository.findByUsernameAndPassword(username, password);
+		}
+			return null;
+	
 	}
 	
 	

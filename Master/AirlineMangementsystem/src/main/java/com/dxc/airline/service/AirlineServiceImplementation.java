@@ -36,7 +36,8 @@ public class AirlineServiceImplementation implements AirlineService {
 		if (isValid != null) {
 
 			return airlineRepository.save(theAirline);
-		} else {
+		} 
+		else {
 
 			throw new AirlineException("Airline addition failed, try again...");
 		}
@@ -92,14 +93,21 @@ public class AirlineServiceImplementation implements AirlineService {
 	@Override
 	public List<AirLine> findByCities(String source, String destination) {
 		List<AirLine> theAirline = airlineRepository.findByCities(source, destination);
-		return theAirline;
+		if(theAirline!=null)
+		{
+			return theAirline;
+		}
+		return null;
 	}
 	
 	@Override
 	public List<AirLine> findByUser(String source, String destination,String date) {
-		System.out.println(date);
 		List<AirLine> theAirline = airlineRepository.findByUser(source, destination,date);
-		return theAirline;
+		if(theAirline!=null)
+		{
+			return theAirline;
+		}
+		return null;
 	}
 
 }

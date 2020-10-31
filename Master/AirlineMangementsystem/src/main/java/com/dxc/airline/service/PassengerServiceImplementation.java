@@ -23,28 +23,42 @@ public class PassengerServiceImplementation implements PassengerService{
 	@Override
 	@Transactional
 	public List<Passenger> findAll() {
-		return passengerRepository.findAll();
+		List<Passenger> thePassenger = passengerRepository.findAll();
+		if(thePassenger!=null)
+		{
+		return thePassenger;
+		}
+		return null;
 	}
 
 	@Override
 	@Transactional
 	public Passenger save(Passenger thePassenger)  {
 
-		
+			if(thePassenger!=null) {
 			return passengerRepository.save(thePassenger);
-		
+			}
+			return null;
 	}
 	
 	@Override
 	public List<Passenger> findByUserName(String username) {
 		List<Passenger> thePassenger = passengerRepository.findByUserName(username);
+		if(thePassenger!=null)
+		{
 		return thePassenger;
+		}
+		return null;
 	}
 
 	@Override
 	public List<Passenger> findByUser(String username, int flightId) {
 		List<Passenger> thePassenger = passengerRepository.findByUser(username, flightId);
+		if(thePassenger!=null)
+		{
 		return thePassenger;
+		}
+		return null;
 	}
 
 	@Override
@@ -60,7 +74,11 @@ public class PassengerServiceImplementation implements PassengerService{
 	@Override
 	public Passenger findById(long id) {
 		// TODO Auto-generated method stub
-		return passengerRepository.findById(id).get();
+		Optional<Passenger> present = passengerRepository.findById(id);
+		if(present.isPresent()) {
+		return present.get();
+		}
+		return null;
 	}
 
 	@Override

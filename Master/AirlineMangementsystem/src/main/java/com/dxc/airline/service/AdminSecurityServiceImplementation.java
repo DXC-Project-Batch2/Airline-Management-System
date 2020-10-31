@@ -18,12 +18,20 @@ public class AdminSecurityServiceImplementation  implements AdminSecurityService
 	@Override
 	public AdminSecurity save(AdminSecurity e) {
 
-		return adminSecurityRepository.save(e);
-	}
+		if(e!=null)
+		{
+		return adminSecurityRepository.save(e);	
+		}
+		return null;	}
 
 	@Override
 	public AdminSecurity findByid(String username) {
-	return adminSecurityRepository.findById(username).orElse(new AdminSecurity());
+		Optional<AdminSecurity> adminSecurity =adminSecurityRepository.findById(username);
+		if(adminSecurity.isPresent())
+		{
+			return adminSecurity.get();
+		}
+		return null;
 	}
 
 	@Override

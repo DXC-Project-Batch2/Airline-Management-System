@@ -54,7 +54,7 @@ public class AirlineController {
 	@GetMapping(path="/airline/{id}")
 	public AirLine findById(@PathVariable("id")int id) {
 		
-AirLine theAirline = service.findById(id);
+		AirLine theAirline = service.findById(id);
 		
 		if (theAirline == null) {
 			throw new RuntimeException("flight not found - ");

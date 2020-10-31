@@ -3,6 +3,7 @@ package com.dxc.airline.test.Service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertFalse;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -97,4 +98,39 @@ public class AdminSecurityServiceTest {
 		
 	}
 	
+	//negative cases
+	
+	@Test
+	public void NotsaveTest() throws ParseException{
+		
+		AdminSecurity adminSecurity=null;
+	
+		Mockito.when(adminSecurityRepository.save(adminSecurity)).thenReturn(adminSecurity);
+    
+		assertThat(adminSecurityServiceImplementation.save(adminSecurity)).isEqualTo(adminSecurity);
+		}
+	
+	@Test
+	public void findByUsername_NoFoundTest() throws ParseException{
+		AdminSecurity adminSecurity = new AdminSecurity("pasupathi@dxc.com", "what is your favorite number?","96");
+	    Mockito.when(adminSecurityRepository.findById("anil@dxc.com")).thenReturn(Optional.of(adminSecurity));
+	    assertThat(adminSecurityServiceImplementation.findByid("anil@dxc.com")).isEqualTo(adminSecurity);
+	}
+
+	@Test
+	public void NotupdateTest() throws ParseException{
+		
+		AdminSecurity adminSecurity = new AdminSecurity("pasupathi@dxc.com", "what is your favorite number?","96");
+				
+		Mockito.when(adminSecurityRepository.findById("anil@dxc.com")).thenReturn(Optional.of(adminSecurity));
+		
+		adminSecurity.setSecurityQuestion("what is your favorite place?");
+		adminSecurity.setAnswer("tadepalligudem");
+		
+		Mockito.when(adminSecurityRepository.save(adminSecurity)).thenReturn(adminSecurity);
+		
+		assertThat(adminSecurityServiceImplementation.update(adminSecurity)).isNotEqualTo(adminSecurity);
+		
+	}
+
 }

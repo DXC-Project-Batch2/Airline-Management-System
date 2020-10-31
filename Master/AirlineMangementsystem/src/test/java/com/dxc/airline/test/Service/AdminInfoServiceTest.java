@@ -96,4 +96,37 @@ public class AdminInfoServiceTest {
 		
 	}
 	
+	//negative cases
+	
+		@Test
+		public void NotsaveTest() throws ParseException{
+			AdminInfo adminInfo=null;
+		
+			Mockito.when(adminInfoRepository.save(adminInfo)).thenReturn(adminInfo);
+	    
+			assertThat(adminInfoServiceImplementation.save(adminInfo)).isEqualTo(adminInfo);		}
+		
+		@Test
+		public void findByUsername_NoFoundTest() throws ParseException{
+			AdminInfo adminInfo = new AdminInfo("pasupathi", "aduri", "male", "18-07-1999", "bhadra", "Pasupathi Nadh", 12345678, "22-09-2099", "3-44", "saliepeta", "saliepeta", "india", "andhra pradesh", "tadepalligudem", 534101, "null", "9003299897", "pasupathi@dxc.com");		
+		    Mockito.when(adminInfoRepository.findById("anil@dxc.com")).thenReturn(Optional.of(adminInfo));
+		    assertThat(adminInfoServiceImplementation.findByUsername("anil@dxc.com")).isEqualTo(adminInfo);
+		}
+
+		@Test
+		public void NotupdateTest() throws ParseException{
+			
+			AdminInfo adminInfo = new AdminInfo("pasupathi", "aduri", "male", "18-07-1999", "bhadra", "Pasupathi Nadh", 12345678, "22-09-2099", "3-44", "saliepeta", "saliepeta", "india", "andhra pradesh", "tadepalligudem", 534101, "null", "9003299897", "pasupathi@dxc.com");	
+			
+			Mockito.when(adminInfoRepository.findById("anil@dxc.com")).thenReturn(Optional.of(adminInfo));
+			
+		    adminInfo.setFathername("Bhadra Rao");
+		    adminInfo.setLastname("Nadh Aduri");
+			
+			Mockito.when(adminInfoRepository.save(adminInfo)).thenReturn(adminInfo);
+			
+			assertThat(adminInfoServiceImplementation.update(adminInfo)).isNotEqualTo(adminInfo);
+			
+		}
+
 }

@@ -40,7 +40,7 @@ public class AdminControllerTest {
 	@Test
 	public void findbyUsernameTest() throws Exception {
 		
-		Admin admin = new Admin("pasupathi@dxc.com", "pasupathi");
+		Admin admin = new Admin("pasupathi@dxc.com", "Pasupathi123@");
 		
 		Mockito.when(adminServiceImplementation.findById(admin.getUsername())).thenReturn(admin);
 		
@@ -59,9 +59,9 @@ public class AdminControllerTest {
 	@Test
 	public void findAll() throws Exception {
 
-		Admin admin1 = new Admin("pasupathi@dxc.com", "pasupathi");		
+		Admin admin1 = new Admin("pasupathi@dxc.com", "Pasupathi123@");		
 		
-		Admin admin2 = new Admin("krishna@dxc.com", "krishna");		
+		Admin admin2 = new Admin("krishna@dxc.com", "Krishna123@");		
 		
 		List<Admin> admins = new ArrayList<>();
 		admins.add(admin1);
@@ -85,7 +85,7 @@ public class AdminControllerTest {
 	@Test
 	public void saveTest() throws Exception {
 		
-		Admin admin = new Admin("pasupathi@dxc.com", "pasupathi");
+		Admin admin = new Admin("pasupathi@dxc.com", "Pasupathi@123");
 		
 		String inputInJson = this.mapToJson(admin);
 		
@@ -110,7 +110,7 @@ public class AdminControllerTest {
 	@Test
 	public void updateTest() throws Exception {
 		
-		Admin admin = new Admin("pasupathi@dxc.com", "pasupathi");
+		Admin admin = new Admin("pasupathi@dxc.com", "Pasupathi123@");
 		
 		String inputInJson = this.mapToJson(admin);
 		
@@ -161,11 +161,11 @@ public class AdminControllerTest {
 	@Test
 	public void adminLoginTest() throws Exception {
 		
-		Admin admin = new Admin("pasupathi@dxc.com", "pasupathi");
+		Admin user = new Admin("pasupathi@dxc.com", "Pasupathi123@");
 		
-		Mockito.when(adminServiceImplementation.findByUsernameAndPassword("pasupathi@dxc.com", "pasupathi")).thenReturn(admin);
+		Mockito.when(adminServiceImplementation.findByUsernameAndPassword("pasupathi@dxc.com", "Pasupathi123@")).thenReturn(user);
 		
-		String inputInJson = this.mapToJson(admin);
+		String inputInJson = this.mapToJson(user);
 		
 		String URI = "/adminLogin";
 		

@@ -6,6 +6,7 @@ import static org.junit.Assert.assertFalse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -126,5 +127,102 @@ public class PassengerServiceTest {
 		assertThat(passengerServiceImplementation.update(passenger)).isEqualTo(passenger);
 		
 	}
+
+	//negative cases
 	
+	//Notsave
+		@Test
+		public void NotsaveTest(){
+
+			Passenger passenger = null;
+
+		    Mockito.when(passengerRepository.save(passenger)).thenReturn(passenger);
+		    
+		    assertThat(passengerServiceImplementation.save(passenger)).isEqualTo(passenger);
+		
+		}
+		
+		
+		//NotfindbyId
+		@Test
+		public void NotfindByIdTest(){
+			
+			Passenger passenger = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+			Random random = new Random(); 
+			long id=random.nextLong();
+			Mockito.when(passengerRepository.findById(id)).thenReturn(Optional.of(passenger));
+		    assertThat(passengerServiceImplementation.findById(id)).isEqualTo(passenger);
+		}
+		
+		//NotfindAll
+		@Test
+		public void NotfindallTest(){
+
+			Passenger passenger1 = null;
+			Passenger passenger2 = null;
+			
+			List<Passenger> passengers = new ArrayList<>();
+			passengers.add(passenger1);
+			passengers.add(passenger2);
+			
+			Mockito.when(passengerRepository.findAll()).thenReturn(passengers);
+			
+			assertThat(passengerServiceImplementation.findAll()).isEqualTo(passengers);
+		}
+
+		//NotfindByUserName
+			@Test
+			public void NotfindByUserNameTest(){
+
+				Passenger passenger1 = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+				Passenger passenger2 = new Passenger("anil@gmail.com", "anil kumar", "male", 22,11111, 101);
+				
+				List<Passenger> passengers = new ArrayList<>();
+				passengers.add(passenger1);
+				passengers.add(passenger2);
+				
+				Mockito.when(passengerRepository.findByUserName("satish@gmail.com")).thenReturn(passengers);
+				
+				assertThat(passengerServiceImplementation.findByUserName("satish@gmail.com")).isEqualTo(passengers);
+			}
+
+			//NotfindByUser
+			@Test
+			public void NotfindByUserTest(){
+
+				Passenger passenger1 = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+				Passenger passenger2 = new Passenger("anil@gmail.com", "anil kumar", "male", 22,11111, 101);
+				
+				List<Passenger> passengers = new ArrayList<>();
+				passengers.add(passenger1);
+				passengers.add(passenger2);
+				
+				Random random = new Random(); 
+				int id=random.nextInt();
+				
+				Mockito.when(passengerRepository.findByUser("satish@gmail.com", id)).thenReturn(passengers);
+				
+				assertThat(passengerServiceImplementation.findByUser("satish@gmail.com", id)).isEqualTo(passengers);
+			}
+		
+		//Notupdate
+		@Test
+		public void NotupdateTest(){
+			
+			Passenger passenger = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+			
+			Random random = new Random(); 
+			long id=random.nextLong();
+			
+			
+		    Mockito.when(passengerRepository.findById(id)).thenReturn(Optional.of(passenger));
+			
+			passenger.setAge(25);
+			
+			Mockito.when(passengerRepository.save(passenger)).thenReturn(passenger);
+			
+			assertThat(passengerServiceImplementation.update(passenger)).isNotEqualTo(passenger);
+			
+		}
+
 }

@@ -16,17 +16,31 @@ public class CityServiceImplementation implements CityService<City>{
 	
 	@Override
 	public City save(City e) {
+		if(e!=null) {
 		return cityRepository.save(e);
 		}
+		return null;
+	}
 
 	@Override
 	public City findBycity(String city) {
-		return cityRepository.findById(city).orElse(new City());
- 	}
+		
+		Optional<City> cityCheck = cityRepository.findById(city);
+		if(cityCheck.isPresent())
+		{
+			return cityCheck.get();
+		}
+		return null;
+	 	}
 
 	@Override
 	public List<City> findAll() {
-		return cityRepository.findAll();
+		List<City> cities = cityRepository.findAll();
+		if(cities!=null)
+		{
+			return cities;
+		}
+		return null;
 	}
 
 	@Override

@@ -17,16 +17,19 @@ public class AirportServiceImp implements IAirportService {
 	@Override
 	public Airport add(Airport airport) {
 		
+		if(airport!=null) {
 		return repo.save(airport);
+		}
+		return null;
 	}
 
 	@Override
 	public Airport update(Airport airport) {
 		Optional<Airport> findbyId = repo.findById(airport.getAirportCode());
 		if(findbyId.isPresent()) {
-			repo.save(airport);
+			return repo.save(airport);
 		}
-		return airport;
+		return null;
 	}
 
 	@Override
@@ -39,15 +42,14 @@ public class AirportServiceImp implements IAirportService {
 	public Airport findBycode(String airportcode) {
 		
 		Optional<Airport> res = repo.findById(airportcode);
-		Airport airport = null;
 		if (res.isPresent()) {
-			airport = res.get();
+			return res.get();
 		}
-		else {
-			throw new RuntimeException("Did not find airport ");
-		}
+//		else {
+//			throw new RuntimeException("Did not find airport ");
+//		}
 		
-		return airport;
+		return null;
 	}
 	
 	public void delete(String airportcode) {

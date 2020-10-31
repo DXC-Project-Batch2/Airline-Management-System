@@ -3,6 +3,7 @@ package com.dxc.airline.test.Service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertFalse;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -96,5 +97,40 @@ public class UserSecurityServiceTest {
 		assertThat(userSecurityServiceImp.update(userSecurity)).isEqualTo(userSecurity);
 		
 	}
+	
+	@Test
+	public void NotsaveTest() throws ParseException{
+		
+		UserSecurity userSecurity = null;
+		
+		Mockito.when(userSecurityRepository.save(userSecurity)).thenReturn(userSecurity);
+    
+		assertThat(userSecurityServiceImp.add(userSecurity)).isEqualTo(userSecurity);
+		}
+	
+	@Test
+	public void findByUsername_NoFoundTest() throws ParseException{
+		UserSecurity userSecurity = new UserSecurity("pasupathi@gmail.com", "what is your favorite number?","96");
+		Mockito.when(userSecurityRepository.findById("anil@dxc.com")).thenReturn(Optional.of(userSecurity));
+	    assertThat(userSecurityServiceImp.findByUsername("anil@dxc.com")).isEqualTo(userSecurity);
+	}
+
+	@Test
+	public void NotupdateTest() throws ParseException{
+		
+		UserSecurity userSecurity = new UserSecurity("pasupathi@gmail.com", "what is your favorite number?","96");
+				
+		Mockito.when(userSecurityRepository.findById("anil@dxc.com")).thenReturn(Optional.of(userSecurity));
+		
+		userSecurity.setSecurityQuestion("what is your favorite place?");
+		userSecurity.setAnswer("tadepalligudem");
+		
+		Mockito.when(userSecurityRepository.save(userSecurity)).thenReturn(userSecurity);
+		
+		assertThat(userSecurityServiceImp.update(userSecurity)).isNotEqualTo(userSecurity);
+		
+	}
+
+
 	
 }

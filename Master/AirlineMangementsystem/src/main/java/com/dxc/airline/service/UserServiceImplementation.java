@@ -31,15 +31,22 @@ public class UserServiceImplementation implements UserService{
 	@Override
 	@Transactional
 	public User save(User theUser) {
-		
-	return userRepository.save(theUser);
 	
+	if(theUser!=null) {
+	return userRepository.save(theUser);
+	}
+	return null;
 	}
 
 	@Override
 	@Transactional
 	public User findById(String username) {
-		return userRepository.findById(username).orElse(new User());
+		Optional<User> user =userRepository.findById(username);
+		if(user.isPresent())
+		{
+			return user.get();
+		}
+		return null;
 	}
 
 	@Override

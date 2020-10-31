@@ -126,4 +126,76 @@ public class AirLineServiceTest {
 		
 	}
 	
-}
+	//negative cases
+	
+		//NotfindbyId
+		@Test
+		public void NotfindByIdTest() throws ParseException{
+			
+			AirLine airLine = new AirLine(110, "airindia","chennai", "goa", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 10000, 44,0);
+			Mockito.when(airLineRepository.findById(111)).thenReturn(Optional.of(airLine));
+		    assertThat(airlineServiceImplementation.findById(111)).isEqualTo(airLine);
+		    
+		}
+		
+		//NotfindByCities
+		@Test
+		public void NotfindByCitiesTest() throws ParseException{
+			
+			AirLine airLine1 = new AirLine(110, "airindia","chennai", "goa", "18-07-2021", "150 mins", "2:00 AM", "4:30 AM", 3000, 44,0);
+			AirLine airLine2 = new AirLine(111, "airindia","chennai", "goa", "18-07-2021", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);
+			List<AirLine> airLines = new ArrayList<>();
+			airLines.add(airLine1);
+			airLines.add(airLine2);
+			Mockito.when(airLineRepository.findByCities("goa","chennai")).thenReturn(airLines);
+		    assertThat(airlineServiceImplementation.findByCities("goa","chennai")).isEqualTo(airLines);
+		    
+		}
+		
+		//NotfindByUser
+		@Test
+		public void NotfindByUserTest() throws ParseException{
+			
+			AirLine airLine1 = new AirLine(110, "airindia","chennai", "goa", "18-07-2021", "150 mins", "2:00 AM", "4:30 AM", 3000, 44,0);
+			AirLine airLine2 = new AirLine(111, "airindia","chennai", "goa", "18-07-2021", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);
+			List<AirLine> airLines = new ArrayList<>();
+			airLines.add(airLine1);
+			airLines.add(airLine2);
+			Mockito.when(airLineRepository.findByUser("goa","chennai", "18-07-2021")).thenReturn(airLines);
+		    assertThat(airlineServiceImplementation.findByUser("goa","chennai", "18-07-2021")).isEqualTo(airLines);
+		    
+		}
+		
+		//NotfindAll
+		@Test
+		public void NotfindallTest() throws ParseException{
+
+			AirLine airLine1 = null;
+			
+			AirLine airLine2 = null;
+			
+			List<AirLine> airLines = new ArrayList<>();
+			airLines.add(airLine1);
+			airLines.add(airLine2);
+			
+			Mockito.when(airLineRepository.findAll()).thenReturn(airLines);
+			
+			assertThat(airlineServiceImplementation.findAll()).isEqualTo(airLines);
+		}
+				
+		//Notupdate
+		@Test
+		public void NotupdateTest() throws ParseException{
+			
+			AirLine airLine = new AirLine(110, "airindia","chennai", "goa", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 10000, 44,0);
+			
+		    Mockito.when(airLineRepository.findById(111)).thenReturn(Optional.of(airLine));
+			
+		    airLine.setPrize(2000);
+		    
+			Mockito.when(airLineRepository.save(airLine)).thenReturn(airLine);
+			
+			assertThat(airlineServiceImplementation.update(airLine)).isNotEqualTo(airLine);
+			
+		}
+	}

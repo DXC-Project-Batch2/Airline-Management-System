@@ -20,13 +20,21 @@ public class UserSecurityServiceImp implements IUserSecurityService {
 	@Transactional
 	public UserSecurity add(UserSecurity security) {
 		
-		return repo.save(security);
+		if(security!=null)
+		{
+			return repo.save(security);			
+		}
+		return null;
 	}
 
 	@Override
 	@Transactional
 	public UserSecurity findByUsername(String username) {
-		return repo.findById(username).orElse(new UserSecurity());
+		Optional<UserSecurity> present = repo.findById(username);
+		if(present.isPresent()) {
+			return present.get();
+		}
+		return null;
 	}
 
 	@Override

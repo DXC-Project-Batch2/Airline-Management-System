@@ -28,7 +28,7 @@ public class AdminRepositoryTest {
 	//save
 	@Test
 	public void testSaveAdmin(){
-		Admin admin = new Admin("pasupathi@dxc.com", "pasupathi");
+		Admin admin = new Admin("pasupathi@dxc.com", "Pasupathi@123");
 		Admin savedInDb = entityManager.persist(admin);
 		Admin getFromDatabase = adminRepository.getOne(savedInDb.getUsername());
 		
@@ -38,7 +38,7 @@ public class AdminRepositoryTest {
 	//findbyid
 	@Test
 	public void testGetAdminById(){
-		Admin admin = new Admin("pasupathi@dxc.com", "pasupathi");
+		Admin admin = new Admin("pasupathi@dxc.com", "Pasupathi123@");
 		//Save admin in DB
 		Admin adminSavedInDb = entityManager.persist(admin);
 		
@@ -51,8 +51,8 @@ public class AdminRepositoryTest {
 	@Test
 	public void testGetAllAdmins(){
 		
-		Admin admin1 = new Admin("pasupathi@dxc.com", "pasupathi");		
-		Admin admin2 = new Admin("anil@dxc.com", "anil");
+		Admin admin1 = new Admin("pasupathi@dxc.com", "#Pasupathi1234");		
+		Admin admin2 = new Admin("anil@dxc.com", "@#$Anil1234");
 		
 		//Save both admin in DB
 		entityManager.persist(admin1);
@@ -66,7 +66,7 @@ public class AdminRepositoryTest {
 	@Test
 	public void testDeleteAdminById(){
 	
-		Admin admin = new Admin("pasupathi@dxc.com", "pasupathi");		
+		Admin admin = new Admin("pasupathi@dxc.com", "Pasupat@hi123");
 		
 		//Save admin in DB
 		entityManager.persist(admin);
@@ -82,17 +82,17 @@ public class AdminRepositoryTest {
 	@Test
 	public void testUpdateAdmin(){
 		
-		Admin admin = new Admin("pasupathi@dxc.com", "pasupathi");				
+		Admin admin = new Admin("pasupathi@dxc.com", "Pasupathi123@");
 		
 		//save admin info in DB
 		entityManager.persist(admin);
 		
 		Admin getFromDb = adminRepository.findById(admin.getUsername()).get();
 
-		getFromDb.setPassword("pasupathi143");
+		getFromDb.setPassword("@Pasupathi143");
 		entityManager.persist(getFromDb);
 		
-		assertThat(getFromDb.getPassword()).isEqualTo("pasupathi143");
+		assertThat(getFromDb.getPassword()).isEqualTo("@Pasupathi143");
 	}
 	
 }

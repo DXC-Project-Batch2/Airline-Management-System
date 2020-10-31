@@ -17,7 +17,11 @@ public class AdminInfoServiceImplementation implements AdminInfoService<AdminInf
 	@Override
 	public AdminInfo save(AdminInfo e) {
 			
+		if(e!=null)
+		{
 		return adminInfoRepository.save(e);	
+		}
+		return null;
 	}
 
 	@Override

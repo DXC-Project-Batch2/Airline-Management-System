@@ -24,7 +24,11 @@ public class UserInfoServiceImplementation implements UserInfoService<UserInfo> 
 	@Override
 	public UserInfo save(UserInfo e) {
 		// TODO Auto-generated method stub
-		return userInfoRepository.save(e);
+		if(e!=null)
+		{
+			return userInfoRepository.save(e);
+		}
+		return null;
 	}
 	
 	@Override

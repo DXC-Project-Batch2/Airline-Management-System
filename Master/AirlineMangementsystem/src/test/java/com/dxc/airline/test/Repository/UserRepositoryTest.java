@@ -29,7 +29,7 @@ public class UserRepositoryTest {
 	//save
 	@Test
 	public void testSaveUser(){
-		User user = new User("pasupathi@gmail.com", "pasupathi");
+		User user = new User("pasupathi@gmail.com", "Pasupathi123@");
 		User savedInDb = entityManager.persist(user);
 		User getFromDatabase = userRepository.getOne(savedInDb.getUsername());
 		
@@ -39,7 +39,7 @@ public class UserRepositoryTest {
 	//findbyid
 	@Test
 	public void testGetUserById(){
-		User user = new User("pasupathi@gmail.com", "pasupathi");
+		User user = new User("pasupathi@gmail.com", "Pasupathi123@");
 		//Save user in DB
 		User userSavedInDb = entityManager.persist(user);
 		
@@ -52,8 +52,8 @@ public class UserRepositoryTest {
 	@Test
 	public void testGetAllUsers(){
 		
-		User user1 = new User("pasupathi@gmail.com", "pasupathi");		
-		User user2 = new User("anil@gmail.com", "anil");
+		User user1 = new User("pasupathi@gmail.com", "pasupath123A@i");		
+		User user2 = new User("anil@gmail.com", "an111@Ail");
 		
 		//Save both user in DB
 		entityManager.persist(user1);
@@ -67,7 +67,7 @@ public class UserRepositoryTest {
 	@Test
 	public void testDeleteUserById(){
 	
-		User user = new User("pasupathi@gmail.com", "pasupathi");		
+		User user = new User("pasupathi@yahoo.com", "Pasupathi123@");
 		
 		//Save user in DB
 		entityManager.persist(user);
@@ -83,17 +83,17 @@ public class UserRepositoryTest {
 	@Test
 	public void testUpdateUser(){
 		
-		User user = new User("pasupathi@dxc.com", "pasupathi");				
+		User user = new User("pasupathi@gmail.com", "Pasupathi123@");
 		
 		//save user info in DB
 		entityManager.persist(user);
 		
 		User getFromDb = userRepository.findById(user.getUsername()).get();
 
-		getFromDb.setPassword("pasupathi143");
+		getFromDb.setPassword("pasuPathi143@");
 		entityManager.persist(getFromDb);
 		
-		assertThat(getFromDb.getPassword()).isEqualTo("pasupathi143");
+		assertThat(getFromDb.getPassword()).isEqualTo("pasuPathi143@");
 	}
 	
 }

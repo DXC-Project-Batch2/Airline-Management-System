@@ -41,7 +41,7 @@ public class UserControllerTest {
 	@Test
 	public void findbyUsernameTest() throws Exception {
 		
-		User user = new User("pasupathi@gmail.com", "pasupathi");
+		User user = new User("pasupathi@gmail.com", "Pasupathi123@");
 		
 		Mockito.when(userServiceImplementation.findById(user.getUsername())).thenReturn(user);
 		
@@ -60,9 +60,9 @@ public class UserControllerTest {
 	@Test
 	public void findAll() throws Exception {
 
-		User user1 = new User("pasupathi@gmail.com", "pasupathi");		
+		User user1 = new User("pasupathi@gmail.com", "Pasupathi123@");		
 		
-		User user2 = new User("krishna@gmail.com", "krishna");		
+		User user2 = new User("krishna@gmail.com", "krishnA11@");		
 		
 		List<User> users = new ArrayList<>();
 		users.add(user1);
@@ -86,7 +86,7 @@ public class UserControllerTest {
 	@Test
 	public void saveTest() throws Exception {
 		
-		User user = new User("pasupathi@gmail.com", "pasupathi");
+		User user = new User("pasupathi@gmail.com", "Pasupathi123@");
 		
 		String inputInJson = this.mapToJson(user);
 		
@@ -111,7 +111,7 @@ public class UserControllerTest {
 	@Test
 	public void updateTest() throws Exception {
 		
-		User user = new User("pasupathi@gmail.com", "pasupathi");
+		User user = new User("pasupathi@gmail.com", "Pasupathi123@");
 		
 		String inputInJson = this.mapToJson(user);
 		
@@ -162,9 +162,9 @@ public class UserControllerTest {
 	@Test
 	public void userLoginTest() throws Exception {
 		
-		User user = new User("pasupathi@gmail.com", "pasupathi");
+		User user = new User("pasupathi@gmail.com", "Pasupathi123@");
 		
-		Mockito.when(userServiceImplementation.findByUsernameAndPassword("pasupathi@gmail.com", "pasupathi")).thenReturn(user);
+		Mockito.when(userServiceImplementation.findByUsernameAndPassword("pasupathi@gmail.com", "Pasupathi123@")).thenReturn(user);
 		
 		String inputInJson = this.mapToJson(user);
 		

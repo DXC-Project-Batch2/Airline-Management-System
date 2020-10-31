@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dxc.airline.model.Admin;
-import com.dxc.airline.model.User;
 import com.dxc.airline.service.AdminServiceImplementation;
 
 @RestController
@@ -64,11 +63,11 @@ public class AdminController {
 	}
 	
 	@PostMapping("/adminLogin")
-	public Admin LOgin(@RequestBody User user) throws Exception {
+	public Admin LOgin(@RequestBody Admin admin) throws Exception {
 
-		String tempEmail=user.getUsername();
+		String tempEmail=admin.getUsername();
 
-		 String tempPassword=user.getPassword();
+		 String tempPassword=admin.getPassword();
 
 
 		 Admin adminObj=null;
