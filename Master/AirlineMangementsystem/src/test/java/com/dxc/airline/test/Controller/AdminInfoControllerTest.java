@@ -40,7 +40,7 @@ public class AdminInfoControllerTest {
 	@Test
 	public void findbyUsernameTest() throws Exception{
 		
-				AdminInfo adminInfo = new AdminInfo("pasupathi", "aduri", "male", "18-07-1999", "bhadra", "Pasupathi Nadh", 12345678, "22-09-2099", "3-44", "saliepeta", "saliepeta", "india", "andhra pradesh", "tadepalligudem", 534101, "null", "9003299897", "pasupathi@dxc.com");
+				AdminInfo adminInfo = new AdminInfo("pasupathi", "aduri", "male", "18-07-1999", "bhadra", "Pasupathi Nadh", 12345678, "22-09-2099", "3-44", "saliepeta", "saliepeta", "india", "andhra pradesh", "tadepalligudem", 534101, "", "9003299897", "pasupathi@dxc.com");
 				Mockito.when(adminInfoServiceImplementation.findByUsername(adminInfo.getUsername())).thenReturn(adminInfo);
 				
 				String URI = "/admininfo/pasupathi@dxc.com";
@@ -84,8 +84,8 @@ public class AdminInfoControllerTest {
 	@Test
 	public void saveTest() throws Exception {
 		
-			AdminInfo adminInfo = new AdminInfo("pasupathi", "aduri", "male", "18-07-1999", "bhadra", "Pasupathi Nadh", 12345678, "22-09-2099", "3-44", "saliepeta", "saliepeta", "india", "andhra pradesh", "tadepalligudem", 534101, "null", "9003299897", "pasupathi@dxc.com");
-	
+			AdminInfo adminInfo = new AdminInfo("pasupathi", "aduri", "male", "18-07-1999", "bhadra", "Pasupathi Nadh", 12345678, "22-09-2099", "3-44", "saliepeta", "saliepeta", "india", "andhra pradesh", "tadepalligudem", 534101, "null", "9003299897", "pasupathi@dxc.com");	
+		
 			String inputInJson = this.mapToJson(adminInfo);
 			
 			String URI = "/admininfo";
@@ -110,7 +110,7 @@ public class AdminInfoControllerTest {
 	@Test
 	public void updateTest() throws Exception {
 		
-		AdminInfo adminInfo = new AdminInfo("pasupathi", "aduri", "male", "18-07-1999", "bhadra", "Pasupathi Nadh", 12345678, "22-09-2099", "3-44", "saliepeta", "saliepeta", "india", "andhra pradesh", "tadepalligudem", 534101, "null", "9003299897", "pasupathi@dxc.com");
+		AdminInfo adminInfo = new AdminInfo("pasupathi", "aduri", "male", "18-07-1999", "bhadra", "Pasupathi Nadh", 12345678, "22-09-2099", "3-44", "saliepeta", "saliepeta", "india", "andhra pradesh", "tadepalligudem", 534101, "null", "9003299897", "pasupathi@dxc.com");	
 			
 		String inputInJson = this.mapToJson(adminInfo);
 		

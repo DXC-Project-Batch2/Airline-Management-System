@@ -18,9 +18,12 @@ public class AdminServiceImplementation implements AdminService<Admin> {
 	@Override
 	public List<Admin> findAll() {
 		// TODO Auto-generated method stub
-		
-		return adminRepository.findAll();
-	
+		List<Admin> admins = adminRepository.findAll();
+		if(admins!=null)
+		{
+			return admins;
+		}
+		return null;
 	}
 
 	@Override
