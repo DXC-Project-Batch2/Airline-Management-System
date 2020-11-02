@@ -40,7 +40,7 @@ public class TicketBookingControllerTest {
 	@Test
 	public void findbyUsernameTest() throws Exception {
 		
-		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10);		
+		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 3);		
 	
 		Mockito.when(ticketBookingServiceImp.findById(ticketBooking.getTicketId())).thenReturn(ticketBooking);
 		
@@ -59,7 +59,7 @@ public class TicketBookingControllerTest {
 	@Test
 	public void findAll() throws Exception {
 
-		TicketBooking ticketBooking1 = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 8);		
+		TicketBooking ticketBooking1 = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 3);		
 		TicketBooking ticketBooking2 = new TicketBooking(102, "rama@gmail.com",102,"chennai", "hyderabad", "29-10-2020", 4);
 	
 		List<TicketBooking> ticketBookings = new ArrayList<>();
@@ -84,7 +84,7 @@ public class TicketBookingControllerTest {
 	@Test
 	public void saveTest() throws Exception {
 		
-		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10);		
+		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 3);		
 
 		String inputInJson = this.mapToJson(ticketBooking);
 		
@@ -109,7 +109,7 @@ public class TicketBookingControllerTest {
 	@Test
 	public void updateTest() throws Exception {
 		
-		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10);		
+		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 3);		
 
 		String inputInJson = this.mapToJson(ticketBooking);
 		
