@@ -16,16 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dxc.airline.model.Airport;
 import com.dxc.airline.service.IAirportService;
 
-
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class AirportController {
 	
 	@Autowired
 	IAirportService service;
-	
-	@Autowired
-	Airport airport;
 	
 	@PostMapping(path="/airport/add")
 	public Airport add(@RequestBody Airport airport) {

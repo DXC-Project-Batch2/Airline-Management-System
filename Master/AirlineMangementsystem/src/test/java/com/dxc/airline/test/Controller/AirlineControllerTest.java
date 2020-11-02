@@ -15,7 +15,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -42,7 +41,7 @@ public class AirlineControllerTest {
 	@Test
 	public void findbyUsernameTest() throws Exception {
 		
-		AirLine airLine = new AirLine(110, "airindia","chennai", "goa", "18-07-2022", "150 mins", "2:00 AM", "4:30 AM", 10000, 44,3);
+		AirLine airLine = new AirLine(110, "airindia","chennai", "goa", "18-07-2022", "150mins", "2:00", "4:30", 10000, 44,3);
 		
 		Mockito.when(airlineServiceImplementation.findById(airLine.getPlaneId())).thenReturn(airLine);
 		

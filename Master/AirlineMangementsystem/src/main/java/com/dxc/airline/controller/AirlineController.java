@@ -14,44 +14,42 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dxc.airline.model.AirLine;
 import com.dxc.airline.service.AirlineService;
 
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class AirlineController {
-	
-	@Autowired
-	AirLine airline;
 	
 	@Autowired
 	AirlineService service;
 	
-	@CrossOrigin
+	@ResponseBody
 	@GetMapping(path="/airline")
 	public List<AirLine> findAll(){
-		//hello
-		
 		return service.findAll();
 	}
 	
 	
 	@PostMapping(path="/airline/add")
+	@ResponseBody
 	public AirLine save(@RequestBody AirLine theairline ) {
 		
 		return service.save(theairline);
 	}
 	
 	@PutMapping(path = "/airline/update")
+	@ResponseBody
 	public AirLine update(@RequestBody AirLine theairline ) {
 		
 		return service.update(theairline);
 	}
 	
-	@CrossOrigin
 	@GetMapping(path="/airline/{id}")
+	@ResponseBody
 	public AirLine findById(@PathVariable("id")int id) {
 		
 		AirLine theAirline = service.findById(id);
@@ -64,8 +62,8 @@ public class AirlineController {
 	}
 
 	
-	@CrossOrigin
 	@GetMapping("/airline/{source}/{destination}")
+	@ResponseBody
 	public List<AirLine> getAirline(@PathVariable String source, @PathVariable String destination) {
 		
 		List<AirLine> theAirline = service.findByCities(source, destination);
@@ -78,12 +76,14 @@ public class AirlineController {
 	}
 	
 	@DeleteMapping(path="/airlineDelete/{id}")
+	@ResponseBody
 	public void deleteById(@PathVariable("id")int id) {
 		
 		service.deleteById(id);
 	}
 	
 	@GetMapping("/airline/{source}/{destination}/{date}")
+	@ResponseBody
 	public List<AirLine> getAirline(@PathVariable String source, @PathVariable String destination,@PathVariable String date) throws ParseException, java.text.ParseException {
 		//*for converting a string date to requried datetime*//
 		

@@ -14,10 +14,6 @@ import com.dxc.airline.repository.AirLineRepository;
 @Service
 public class AirlineServiceImplementation implements AirlineService {
 
-	public AirlineServiceImplementation() {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Autowired
 	private AirLineRepository airlineRepository;
 
