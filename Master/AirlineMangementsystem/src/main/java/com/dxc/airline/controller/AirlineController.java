@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dxc.airline.exception.AirlineException;
 import com.dxc.airline.model.AirLine;
+import com.dxc.airline.model.AirLineDetalis;
 import com.dxc.airline.service.AirlineService;
 
 @RestController
@@ -36,7 +38,7 @@ public class AirlineController {
 	
 	@PostMapping(path="/airline/add")
 	@ResponseBody
-	public AirLine save(@RequestBody AirLine theairline ) {
+	public AirLine save(@RequestBody AirLineDetalis theairline ) throws AirlineException, java.text.ParseException {
 		
 		return service.save(theairline);
 	}

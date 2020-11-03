@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -19,8 +21,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Component
 public class AirLine {
 
-	@NotNull(message = "Caannot be null")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
+	int sno; 
+	
+	@NotNull(message = "Cannot be null")
 	int planeId; 
 	
 	@NotNull(message = "Caannot be null")

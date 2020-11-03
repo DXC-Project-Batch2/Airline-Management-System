@@ -1,16 +1,19 @@
 package com.dxc.airline.service;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.dxc.airline.exception.AirlineException;
 import com.dxc.airline.model.AirLine;
+import com.dxc.airline.model.AirLineDetalis;
 @Service
 public interface AirlineService {
 
 	public List<AirLine> findAll();
 
-	public AirLine save(AirLine theAirLine);
+	public AirLine save(AirLineDetalis theAirLine) throws AirlineException, ParseException;
 	
 	public AirLine update(AirLine theAirLine);
 	

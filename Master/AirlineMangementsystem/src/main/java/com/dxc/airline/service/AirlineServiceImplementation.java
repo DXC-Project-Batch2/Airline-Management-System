@@ -1,5 +1,9 @@
 package com.dxc.airline.service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.dxc.airline.exception.AirlineException;
 import com.dxc.airline.model.AirLine;
+import com.dxc.airline.model.AirLineDetalis;
 import com.dxc.airline.repository.AirLineRepository;
 
 @Service
@@ -25,18 +30,31 @@ public class AirlineServiceImplementation implements AirlineService {
 
 	@Override
 	@Transactional
-	public AirLine save(AirLine theAirline) throws AirlineException {
-
-		AirLine isValid = validateAirLine(theAirline);
+	public AirLine save(AirLineDetalis e) throws AirlineException, ParseException {
+		
+		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");  
+		String strDate = dateFormat.format(e.getDate());  
+		
+		AirLine airLine = new AirLine(e.getPlaneId(), e.getCarrierName(), e.getSource(), e.getDestination(), strDate, e.getDuration(), e.getStarting_time(), e.getEnding_time(), e.getPrize(), e.getAvaliable_seats(), e.getSold_out());	
+		AirLine isValid = validateAirLine(airLine);
 
 		if (isValid != null) {
-
-			return airlineRepository.save(theAirline);
-		} 
+			for(int i=0;i<10;i++)
+			{
+				strDate = dateFormat.format(airLine.getDate());  
+				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+				Calendar c = Calendar.getInstance();
+					c.setTime(sdf.parse(strDate));
+					c.add(Calendar.DATE, e.getPeriod()); // number of days to add
+					airLine.setDate(c.getTime());
+			return airlineRepository.save(airLine);
+			} 
+			}
 		else {
 
 			throw new AirlineException("Airline addition failed, try again...");
 		}
+		return null;
 	}
 
 	public AirLine validateAirLine(AirLine theAirline) {
