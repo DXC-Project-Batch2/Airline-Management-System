@@ -44,16 +44,22 @@ public class AirLine {
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@JsonFormat( shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "UTC")
 	Date date;
+	
 	@NotNull(message = "Cannot be null")
 	String duration;
+	
 	@NotNull(message = "Cannot be null")
 	String starting_time;
+	
 	@NotNull(message = "Cannot be null")
 	String ending_time;
+	
 	@NotNull(message = "Cannot be null")
 	int prize;
+	
 	@NotNull(message = "Cannot be null")
 	int avaliable_seats;
+	
 	@NotNull(message = "Cannot be null")
 	int sold_out;
 

@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,19 +38,17 @@ public class AirlineServiceImplementation implements AirlineService {
 		
 		AirLine airLine = new AirLine(e.getPlaneId(), e.getCarrierName(), e.getSource(), e.getDestination(), strDate, e.getDuration(), e.getStarting_time(), e.getEnding_time(), e.getPrize(), e.getAvaliable_seats(), e.getSold_out());	
 		AirLine isValid = validateAirLine(airLine);
-
+		Calendar c = Calendar.getInstance();
 		if (isValid != null) {
 			for(int i=0;i<10;i++)
 			{
-				airlineRepository.save(airLine);
-				strDate = dateFormat.format(airLine.getDate());  
-				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-				Calendar c = Calendar.getInstance();
-					c.setTime(sdf.parse(strDate));
-					c.add(Calendar.DATE, e.getPeriod()); // number of days to add
-					//c.add(Calendar.DATE, 1);
-					airLine.setDate(c.getTime());
-					airlineRepository.save(airLine);
+				isValid = airlineRepository.save(isValid);
+				Date date =isValid.getDate();
+				String strDate1 = dateFormat.format(date);  
+				c.setTime(dateFormat.parse(strDate1));
+				c.add(Calendar.DATE,e.getSchedule_period());
+				strDate1 = dateFormat.format(c.getTime());
+				isValid = new AirLine(e.getPlaneId(), e.getCarrierName(), e.getSource(), e.getDestination(), strDate1, e.getDuration(), e.getStarting_time(), e.getEnding_time(), e.getPrize(), e.getAvaliable_seats(), e.getSold_out());			
 			} 
 			
 			}
@@ -57,7 +56,7 @@ public class AirlineServiceImplementation implements AirlineService {
 
 			throw new AirlineException("Airline addition failed, try again...");
 		}
-		return airLine;
+		return isValid;
 	}
 
 	public AirLine validateAirLine(AirLine theAirline) {

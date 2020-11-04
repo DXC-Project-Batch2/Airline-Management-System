@@ -11,7 +11,7 @@ public class AirLineDetalis {
 	String source;
 	String destination;
 	Date date;
-	int period;
+	int schedule_period;
 	String duration;
 	String starting_time;
 	String ending_time;
@@ -24,7 +24,7 @@ public class AirLineDetalis {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public AirLineDetalis(int planeId, String carrierName, String source, String destination, String strdate, int period,
+	public AirLineDetalis(int planeId, String carrierName, String source, String destination, String strdate, int schedule_period,
 			String duration, String starting_time, String ending_time, int prize, int avaliable_seats, int sold_out) throws ParseException {
 		super();
 		this.planeId = planeId;
@@ -33,7 +33,7 @@ public class AirLineDetalis {
 		this.destination = destination;
 		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
 		date=sdf.parse(strdate);
-		this.period = period;
+		this.schedule_period = schedule_period;
 		this.duration = duration;
 		this.starting_time = starting_time;
 		this.ending_time = ending_time;
@@ -83,12 +83,12 @@ public class AirLineDetalis {
 		this.date = date;
 	}
 
-	public int getPeriod() {
-		return period;
+	public int getSchedule_period() {
+		return schedule_period;
 	}
 
-	public void setPeriod(int period) {
-		this.period = period;
+	public void setSchedule_period(int schedule_period) {
+		this.schedule_period = schedule_period;
 	}
 
 	public String getDuration() {
@@ -142,7 +142,7 @@ public class AirLineDetalis {
 	@Override
 	public String toString() {
 		return "AirLineDetalis [planeId=" + planeId + ", carrierName=" + carrierName + ", source=" + source
-				+ ", destination=" + destination + ", date=" + date + ", period=" + period + ", duration=" + duration
+				+ ", destination=" + destination + ", date=" + date + ", period=" + schedule_period + ", duration=" + duration
 				+ ", starting_time=" + starting_time + ", ending_time=" + ending_time + ", prize=" + prize
 				+ ", avaliable_seats=" + avaliable_seats + ", sold_out=" + sold_out + "]";
 	}
