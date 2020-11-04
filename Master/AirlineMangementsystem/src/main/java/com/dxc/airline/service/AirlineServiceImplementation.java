@@ -82,20 +82,17 @@ public class AirlineServiceImplementation implements AirlineService {
 
 	@Override
 	@Transactional
-	public AirLine findById(int id) {
+	public List<AirLine> findById(int id) {
 
-		Optional<AirLine> result = airlineRepository.findById(id);
+		List<AirLine> airLines = airlineRepository.findAllById(id);
 
-		AirLine theAirline = null;
 
-		if (result.isPresent()) {
-			theAirline = result.get();
+		if (airLines!=null) {
+			return airLines;
 		} else {
 			// we didn't find the employee
 			throw new RuntimeException("Did not find flight ");
 		}
-
-		return theAirline;
 
 	}
 
