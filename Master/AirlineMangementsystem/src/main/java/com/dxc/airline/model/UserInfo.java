@@ -26,7 +26,8 @@ public class UserInfo {
 	@NotNull(message = "Mandatory field")
 	@Size(min = 1,max =40)
 	String Lastname;
-	
+
+	@NotNull(message = "Mandatory field")
 	String gender;
 	
 	@DateTimeFormat(pattern = "dd-MM-yyyy")

@@ -33,131 +33,119 @@ import com.dxc.airline.service.UserServiceImplementation;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class RegistrationController {
-	
+
 	@Autowired
 	UserInfoServiceImplementation userInfoServiceImplementation;
-	
+
 	@Autowired
 	UserServiceImplementation userServiceImplementation;
-	
+
 	@Autowired
 	AdminInfoServiceImplementation adminInfoServiceImplementation;
-	
+
 	@Autowired
 	AdminServiceImplementation adminServiceImplementation;
-	
+
 	@Autowired
 	AdminSecurityServiceImplementation adminSecurityServiceImplementation;
-	
+
 	@Autowired
 	UserSecurityServiceImp userSecurityServiceImp;
-	
+
 	User user;
 	UserInfo userinfo;
 	UserSecurity userSecurity;
 	Admin admin;
 	AdminInfo adminInfo;
 	AdminSecurity adminSecurity;
-	
+
 	@GetMapping(path = "Registration/{username}")
 	@ResponseBody
 	public List<?> getInfo(@PathVariable("username") String username) {
-		
-		if(username.endsWith("@dxc.com"))
-		{
+
+		if (username.endsWith("@dxc.com")) {
 			return (List<AdminInfo>) adminInfoServiceImplementation.findByUsername(username);
-		}
-		else
-		{
+		} else {
 			return (List<UserInfo>) userInfoServiceImplementation.findByUsername(username);
 		}
 	}
-	
+
 	@PostMapping("Registration")
 	@ResponseBody
 	public Boolean addUser(@RequestBody Registration e) throws ParseException {
+
+		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		String strDate = dateFormat.format(e.getDob());
+		String strExpiry = dateFormat.format(e.getExpiry());
+
+		if (e.getUsername().endsWith("@dxc.com")) {
+			admin = new Admin(e.getUsername(), e.getPassword());
 		
-		 DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");  
-         String strDate = dateFormat.format(e.getDob());
-         String strExpiry=dateFormat.format(e.getExpiry());
+			adminInfo = new AdminInfo(e.getName(), e.getLastname(), e.getGender(), strDate, e.getFathername(),
+					e.getPassportname(), e.getPassportnumber(), strExpiry, e.getDoorNumber(), e.getStreet(),
+					e.getArea(), e.getCountry(), e.getState(), e.getCity(), e.getPostalCode(), e.getLandMark(),
+					e.getMobile(), e.getUsername());
 		
-         admin = new Admin(e.getUsername(), e.getPassword());
-		user = new User(e.getUsername(), e.getPassword());
+			adminSecurity = new AdminSecurity(e.getUsername(), e.getSecurityQuestion(), e.getAnswer());
 		
-		adminInfo = new AdminInfo(e.getName(), e.getLastname(), e.getGender(), strDate, e.getFathername(), e.getPassportname(), e.getPassportnumber(), strExpiry, e.getDoorNumber(), e.getStreet(), e.getArea(), e.getCountry(), e.getState(), e.getCity(), e.getPostalCode(), e.getLandMark(), e.getMobile(), e.getUsername());
-		userinfo = new UserInfo(e.getName(), e.getLastname(), e.getGender(), strDate, e.getFathername(), e.getPassportname(), e.getPassportnumber(), strExpiry, e.getDoorNumber(), e.getStreet(), e.getArea(), e.getCountry(), e.getState(), e.getCity(), e.getPostalCode(), e.getLandMark(), e.getMobile(), e.getUsername());
-		
-		adminSecurity = new AdminSecurity(e.getUsername(), e.getSecurityQuestion(), e.getAnswer());
-		userSecurity = new UserSecurity(e.getUsername(), e.getSecurityQuestion(), e.getAnswer());
-		
-		if(e.getUsername().endsWith("@dxc.com"))
-		{
 			adminInfoServiceImplementation.save(adminInfo);
 			adminServiceImplementation.save(admin);
 			adminSecurityServiceImplementation.save(adminSecurity);
-			
-		}
-		else
-		{			
+
+		} else {
+			user = new User(e.getUsername(), e.getPassword());
+
+			userinfo = new UserInfo(e.getName(), e.getLastname(), e.getGender(), strDate, e.getFathername(),
+					e.getPassportname(), e.getPassportnumber(), strExpiry, e.getDoorNumber(), e.getStreet(),
+					e.getArea(), e.getCountry(), e.getState(), e.getCity(), e.getPostalCode(), e.getLandMark(),
+					e.getMobile(), e.getUsername());
+
+			userSecurity = new UserSecurity(e.getUsername(), e.getSecurityQuestion(), e.getAnswer());
+
 			userInfoServiceImplementation.save(userinfo);
 			userServiceImplementation.save(user);
 			userSecurityServiceImp.add(userSecurity);
 		}
-		
+
 		return true;
 	}
 
-	
 	@PutMapping("Registration")
 	@ResponseBody
 	public Boolean update(@RequestBody Registration e) throws ParseException {
-		 DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");  
-         String strDate = dateFormat.format(e.getDob());
-         String strExpiry=dateFormat.format(e.getExpiry());
+		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		String strDate = dateFormat.format(e.getDob());
+		String strExpiry = dateFormat.format(e.getExpiry());
+
+		if (e.getUsername().endsWith("@dxc.com")) {
+			admin = new Admin(e.getUsername(), e.getPassword());
 		
-         admin = new Admin(e.getUsername(), e.getPassword());
-		user = new User(e.getUsername(), e.getPassword());
+			adminInfo = new AdminInfo(e.getName(), e.getLastname(), e.getGender(), strDate, e.getFathername(),
+					e.getPassportname(), e.getPassportnumber(), strExpiry, e.getDoorNumber(), e.getStreet(),
+					e.getArea(), e.getCountry(), e.getState(), e.getCity(), e.getPostalCode(), e.getLandMark(),
+					e.getMobile(), e.getUsername());
 		
-		adminInfo = new AdminInfo(e.getName(), e.getLastname(), e.getGender(), strDate, e.getFathername(), e.getPassportname(), e.getPassportnumber(), strExpiry, e.getDoorNumber(), e.getStreet(), e.getArea(), e.getCountry(), e.getState(), e.getCity(), e.getPostalCode(), e.getLandMark(), e.getMobile(), e.getUsername());
-		userinfo = new UserInfo(e.getName(), e.getLastname(), e.getGender(), strDate, e.getFathername(), e.getPassportname(), e.getPassportnumber(), strExpiry, e.getDoorNumber(), e.getStreet(), e.getArea(), e.getCountry(), e.getState(), e.getCity(), e.getPostalCode(), e.getLandMark(), e.getMobile(), e.getUsername());
+			adminSecurity = new AdminSecurity(e.getUsername(), e.getSecurityQuestion(), e.getAnswer());
 		
-		adminSecurity = new AdminSecurity(e.getUsername(), e.getSecurityQuestion(), e.getAnswer());
-		userSecurity = new UserSecurity(e.getUsername(), e.getSecurityQuestion(), e.getAnswer());
-		
-		if(e.getUsername().endsWith("@dxc.com"))
-		{
 			adminInfoServiceImplementation.save(adminInfo);
 			adminServiceImplementation.save(admin);
 			adminSecurityServiceImplementation.save(adminSecurity);
-			
-		}
-		else
-		{			
+
+		} else {
+			user = new User(e.getUsername(), e.getPassword());
+
+			userinfo = new UserInfo(e.getName(), e.getLastname(), e.getGender(), strDate, e.getFathername(),
+					e.getPassportname(), e.getPassportnumber(), strExpiry, e.getDoorNumber(), e.getStreet(),
+					e.getArea(), e.getCountry(), e.getState(), e.getCity(), e.getPostalCode(), e.getLandMark(),
+					e.getMobile(), e.getUsername());
+
+			userSecurity = new UserSecurity(e.getUsername(), e.getSecurityQuestion(), e.getAnswer());
+
 			userInfoServiceImplementation.save(userinfo);
 			userServiceImplementation.save(user);
 			userSecurityServiceImp.add(userSecurity);
 		}
-		
-		return true;	
-		}
-	
-	@DeleteMapping(path = "Registration/{username}")
-	@ResponseBody
-	public void delete(@PathVariable("username") String username) {
-		
-		if(username.endsWith("@dxc.com"))
-		{
-			adminInfoServiceImplementation.delete(username);
-			adminServiceImplementation.deleteById(username);
-			adminSecurityServiceImplementation.delete(username);
-			
-		}
-		else
-		{			
-			userInfoServiceImplementation.save(userinfo);
-			userServiceImplementation.save(user);
-			userSecurityServiceImp.add(userSecurity);
-		}
-		adminServiceImplementation.deleteById(username);
+
+		return true;
 	}
 }

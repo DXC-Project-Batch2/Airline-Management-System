@@ -30,7 +30,7 @@ public class TicketBookingRepositoryTest {
 	@Test
 	public void testSaveTicketBooking() throws ParseException{
 		
-		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10);		
+		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 3);		
 		TicketBooking savedInDb = entityManager.persist(ticketBooking);
 		TicketBooking getFromDatabase = ticketBookingRepository.getOne(savedInDb.getTicketId());
 		
@@ -41,7 +41,7 @@ public class TicketBookingRepositoryTest {
 	@Test
 	public void testGetTicketBookingById() throws ParseException{
 
-		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10);		
+		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 3);		
 
 		//Save ticketBooking in DB
 		TicketBooking adminSecuritySavedInDb = entityManager.persist(ticketBooking);
@@ -55,8 +55,8 @@ public class TicketBookingRepositoryTest {
 	@Test
 	public void testGetAllTicketBookings() throws ParseException{
 		
-		TicketBooking ticketBooking1 = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10);		
-		TicketBooking ticketBooking2 = new TicketBooking(102, "ram@gmail.com", 102,"chennai", "hyderabad", "29-10-2020", 10);		
+		TicketBooking ticketBooking1 = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 3);		
+		TicketBooking ticketBooking2 = new TicketBooking(102, "ram@gmail.com", 102,"chennai", "hyderabad", "29-10-2020", 3);		
 		
 		//Save both ticketBooking in DB
 		entityManager.persist(ticketBooking1);
@@ -70,7 +70,7 @@ public class TicketBookingRepositoryTest {
 	@Test
 	public void testDeleteTicketBookingById() throws ParseException{
 	
-		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10);		
+		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 3);		
 
 		//Save ticketBooking in DB
 		entityManager.persist(ticketBooking);
@@ -86,7 +86,7 @@ public class TicketBookingRepositoryTest {
 	@Test
 	public void testUpdateTicketBooking() throws ParseException{
 		
-		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 10);		
+		TicketBooking ticketBooking = new TicketBooking(101, "pasupathi@gmail.com", 101,"chennai", "hyderabad", "29-10-2020", 3);		
 
 		
 		//save ticketBooking info in DB

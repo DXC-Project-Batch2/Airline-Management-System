@@ -16,7 +16,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.dxc.airline.model.AirLine;
 import com.dxc.airline.repository.AirLineRepository;
 
-
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class AirlineRepositoryTest {
@@ -83,12 +82,14 @@ public class AirlineRepositoryTest {
 			entityManager.persist(airLine3);
 			
 			//Get airLine from DB
-			List<AirLine> airLines = airLineRepository.findByUser("chennai", "vijayawada", "22-10-2022");
-			assertThat(airLines.size()).isEqualTo(0);
 			
-			airLines = airLineRepository.findByUser("chennai", "goa", "22-10-2022");
+			List<AirLine> airLines = airLineRepository.findByUser("chennai", "goa", "22-10-2022");
 			assertThat(airLines.size()).isEqualTo(1);
 
+			airLines = airLineRepository.findByUser("chennai", "vijayawada", "22-10-2022");
+			assertThat(airLines.size()).isEqualTo(0);
+			
+			
 		}
 
 	//findAll
