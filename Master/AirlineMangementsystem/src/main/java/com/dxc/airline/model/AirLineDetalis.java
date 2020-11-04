@@ -11,6 +11,7 @@ public class AirLineDetalis {
 	String source;
 	String destination;
 	Date date;
+	int trip;
 	int schedule_period;
 	String duration;
 	String starting_time;
@@ -24,7 +25,7 @@ public class AirLineDetalis {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public AirLineDetalis(int planeId, String carrierName, String source, String destination, String strdate, int schedule_period,
+	public AirLineDetalis(int planeId, String carrierName, String source, String destination, String strdate,int trip, int schedule_period,
 			String duration, String starting_time, String ending_time, int prize, int avaliable_seats, int sold_out) throws ParseException {
 		super();
 		this.planeId = planeId;
@@ -34,6 +35,7 @@ public class AirLineDetalis {
 		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
 		date=sdf.parse(strdate);
 		this.schedule_period = schedule_period;
+		this.trip = trip;
 		this.duration = duration;
 		this.starting_time = starting_time;
 		this.ending_time = ending_time;
@@ -81,6 +83,14 @@ public class AirLineDetalis {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	
+	public int getTrip() {
+		return trip;
+	}
+
+	public void setTrip(int trip) {
+		this.trip = trip;
 	}
 
 	public int getSchedule_period() {

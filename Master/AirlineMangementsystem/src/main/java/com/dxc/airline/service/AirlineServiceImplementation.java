@@ -40,7 +40,7 @@ public class AirlineServiceImplementation implements AirlineService {
 		AirLine isValid = validateAirLine(airLine);
 		Calendar c = Calendar.getInstance();
 		if (isValid != null) {
-			for(int i=0;i<10;i++)
+			for(int i=0;i<e.getTrip();i++)
 			{
 				isValid = airlineRepository.save(isValid);
 				Date date =isValid.getDate();
