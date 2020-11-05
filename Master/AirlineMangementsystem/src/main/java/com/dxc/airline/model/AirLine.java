@@ -67,7 +67,7 @@ public class AirLine {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public AirLine(int planeId, String carrierName,
+	public AirLine(int sno,int planeId, String carrierName,
 			@NotNull @Size(min = 2, message = "Name should have atleast 2 characters") String source,
 			String destination, String strdate, String duration, String starting_time, String ending_time, int prize,
 			int avaliable_seats, int sold_out) throws ParseException {

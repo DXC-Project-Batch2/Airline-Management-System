@@ -36,7 +36,7 @@ public class AirlineServiceImplementation implements AirlineService {
 		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");  
 		String strDate = dateFormat.format(e.getDate());  
 		
-		AirLine airLine = new AirLine(e.getPlaneId(), e.getCarrierName(), e.getSource(), e.getDestination(), strDate, e.getDuration(), e.getStarting_time(), e.getEnding_time(), e.getPrize(), e.getAvaliable_seats(), e.getSold_out());	
+		AirLine airLine = new AirLine(0,e.getPlaneId(), e.getCarrierName(), e.getSource(), e.getDestination(), strDate, e.getDuration(), e.getStarting_time(), e.getEnding_time(), e.getPrize(), e.getAvaliable_seats(), e.getSold_out());	
 		AirLine isValid = validateAirLine(airLine);
 		Calendar c = Calendar.getInstance();
 		if (isValid != null) {
@@ -48,7 +48,7 @@ public class AirlineServiceImplementation implements AirlineService {
 				c.setTime(dateFormat.parse(strDate1));
 				c.add(Calendar.DATE,e.getSchedule_period());
 				strDate1 = dateFormat.format(c.getTime());
-				isValid = new AirLine(e.getPlaneId(), e.getCarrierName(), e.getSource(), e.getDestination(), strDate1, e.getDuration(), e.getStarting_time(), e.getEnding_time(), e.getPrize(), e.getAvaliable_seats(), e.getSold_out());			
+				isValid = new AirLine(0,e.getPlaneId(), e.getCarrierName(), e.getSource(), e.getDestination(), strDate1, e.getDuration(), e.getStarting_time(), e.getEnding_time(), e.getPrize(), e.getAvaliable_seats(), e.getSold_out());			
 			} 
 			
 			}

@@ -90,11 +90,11 @@ public class AirlineController {
 		return theAirline;
 	}
 	
-	@DeleteMapping(path="/airlineDelete/{id}")
+	@DeleteMapping(path="/airlineDelete/{sno}")
 	@ResponseBody
-	public void deleteById(@PathVariable("id")int id) {
+	public void deleteById(@PathVariable("sno")int sno) {
 		
-		service.deleteById(id);
+		service.deleteById(sno);
 	}
 	
 	@GetMapping("/airline/{source}/{destination}/{date}")
