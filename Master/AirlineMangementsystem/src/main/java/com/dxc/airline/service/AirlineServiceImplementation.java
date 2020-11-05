@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -72,17 +73,30 @@ public class AirlineServiceImplementation implements AirlineService {
 	@Override
 	@Transactional
 	public AirLine update(AirLine theAirline) {
-		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");  
-		Date date =theAirline.getDate();
-		String strDate = dateFormat.format(date);  
 		
-		AirLine findbyId = airlineRepository.findById_And_Date(theAirline.getPlaneId(),strDate);
-		if (findbyId!=null) {
+		Optional<AirLine> findbyId = airlineRepository.findById(theAirline.getSno());
+		if (findbyId.isPresent()) {
 			return airlineRepository.save(theAirline);
 		}
 		return null;
 	}
 
+	@Override
+	@Transactional
+	public AirLine findBySno(int id) {
+
+		Optional<AirLine> airLines = airlineRepository.findById(id);
+
+		if (airLines!=null) {
+			return airLines.get();
+		} else {
+			// we didn't find the employee
+			throw new RuntimeException("Did not find flight ");
+		}
+
+	}
+
+	
 	@Override
 	@Transactional
 	public List<AirLine> findById(int id) {

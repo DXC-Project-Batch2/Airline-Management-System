@@ -19,8 +19,5 @@ public interface AirLineRepository extends JpaRepository<AirLine, Integer> {
 
 	@Query(value = "SELECT * FROM air_line WHERE plane_id = :plane_id", nativeQuery = true)
 	List<AirLine> findAllById(@Param("plane_id")int plane_id);
-
-	@Query(value = "SELECT * FROM air_line WHERE plane_id = :plane_id AND date = :date", nativeQuery = true)
-    AirLine findById_And_Date(@Param("plane_id")int plane_id,	@Param("date") String date);
 	
 }

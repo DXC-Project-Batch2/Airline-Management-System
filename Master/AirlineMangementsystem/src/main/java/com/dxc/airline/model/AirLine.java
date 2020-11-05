@@ -85,6 +85,14 @@ public class AirLine {
 		this.avaliable_seats = validateAvaliable_seats(avaliable_seats);
 		this.sold_out = validateSold_out(sold_out);
 	}
+	
+	public int getSno() {
+		return sno;
+	}
+	public void setSno(int sno) {
+		this.sno = sno;
+	}
+	
 	public int getPlaneId() {
 		return planeId;
 	}

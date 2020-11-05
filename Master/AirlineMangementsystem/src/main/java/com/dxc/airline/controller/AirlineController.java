@@ -63,6 +63,19 @@ public class AirlineController {
 		return theAirline;
 	}
 
+	@GetMapping(path="/airline/sno/{sno}")
+	@ResponseBody
+	public AirLine findBySno(@PathVariable("sno")int sno) {
+		
+		AirLine theAirline = service.findBySno(sno);
+		
+		if (theAirline == null) {
+			throw new RuntimeException("flight not found - ");
+		}
+		
+		return theAirline;
+	}
+
 	
 	@GetMapping("/airline/{source}/{destination}")
 	@ResponseBody
