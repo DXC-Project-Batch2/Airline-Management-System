@@ -46,7 +46,7 @@ public class AirlineServiceImplementation implements AirlineService {
 				Date date =isValid.getDate();
 				String strDate1 = dateFormat.format(date);  
 				c.setTime(dateFormat.parse(strDate1));
-				c.add(Calendar.DATE,e.getSchedule_period());
+				c.add(Calendar.DATE,e.getSchedule_period()+1);
 				strDate1 = dateFormat.format(c.getTime());
 				isValid = new AirLine(0,e.getPlaneId(), e.getCarrierName(), e.getSource(), e.getDestination(), strDate1, e.getDuration(), e.getStarting_time(), e.getEnding_time(), e.getPrize(), e.getAvaliable_seats(), e.getSold_out());			
 			} 
@@ -138,6 +138,12 @@ public class AirlineServiceImplementation implements AirlineService {
 			return theAirline;
 		}
 		return null;
+	}
+
+	@Override
+	@Transactional
+	public void deleteByPlane_Id(int plane_id) {
+		airlineRepository.deleteByPlane_Id(plane_id);
 	}
 
 }

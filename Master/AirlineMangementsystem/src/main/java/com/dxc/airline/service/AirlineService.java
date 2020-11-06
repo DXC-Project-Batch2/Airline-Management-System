@@ -23,6 +23,8 @@ public interface AirlineService {
 	
 	public void deleteById(int id);
 	
+	public void deleteByPlane_Id(int plane_id);
+	
 	public List<AirLine> findByCities(String source, String destination);
 	
 	public List<AirLine> findByUser(String source, String destination,String date);

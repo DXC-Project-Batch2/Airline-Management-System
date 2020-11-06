@@ -96,7 +96,14 @@ public class AirlineController {
 		
 		service.deleteById(sno);
 	}
-	
+
+	@DeleteMapping(path="/airlineDelete/planeid/{planeId}")
+	@ResponseBody
+	public void deleteByPlaneId(@PathVariable("planeId")int planeId) {
+		
+		service.deleteByPlane_Id(planeId);
+	}
+
 	@GetMapping("/airline/{source}/{destination}/{date}")
 	@ResponseBody
 	public List<AirLine> getAirline(@PathVariable String source, @PathVariable String destination,@PathVariable String date) throws ParseException, java.text.ParseException {

@@ -29,32 +29,53 @@ public class AirlineRepositoryTest {
 	//save
 	@Test
 	public void testSaveAirLine() throws ParseException{
-		AirLine airLine = new AirLine(110, "airindia","chennai", "goa", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 10000, 44,0);
+		AirLine airLine = new AirLine(0,110, "airindia","chennai", "goa", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 10000, 44,0);
 		AirLine savedInDb = entityManager.persist(airLine);
-		AirLine getFromDatabase = airLineRepository.getOne(savedInDb.getPlaneId());
+		AirLine getFromDatabase = airLineRepository.getOne(savedInDb.getSno());
 		
 		assertThat(getFromDatabase).isEqualTo(savedInDb);
 	}
 	
-	//findbyid
+	//findbysno
 	@Test
 	public void testGetAirLineById() throws ParseException{
-		AirLine airLine = new AirLine(110, "airindia","chennai", "goa", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 10000, 44,0);
+		AirLine airLine = new AirLine(0,110, "airindia","chennai", "goa", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 10000, 44,0);
 		//Save airLine in DB
 		AirLine airLineSavedInDb = entityManager.persist(airLine);
 		
 		//Get airLine from DB
-		Optional<AirLine> airLineFromInDb = airLineRepository.findById(airLine.getPlaneId());
+		Optional<AirLine> airLineFromInDb = airLineRepository.findById(airLine.getSno());
 		assertThat(airLineSavedInDb).isEqualTo(airLineFromInDb.get());
 	}
-	
+
+	//findallbyid
+	@Test
+	public void testGetAirLineAllById() throws ParseException{
+
+		AirLine airLine = new AirLine(0,110, "airindia","chennai", "goa", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 10000, 44,0);
+		AirLine airLine1 = new AirLine(0,110, "airindia","chennai", "goa", "22-10-2020", "150 mins", "2:00 AM", "4:30 AM", 3000, 44,0);
+		AirLine airLine2 = new AirLine(0,111, "airindia","goa", "chennai", "22-10-2020", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);
+		AirLine airLine3 = new AirLine(0,112, "airindia","goa", "chennai", "23-10-2020", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);
+
+		//Save airLine in DB
+		entityManager.persist(airLine);
+		entityManager.persist(airLine1);
+		entityManager.persist(airLine2);
+		entityManager.persist(airLine3);
+		
+		//Get airLine from DB
+		List<AirLine> airLines = airLineRepository.findAllById(airLine.getPlaneId());
+		assertThat(airLines.size()).isEqualTo(2);
+
+	}
+
 	//findbycities
 		@Test
 		public void FindByCities() throws ParseException{
 			
-			AirLine airLine1 = new AirLine(110, "airindia","chennai", "goa", "22-10-2020", "150 mins", "2:00 AM", "4:30 AM", 3000, 44,0);
-			AirLine airLine2 = new AirLine(111, "airindia","goa", "chennai", "22-10-2020", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);
-			AirLine airLine3 = new AirLine(112, "airindia","goa", "chennai", "23-10-2020", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);
+			AirLine airLine1 = new AirLine(0,110, "airindia","chennai", "goa", "22-10-2020", "150 mins", "2:00 AM", "4:30 AM", 3000, 44,0);
+			AirLine airLine2 = new AirLine(0,111, "airindia","goa", "chennai", "22-10-2020", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);
+			AirLine airLine3 = new AirLine(0,112, "airindia","goa", "chennai", "23-10-2020", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);
 			//Save airLine in DB
 			entityManager.persist(airLine1);
 			entityManager.persist(airLine2);
@@ -73,9 +94,9 @@ public class AirlineRepositoryTest {
 		@Test
 		public void findByUser() throws ParseException{
 			
-			AirLine airLine1 = new AirLine(110, "airindia","chennai", "goa", "22-10-2022", "150 mins", "2:00 AM", "4:30 AM", 3000, 44,0);
-			AirLine airLine2 = new AirLine(111, "airindia","goa", "chennai", "22-10-2022", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);
-			AirLine airLine3 = new AirLine(112, "airindia","goa", "chennai", "23-10-2022", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);
+			AirLine airLine1 = new AirLine(0,110, "airindia","chennai", "goa", "22-10-2022", "150 mins", "2:00 AM", "4:30 AM", 3000, 44,0);
+			AirLine airLine2 = new AirLine(0,111, "airindia","goa", "chennai", "22-10-2022", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);
+			AirLine airLine3 = new AirLine(0,112, "airindia","goa", "chennai", "23-10-2022", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);
 			//Save airLine in DB
 			entityManager.persist(airLine1);
 			entityManager.persist(airLine2);
@@ -96,8 +117,8 @@ public class AirlineRepositoryTest {
 	@Test
 	public void testGetAllAirLines() throws ParseException{
 		
-		AirLine airLine1 = new AirLine(110, "airindia","chennai", "goa", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 3000, 44,0);
-		AirLine airLine2 = new AirLine(111, "airindia","goa", "chennai", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);		
+		AirLine airLine1 = new AirLine(0,110, "airindia","chennai", "goa", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 3000, 44,0);
+		AirLine airLine2 = new AirLine(0,111, "airindia","goa", "chennai", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);		
 		//Save both airLine in DB
 		entityManager.persist(airLine1);
 		entityManager.persist(airLine2);
@@ -110,7 +131,7 @@ public class AirlineRepositoryTest {
 	@Test
 	public void testDeleteAirLineById() throws ParseException{
 	
-		AirLine airLine = new AirLine(110, "airindia","chennai", "goa", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 10000, 44,0);		
+		AirLine airLine = new AirLine(0,110, "airindia","chennai", "goa", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 10000, 44,0);		
 		//Save airLine in DB
 		entityManager.persist(airLine);
 		
@@ -121,15 +142,36 @@ public class AirlineRepositoryTest {
 		assertThat(airLines.size()).isEqualTo(0);
 	}
 	
+	//deletebyplane_id
+	@Test
+	public void testDeleteById() throws ParseException{
+	
+		AirLine airLine = new AirLine(0,110, "airindia","chennai", "goa", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 10000, 44,0);
+		AirLine airLine1 = new AirLine(0,110, "airindia","chennai", "goa", "22-10-2020", "150 mins", "2:00 AM", "4:30 AM", 3000, 44,0);
+		AirLine airLine2 = new AirLine(0,111, "airindia","goa", "chennai", "22-10-2020", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);
+		AirLine airLine3 = new AirLine(0,112, "airindia","goa", "chennai", "23-10-2020", "150 mins", "2:00 AM", "4:30 AM", 2000, 44,0);
+
+		//Save airLine in DB
+		entityManager.persist(airLine);
+		entityManager.persist(airLine1);
+		entityManager.persist(airLine2);
+		entityManager.persist(airLine3);
+		
+		airLineRepository.deleteByPlane_Id(110);
+				
+		List<AirLine> airLines = airLineRepository.findAll();
+		assertThat(airLines.size()).isEqualTo(2);
+	}
+
 	//update
 	@Test
 	public void testUpdateAirLine() throws ParseException{
 		
-		AirLine airLine = new AirLine(110, "airindia","chennai", "goa", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 10000, 44,0);		
+		AirLine airLine = new AirLine(0,110, "airindia","chennai", "goa", "18-07-1999", "150 mins", "2:00 AM", "4:30 AM", 10000, 44,0);		
 		//save airLine info in DB
 		entityManager.persist(airLine);
 		
-		AirLine getFromDb = airLineRepository.findById(airLine.getPlaneId()).get();
+		AirLine getFromDb = airLineRepository.findById(airLine.getSno()).get();
 
 		getFromDb.setPrize(2000);
 		entityManager.persist(getFromDb);
