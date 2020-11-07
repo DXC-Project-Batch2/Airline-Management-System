@@ -1,12 +1,12 @@
 package com.dxc.airline.controller;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.ParseException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,14 +38,14 @@ public class AirlineController {
 	
 	@PostMapping(path="/airline/add")
 	@ResponseBody
-	public AirLine save(@RequestBody AirLineDetalis theairline ) throws AirlineException, java.text.ParseException {
+	public AirLine save(@RequestBody AirLineDetalis theairline ) throws AirlineException, ParseException {
 		
 		return service.save(theairline);
 	}
 	
 	@PutMapping(path = "/airline/update")
 	@ResponseBody
-	public AirLine update(@RequestBody AirLine theairline ) {
+	public AirLine update(@RequestBody AirLine theairline ) throws ParseException {
 		
 		return service.update(theairline);
 	}

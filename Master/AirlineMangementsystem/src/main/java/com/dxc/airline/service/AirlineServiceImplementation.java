@@ -26,7 +26,7 @@ public class AirlineServiceImplementation implements AirlineService {
 	@Override
 	@Transactional
 	public List<AirLine> findAll() {
-		return airlineRepository.findAll();
+		return (List<AirLine>) airlineRepository.findAll();
 	}
 
 	@Override
@@ -72,12 +72,13 @@ public class AirlineServiceImplementation implements AirlineService {
 
 	@Override
 	@Transactional
-	public AirLine update(AirLine theAirline) {
+	public AirLine update(AirLine e) throws ParseException {
 		
-		Optional<AirLine> findbyId = airlineRepository.findById(theAirline.getSno());
+		Optional<AirLine> findbyId = airlineRepository.findById(e.getSno());
 		if (findbyId.isPresent()) {
-			return airlineRepository.save(theAirline);
-		}
+			return airlineRepository.save(e);
+//			airlineRepository.update1(e.getSchedule_period(),e.getPlaneId(), e.getCarrierName(), e.getSource(), e.getDestination(), strDate, e.getDuration(), e.getStarting_time(), e.getEnding_time(), e.getPrize(), e.getAvaliable_seats()-e.getTrip(), e.getSold_out()+e.getTrip());	
+	}
 		return null;
 	}
 
@@ -144,6 +145,20 @@ public class AirlineServiceImplementation implements AirlineService {
 	@Transactional
 	public void deleteByPlane_Id(int plane_id) {
 		airlineRepository.deleteByPlane_Id(plane_id);
+	}
+	
+	@Override
+	public void deleteByDate(String date) {
+		date=CurrentDate();
+		airlineRepository.deleteByDate(date);
+	}
+	
+	public String CurrentDate()
+	{
+		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+		Calendar calobj = Calendar.getInstance();
+		System.out.println(df.format(calobj.getTime()));
+		return df.format(calobj.getTime());
 	}
 
 }

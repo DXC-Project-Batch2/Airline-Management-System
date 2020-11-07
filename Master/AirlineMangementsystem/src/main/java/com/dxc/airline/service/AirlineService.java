@@ -15,7 +15,7 @@ public interface AirlineService {
 
 	public AirLine save(AirLineDetalis theAirLine) throws AirlineException, ParseException;
 	
-	public AirLine update(AirLine theAirLine);
+	public AirLine update(AirLine theAirLine) throws ParseException;
 	
 	public List<AirLine> findById(int id);
 
@@ -25,6 +25,8 @@ public interface AirlineService {
 	
 	public void deleteByPlane_Id(int plane_id);
 	
+	public void deleteByDate(String date);
+
 	public List<AirLine> findByCities(String source, String destination);
 	
 	public List<AirLine> findByUser(String source, String destination,String date);
