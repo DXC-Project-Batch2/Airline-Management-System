@@ -12,10 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dxc.airline.model.Passenger;
 import com.dxc.airline.service.PassengerService;
+import com.dxc.airline.service.TicketBookingServiceImp;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class PassengerController {
+	
+	@Autowired
+	TicketBookingServiceImp ticketBookingServiceImp;
 	
 	@Autowired
 	PassengerService service;
@@ -31,7 +35,11 @@ public class PassengerController {
 	@PostMapping(path="/passenger/add")
 	public Passenger save(@RequestBody Passenger thePassenger ) {
 		
+		
+		System.out.println(thePassenger);
 		return service.save(thePassenger);
+		
+		
 	}
 	
 	

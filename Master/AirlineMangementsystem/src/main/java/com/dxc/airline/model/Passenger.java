@@ -11,6 +11,7 @@ import com.dxc.airline.exception.PassengerException;
 @Component
 public class Passenger {
 	
+	private long ticket_id;
 	String username;
 	@NotNull(message = "Mandatory field")
 	String name;
@@ -28,14 +29,22 @@ public class Passenger {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Passenger(String username, String name, String gender, int age, long govt_id, int flight_id)  {
+	public Passenger(long ticketId,String username, String name, String gender, int age, long govt_id, int flight_id)  {
 		super();
+		this.ticket_id  = ticketId;
 		this.username = validateUsername(username);
 		this.name = validateName(name);
 		this.gender = validateGender(gender);
 		this.age = validateAge(age);
 		this.govt_id = validategovt_id(govt_id);
 		this.flight_id = validateFlightId(flight_id);
+	}
+	
+	public long getTicketId() {
+		return ticket_id;
+	}
+	public void setTicketId(long ticketId) {
+		this.ticket_id = ticketId;
 	}
 	public String getUsername() {
 		return username;
@@ -77,7 +86,7 @@ public class Passenger {
 	@Override
 	public String toString() {
 		return "Passenger [username=" + username + ", name=" + name + ", gender=" + gender + ", age=" + age
-				+ ", govt_id=" + govt_id + ", flight_id=" + flight_id + "]";
+				+ ", govt_id=" + govt_id + ", flight_id=" + flight_id +", ticket_id ="+ticket_id +"]";
 	}
 	
 	public String validateUsername(String username) {

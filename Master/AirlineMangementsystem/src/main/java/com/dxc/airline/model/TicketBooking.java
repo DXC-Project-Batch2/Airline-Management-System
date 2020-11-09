@@ -29,7 +29,7 @@ public class TicketBooking {
 	private String username;
 	
 	@NotNull
-	private int flightId;
+	private long flightId;
 	
 	@NotNull
 	@Size(min = 3, max = 20,message = "Name of destination should have minimum 3 characters")
@@ -51,7 +51,7 @@ public class TicketBooking {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public TicketBooking(long ticketId,String username,int flightId, String source, String destination,String strdate, int noOfPassengers) throws ParseException {
+	public TicketBooking(long ticketId,String username,long flightId, String source, String destination,String strdate, int noOfPassengers) throws ParseException {
 		super();
 		this.source = validateSource(source);
 		this.username = validateUsername(username);
@@ -80,11 +80,11 @@ public class TicketBooking {
 		this.username = validateUsername(username);
 	}
 
-	public int getFlightId() {
+	public long getFlightId() {
 		return flightId;
 	}
 
-	public void setFlightId(int flightId) {
+	public void setFlightId(long flightId) {
 		this.flightId = validateFlightId(flightId);
 	}
 
@@ -127,15 +127,15 @@ public class TicketBooking {
 				+ "]";
 	}
 
-	public int validateFlightId(int flightId) {
-		if (flightId == 0) {
+	public long validateFlightId(long flightId2) {
+		if (flightId2 == 0) {
 			throw new TicketBookingException("flightId cannot be blank");
 		} else {
-				if (flightId > 10111) {
+				if (flightId2 > 10111) {
 					throw new TicketBookingException("flightId not found");
 			}
 		}
-		return flightId;
+		return flightId2;
 	}
 	
 	public String validateSource(String source) {

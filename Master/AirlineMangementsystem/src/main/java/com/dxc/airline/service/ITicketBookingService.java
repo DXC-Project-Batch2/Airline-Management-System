@@ -18,4 +18,5 @@ public TicketBooking add(TicketBooking booking);
 	public TicketBooking findById(long id);
 
 	public TicketBooking update(TicketBooking booking);
+	public long LastEnteredTicket();
 }
