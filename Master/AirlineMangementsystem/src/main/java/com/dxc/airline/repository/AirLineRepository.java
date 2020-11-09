@@ -29,7 +29,7 @@ public interface AirLineRepository extends JpaRepository<AirLine, Integer> {
 
 	@Modifying
 	@Transactional
-	@Query(value = "DELETE FROM air_line WHERE date < :date", nativeQuery = true)
-	void deleteByDate(@Param("date")String date);
+	@Query(value = "DELETE FROM air_line WHERE date < curdate();", nativeQuery = true)
+	void deleteByDate();
 
 }

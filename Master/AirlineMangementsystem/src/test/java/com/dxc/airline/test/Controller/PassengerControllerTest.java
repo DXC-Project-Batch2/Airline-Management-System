@@ -40,7 +40,7 @@ public class PassengerControllerTest {
 	@Test
 	public void saveTest() throws Exception {
 		
-		Passenger passenger = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+		Passenger passenger = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
 		
 		String inputInJson = this.mapToJson(passenger);
 		
@@ -65,8 +65,8 @@ public class PassengerControllerTest {
 	@Test
 	public void findByUserNameTest() throws Exception {
 		
-		Passenger passenger1 = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
-		Passenger passenger2 = new Passenger("anil@gmail.com", "anil kumar", "male", 22,11111, 101);
+		Passenger passenger1 = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+		Passenger passenger2 = new Passenger(1001,"anil@gmail.com", "anil kumar", "male", 22,11111, 101);
 		
 		List<Passenger> passengers = new ArrayList<>();
 		passengers.add(passenger1);
@@ -90,8 +90,8 @@ public class PassengerControllerTest {
 	@Test
 	public void findByUserTest() throws Exception {
 		
-		Passenger passenger1 = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
-		Passenger passenger2 = new Passenger("anil@gmail.com", "anil kumar", "male", 22,11111, 101);
+		Passenger passenger1 = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+		Passenger passenger2 = new Passenger(1001,"anil@gmail.com", "anil kumar", "male", 22,11111, 101);
 		
 		List<Passenger> passengers = new ArrayList<>();
 		passengers.add(passenger1);
@@ -115,8 +115,8 @@ public class PassengerControllerTest {
 	@Test
 	public void findAll() throws Exception {
 
-		Passenger passenger1 = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
-		Passenger passenger2 = new Passenger("anil@gmail.com", "anil kumar", "male", 22,11111, 101);
+		Passenger passenger1 = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+		Passenger passenger2 = new Passenger(1001,"anil@gmail.com", "anil kumar", "male", 22,11111, 101);
 		
 		List<Passenger> passengers = new ArrayList<>();
 		passengers.add(passenger1);

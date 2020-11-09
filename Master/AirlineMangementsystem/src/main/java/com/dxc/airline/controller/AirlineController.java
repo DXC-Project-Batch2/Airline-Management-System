@@ -103,6 +103,13 @@ public class AirlineController {
 		
 		service.deleteByPlane_Id(planeId);
 	}
+	
+	@DeleteMapping(path="/airlineDeleteDate")
+	@ResponseBody
+	public void deleteByCurrentDate() {
+		
+		service.deleteByDate();
+	}
 
 	@GetMapping("/airline/{source}/{destination}/{date}")
 	@ResponseBody

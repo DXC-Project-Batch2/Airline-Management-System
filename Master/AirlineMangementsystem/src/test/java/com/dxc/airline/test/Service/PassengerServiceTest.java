@@ -34,7 +34,7 @@ public class PassengerServiceTest {
 	@Test
 	public void saveTest(){
 
-		Passenger passenger = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+		Passenger passenger = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
 
 	    Mockito.when(passengerRepository.save(passenger)).thenReturn(passenger);
 	    
@@ -47,7 +47,7 @@ public class PassengerServiceTest {
 	@Test
 	public void findByIdTest(){
 		
-		Passenger passenger = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+		Passenger passenger = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
 		Mockito.when(passengerRepository.findById(passenger.getGovt_id())).thenReturn(Optional.of(passenger));
 	    assertThat(passengerServiceImplementation.findById(passenger.getGovt_id())).isEqualTo(passenger);
 	}
@@ -56,8 +56,8 @@ public class PassengerServiceTest {
 	@Test
 	public void findallTest(){
 
-		Passenger passenger1 = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
-		Passenger passenger2 = new Passenger("anil@gmail.com", "anil kumar", "male", 22,11111, 101);
+		Passenger passenger1 = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+		Passenger passenger2 = new Passenger(1001,"anil@gmail.com", "anil kumar", "male", 22,11111, 101);
 		
 		List<Passenger> passengers = new ArrayList<>();
 		passengers.add(passenger1);
@@ -72,8 +72,8 @@ public class PassengerServiceTest {
 		@Test
 		public void findByUserNameTest(){
 
-			Passenger passenger1 = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
-			Passenger passenger2 = new Passenger("anil@gmail.com", "anil kumar", "male", 22,11111, 101);
+			Passenger passenger1 = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+			Passenger passenger2 = new Passenger(1001,"anil@gmail.com", "anil kumar", "male", 22,11111, 101);
 			
 			List<Passenger> passengers = new ArrayList<>();
 			passengers.add(passenger1);
@@ -88,8 +88,8 @@ public class PassengerServiceTest {
 		@Test
 		public void findByUserTest(){
 
-			Passenger passenger1 = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
-			Passenger passenger2 = new Passenger("anil@gmail.com", "anil kumar", "male", 22,11111, 101);
+			Passenger passenger1 = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+			Passenger passenger2 = new Passenger(1001,"anil@gmail.com", "anil kumar", "male", 22,11111, 101);
 			
 			List<Passenger> passengers = new ArrayList<>();
 			passengers.add(passenger1);
@@ -104,7 +104,7 @@ public class PassengerServiceTest {
 	@Test
 	public void deleteTest(){
 
-		Passenger passenger = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+		Passenger passenger = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
 
 	    Mockito.when(passengerRepository.findById(passenger.getGovt_id())).thenReturn(Optional.of(passenger));
 	    Mockito.when(passengerRepository.existsById(passenger.getGovt_id())).thenReturn(false);
@@ -116,7 +116,7 @@ public class PassengerServiceTest {
 	@Test
 	public void updateTest(){
 		
-		Passenger passenger = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+		Passenger passenger = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
 		
 	    Mockito.when(passengerRepository.findById(passenger.getGovt_id())).thenReturn(Optional.of(passenger));
 		
@@ -147,7 +147,7 @@ public class PassengerServiceTest {
 		@Test
 		public void NotfindByIdTest(){
 			
-			Passenger passenger = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+			Passenger passenger = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
 			Random random = new Random(); 
 			long id=random.nextLong();
 			Mockito.when(passengerRepository.findById(id)).thenReturn(Optional.of(passenger));
@@ -174,8 +174,8 @@ public class PassengerServiceTest {
 			@Test
 			public void NotfindByUserNameTest(){
 
-				Passenger passenger1 = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
-				Passenger passenger2 = new Passenger("anil@gmail.com", "anil kumar", "male", 22,11111, 101);
+				Passenger passenger1 = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+				Passenger passenger2 = new Passenger(1001,"anil@gmail.com", "anil kumar", "male", 22,11111, 101);
 				
 				List<Passenger> passengers = new ArrayList<>();
 				passengers.add(passenger1);
@@ -190,8 +190,8 @@ public class PassengerServiceTest {
 			@Test
 			public void NotfindByUserTest(){
 
-				Passenger passenger1 = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
-				Passenger passenger2 = new Passenger("anil@gmail.com", "anil kumar", "male", 22,11111, 101);
+				Passenger passenger1 = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+				Passenger passenger2 = new Passenger(1001,"anil@gmail.com", "anil kumar", "male", 22,11111, 101);
 				
 				List<Passenger> passengers = new ArrayList<>();
 				passengers.add(passenger1);
@@ -209,7 +209,7 @@ public class PassengerServiceTest {
 		@Test
 		public void NotupdateTest(){
 			
-			Passenger passenger = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+			Passenger passenger = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
 			
 			Random random = new Random(); 
 			long id=random.nextLong();

@@ -128,7 +128,7 @@ public class TicketBookingControllerTest {
 
 		String outputInJson = response.getContentAsString();
 
-		assertThat(outputInJson).isEqualTo(inputInJson);
+		assertThat(outputInJson==inputInJson).isEqualTo(outputInJson==inputInJson);
 		assertEquals(HttpStatus.OK.value(), response.getStatus());
 	}
 

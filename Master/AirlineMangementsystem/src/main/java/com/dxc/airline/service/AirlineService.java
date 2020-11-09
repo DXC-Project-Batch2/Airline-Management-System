@@ -25,7 +25,7 @@ public interface AirlineService {
 	
 	public void deleteByPlane_Id(int plane_id);
 	
-	public void deleteByDate(String date);
+	public void deleteByDate();
 
 	public List<AirLine> findByCities(String source, String destination);
 	

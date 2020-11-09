@@ -148,17 +148,8 @@ public class AirlineServiceImplementation implements AirlineService {
 	}
 	
 	@Override
-	public void deleteByDate(String date) {
-		date=CurrentDate();
-		airlineRepository.deleteByDate(date);
+	public void deleteByDate() {
+		airlineRepository.deleteByDate();
 	}
 	
-	public String CurrentDate()
-	{
-		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-		Calendar calobj = Calendar.getInstance();
-		System.out.println(df.format(calobj.getTime()));
-		return df.format(calobj.getTime());
-	}
-
 }

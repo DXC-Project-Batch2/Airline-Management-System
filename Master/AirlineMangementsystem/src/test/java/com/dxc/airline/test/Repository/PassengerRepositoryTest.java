@@ -29,7 +29,7 @@ public class PassengerRepositoryTest {
 	@Test
 	public void testSavePassenger(){
 		
-		Passenger passenger = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+		Passenger passenger = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
 		Passenger savedInDb = entityManager.persist(passenger);
 		Passenger getFromDatabase = passengerRepository.getOne(savedInDb.getGovt_id());
 		
@@ -40,7 +40,7 @@ public class PassengerRepositoryTest {
 	@Test
 	public void testGetPassengerById(){
 		
-		Passenger passenger = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+		Passenger passenger = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
 		//Save passenger in DB
 		Passenger SavedInDb = entityManager.persist(passenger);
 		
@@ -53,7 +53,7 @@ public class PassengerRepositoryTest {
 	@Test
 	public void testGetPassengerByUserName(){
 		
-		Passenger passenger = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+		Passenger passenger = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
 		//Save passenger in DB
 		entityManager.persist(passenger);
 		
@@ -67,7 +67,7 @@ public class PassengerRepositoryTest {
 	@Test
 	public void testGetPassengerByUser(){
 		
-		Passenger passenger = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+		Passenger passenger = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
 		//Save passenger in DB
 		entityManager.persist(passenger);
 		
@@ -81,8 +81,8 @@ public class PassengerRepositoryTest {
 	@Test
 	public void testGetAllPassengers(){
 		
-		Passenger passenger1 = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
-		Passenger passenger2 = new Passenger("anil@gmail.com", "anil kumar", "male", 22,11111, 101);
+		Passenger passenger1 = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+		Passenger passenger2 = new Passenger(1110,"anil@gmail.com", "anil kumar", "male", 22,11111, 101);
 		
 		//Save both passenger in DB
 		entityManager.persist(passenger1);
@@ -96,7 +96,7 @@ public class PassengerRepositoryTest {
 	@Test
 	public void testDeletePassengerById(){
 	
-		Passenger passenger = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+		Passenger passenger = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
 		
 		//Save passenger in DB
 		entityManager.persist(passenger);
@@ -112,7 +112,7 @@ public class PassengerRepositoryTest {
 	@Test
 	public void testUpdatePassenger(){
 		
-		Passenger passenger = new Passenger("pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
+		Passenger passenger = new Passenger(1001,"pasupathi@gmail.com", "pasupathi", "male", 22,11110, 101);
 			
 		//save passenger info in DB
 		entityManager.persist(passenger);
