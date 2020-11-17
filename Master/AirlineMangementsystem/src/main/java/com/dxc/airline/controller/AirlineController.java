@@ -31,7 +31,7 @@ public class AirlineController {
 	
 	@ResponseBody
 	@GetMapping(path="/airline")
-	public List<AirLine> findAll(){
+	public List<AirLine> findAll() throws ParseException{
 		return service.findAll();
 	}
 	
@@ -57,12 +57,18 @@ public class AirlineController {
 		List<AirLine> theAirline = service.findById(id);
 		
 		if (theAirline == null) {
-			throw new RuntimeException("flight not found - ");
+			return null;
 		}
 		
 		return theAirline;
 	}
 
+	@GetMapping(path="/airline/check/{id}")
+	@ResponseBody
+	public Boolean findByIdCheck(int id) {
+		return service.findByIdCheck(id);
+	}
+	
 	@GetMapping(path="/airline/sno/{sno}")
 	@ResponseBody
 	public AirLine findBySno(@PathVariable("sno")int sno) {

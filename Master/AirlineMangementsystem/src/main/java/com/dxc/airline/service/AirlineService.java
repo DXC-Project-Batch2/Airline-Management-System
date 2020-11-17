@@ -11,13 +11,15 @@ import com.dxc.airline.model.AirLineDetalis;
 @Service
 public interface AirlineService {
 
-	public List<AirLine> findAll();
+	public List<AirLine> findAll() throws ParseException;
 
 	public AirLine save(AirLineDetalis theAirLine) throws AirlineException, ParseException;
 	
 	public AirLine update(AirLine theAirLine) throws ParseException;
 	
 	public List<AirLine> findById(int id);
+	
+	public Boolean findByIdCheck(int id);
 
 	public AirLine findBySno(int id);
 	

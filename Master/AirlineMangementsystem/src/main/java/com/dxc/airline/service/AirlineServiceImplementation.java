@@ -25,8 +25,13 @@ public class AirlineServiceImplementation implements AirlineService {
 
 	@Override
 	@Transactional
-	public List<AirLine> findAll() {
-		return (List<AirLine>) airlineRepository.findAll();
+	public List<AirLine> findAll() throws ParseException {
+		List<AirLine> airLines = airlineRepository.findAll();
+		if(airLines!=null)
+		{
+			return airLines;
+		}
+		return null;
 	}
 
 	@Override
@@ -111,7 +116,6 @@ public class AirlineServiceImplementation implements AirlineService {
 			// we didn't find the employee
 			throw new RuntimeException("Did not find flight ");
 		}
-
 	}
 
 	@Override
@@ -150,6 +154,11 @@ public class AirlineServiceImplementation implements AirlineService {
 	@Override
 	public void deleteByDate() {
 		airlineRepository.deleteByDate();
+	}
+
+	@Override
+	public Boolean findByIdCheck(int id) {
+		return airlineRepository.findAllById(id)!=null;
 	}
 	
 }

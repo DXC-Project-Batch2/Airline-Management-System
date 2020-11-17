@@ -3,6 +3,7 @@ package com.dxc.airline.model;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,7 +43,7 @@ public class AirLine {
 	String destination;
 	
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
-	@JsonFormat( shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "UTC")
+	@JsonFormat( shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "Asia/Kolkata")
 	Date date;
 	
 	@NotNull(message = "Cannot be null")
@@ -77,6 +78,7 @@ public class AirLine {
 		this.source = validateSource(source);
 		this.destination = validateDestination(destination);
 		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+		sdf.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata"));
 		date=sdf.parse(strdate);
 		this.duration = validateDuration(duration);
 		this.starting_time = validateStarting_time(starting_time);
