@@ -121,10 +121,16 @@ public class AirlineController {
 	@ResponseBody
 	public List<AirLine> getAirline(@PathVariable String source, @PathVariable String destination,@PathVariable String date) throws ParseException, java.text.ParseException {
 		//*for converting a string date to requried datetime*//
+		DateFormat dfrmt = new SimpleDateFormat("yyyy-MM-dd");
+		Date dt = dfrmt.parse(date);
 		
-		String str = date+"  05:30:00.000000";
+		DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy"); 
+		System.out.println("==>"+formatter.format(dt));
+		
+		String str = formatter.format(dt)+"  05:30:00.000000";
 		DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 		Date dat = df.parse(str);
+		
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
 		String strDate = dateFormat.format(dat);
